@@ -1,0 +1,1228 @@
+﻿
+
+
+
+
+GOAL GRID
+
+
+
+
+
+Website Content &Design Foundation
+
+One-page programme information and WhatsApp conversion website
+
+
+
+
+
+PROJECT PURPOSE  Present the Goal Grid programme clearly, establish confidence in the offer, and guide interested business owners to contact the host through WhatsApp.
+
+
+
+
+
+
+
+
+
+Prepared for the Goal Grid website build
+
+Working specification • Version 1.0 • 19 November 2026
+
+
+
+
+
+
+
+1. Project definition
+
+Goal Grid is a three-month goal-execution programme for business owners, scheduled for January–March 2027. The website is a compact, single-page information and conversion experience. It is not a web application or a participant portal.
+
+
+
+
+
+Primary objective
+
+Help a visitor quickly understand what Goal Grid is, who it is for, what participation involves, what it costs, and how to take the next step.
+
+
+
+
+
+Primary conversion
+
+Every primary call to action opens WhatsApp with a prefilled enquiry message. The visitor reviews, edits if necessary, and sends the message themselves.
+
+
+
+
+
+Scope boundaries
+
+
+
+
+
+One responsive landing page; compact anchor navigation.
+
+
+
+
+
+Use the existing BMB Strategy & Advisory logo supplied by the client. Do not create a separate Goal Grid logo.
+
+
+
+
+
+Frontend only. No database, authentication, admin dashboard, waitlist database, custom API, or website form submission.
+
+
+
+
+
+Persistent WhatsApp contact action on desktop and mobile.
+
+
+
+
+
+All unknown programme details remain clearly marked for client confirmation.
+
+
+
+IMPORTANT  A WhatsApp click does not automatically submit or store a visitor’s information. The visitor must send the prefilled message inside WhatsApp.
+
+
+
+
+
+
+
+
+
+2. Website content and page structure
+
+Recommended page order. The original brief’s core information is retained, while closely related sections are combined to keep the page concise.
+
+
+
+
+
+A. Announcement strip
+
+WAITLIST OPENS DECEMBER 2026  •  [CONFIRM EXACT OPENING DATE]
+
+Action: “Get programme updates” → WhatsApp.
+
+Implementation note: Keep this strip slim. Do not add a countdown until the exact opening date is confirmed.
+
+
+
+
+
+B. Header
+
+Left: official BMB Strategy & Advisory logo. Right: compact anchor links — The Programme, The GRID Method, What You’ll Gain, About the Host — and one highlighted “Join the Waitlist” WhatsApp action.
+
+On mobile, use a simple menu and keep the WhatsApp action easy to reach.
+
+
+
+
+
+C. Hero
+
+Eyebrow: A 3-MONTH PROGRAMME FOR BUSINESS OWNERS  |  JANUARY–MARCH 2027
+
+
+
+
+
+Don’t Just Set the Goal. Build the Path to Achieve It.
+
+Goal Grid is a practical three-month programme designed to help business owners move beyond setting goals and build the structure, discipline, and momentum to execute them.
+
+Primary CTA: “Join the Waitlist” → WhatsApp
+
+Supporting price cue: “Programme investment: ₦50,000”
+
+Quick facts: 3 months • Daily action tasks • Friday teaching sessions on Google Meet • A private one-on-one session with the host.
+
+[CONFIRM whether these quick facts are all still accurate and whether the private session is included for every participant.]
+
+
+
+
+
+D. The challenge / why Goal Grid
+
+
+
+
+
+You don’t have a shortage of goals. You need a system to follow through.
+
+You start the year with clear intentions. You know what needs to change in your business. But daily demands take over, priorities become blurred, and important plans keep getting pushed forward.
+
+Goal Grid is built to help you turn good intentions into deliberate, consistent action.
+
+Keep this section short: three concise pain points may be shown as a compact row — Busy but not progressing; Unclear priorities; Trying to execute without structure or accountability.
+
+
+
+
+
+E. The GRID Method
+
+A simple framework for moving from intention to execution:
+
+G — Goal  Define what you want to achieve and make the target clear.
+
+R — Roadmap  Break the goal into a practical path with priorities and milestones.
+
+I — Implementation  Turn the roadmap into action through consistent daily execution.
+
+D — Discipline  Build the accountability and habits needed to keep moving.
+
+
+
+
+
+F. What the programme includes
+
+
+
+
+
+Daily action tasks to keep participants moving.
+
+
+
+
+
+Group leaders to support coordination and accountability.
+
+
+
+
+
+Progress reports to make execution visible.
+
+
+
+
+
+Friday live teaching sessions via Google Meet.
+
+
+
+
+
+Group presentations and shared progress reviews.
+
+
+
+
+
+A private one-on-one session with the host.
+
+[CONFIRM frequency and format of reports/presentations, the role of group leaders, Friday session duration, and the exact scope of the private session.]
+
+
+
+
+
+G. What you can work towards
+
+By the end of the programme, participants should be better equipped to work with:
+
+
+
+
+
+A clearly defined business goal.
+
+
+
+
+
+A practical roadmap and priorities.
+
+
+
+
+
+Consistent execution and stronger focus.
+
+
+
+
+
+Support and accountability throughout the process.
+
+
+
+
+
+Visible progress and greater confidence in their direction.
+
+
+
+
+
+Habits and a framework they can continue using.
+
+Avoid presenting these as guaranteed business or revenue results. Describe them as intended programme outcomes.
+
+
+
+
+
+H. Who it is for
+
+
+
+
+
+For business owners who are ready to move from planning to progress.
+
+Goal Grid is designed for product-based, service-based, online, and small business owners who are tired of leaving important goals unfinished and are ready to approach execution with more structure and consistency.
+
+Optional short qualifier: “If you’re ready to do the work, Goal Grid will help you build a clearer path to follow.”
+
+
+
+
+
+I. Meet the host
+
+[HOST FULL NAME]
+
+[APPROVED HOST BIO — 80–120 WORDS]
+
+[HOST PORTRAIT]
+
+Suggested content: relevant professional experience, business/advisory background, why the programme was created, and the host’s approach to helping business owners execute. Use only client-approved facts and credentials.
+
+
+
+
+
+J. Participant feedback / proof
+
+Include this section only if genuine testimonials, approved participant feedback, or verifiable poll results are supplied.
+
+[INSERT APPROVED TESTIMONIAL / NAME OR ATTRIBUTION / PERMISSION STATUS]
+
+If no proof is available, omit the section rather than inventing testimonials, statistics, or success stories.
+
+
+
+
+
+K. Programme investment
+
+
+
+
+
+Your next three months can start with one clear decision.
+
+Programme investment: ₦50,000
+
+Payment option: Instalments available. [CONFIRM instalment amounts, due dates, and payment instructions.]
+
+CTA: “Ask a question on WhatsApp”
+
+[CONFIRM participant capacity / whether places are limited before using scarcity language.]
+
+
+
+
+
+L. How to join
+
+
+
+
+
+Tap the WhatsApp button on this page.
+
+
+
+
+
+Send the prefilled message to express your interest.
+
+
+
+
+
+The programme team responds with the next steps and any details you need.
+
+
+
+
+
+Complete the confirmed registration and payment process.
+
+
+
+
+
+Receive joining instructions before the programme begins.
+
+Do not imply that a WhatsApp message alone guarantees a place. Registration is complete only after the host confirms the actual process.
+
+
+
+
+
+M. Frequently asked questions
+
+Who can join Goal Grid?
+
+
+
+The programme is designed for product-based, service-based, online, and small business owners who want to execute their business goals with more structure.
+
+When does the programme take place?
+
+
+
+January to March 2027.
+
+How long is the programme?
+
+
+
+Three months.
+
+What is included?
+
+
+
+Daily action tasks, group support, progress reports, Friday teaching sessions on Google Meet, group presentations, and a private one-on-one session with the host. [Confirm final inclusions.]
+
+How much does it cost?
+
+
+
+The programme investment is ₦50,000. Instalment options are available. [Add confirmed payment details.]
+
+How much time will I need each day?
+
+
+
+[HOST TO CONFIRM expected daily time commitment.]
+
+What happens if I miss a task or Friday session?
+
+
+
+[HOST TO CONFIRM catch-up, attendance, and missed-task policy.]
+
+Will Friday sessions be recorded?
+
+
+
+[HOST TO CONFIRM whether recordings will be available.]
+
+How do I register or join the waitlist?
+
+
+
+Tap any WhatsApp button on this page and send the prefilled message. The programme team will guide you through the next steps.
+
+
+
+
+
+N. Final CTA and footer
+
+
+
+
+
+Your goals deserve more than another plan.
+
+Take the next step towards clearer priorities, consistent action, and meaningful progress.
+
+CTA: “Join the Goal Grid Waitlist” → WhatsApp
+
+Footer: BMB Strategy & Advisory logo • Goal Grid • January–March 2027 • [WhatsApp number] • [Instagram] • [Email] • © 2026 BMB Strategy & Advisory / Goal Grid [confirm preferred legal attribution].
+
+
+
+
+
+3. Information to collect before launch
+
+The following items are intentionally left open. Replace each placeholder only after the client confirms the information.
+
+
+
+Information needed
+
+
+
+Priority
+
+
+
+What to confirm
+
+
+
+Official BMB logo asset
+
+
+
+High
+
+
+
+Request a clean SVG or transparent PNG; confirm approved light/dark versions.
+
+
+
+WhatsApp contact number
+
+
+
+Critical
+
+
+
+Include country code; test the click-to-chat link on mobile and desktop.
+
+
+
+Waitlist opening date
+
+
+
+High
+
+
+
+Exact December 2026 date; needed before adding a countdown or precise announcement.
+
+
+
+Host name, portrait and bio
+
+
+
+High
+
+
+
+Approved spelling, current photo, bio, credentials and story.
+
+
+
+Instalment details
+
+
+
+High
+
+
+
+Amounts, dates, payment channel and any conditions.
+
+
+
+Participant capacity
+
+
+
+Medium
+
+
+
+Confirm whether capacity is limited; avoid unverified scarcity claims.
+
+
+
+Daily time commitment
+
+
+
+High
+
+
+
+Expected minutes/hours per day.
+
+
+
+Friday session duration and timing
+
+
+
+High
+
+
+
+Start time, time zone, duration and whether attendance is required.
+
+
+
+Group leader and reporting details
+
+
+
+Medium
+
+
+
+How groups work, how often reports are submitted, and presentation format.
+
+
+
+Missed-task / missed-session policy
+
+
+
+Medium
+
+
+
+Catch-up rules, attendance expectations and support arrangements.
+
+
+
+Session recordings
+
+
+
+Medium
+
+
+
+Whether recordings exist, access duration and who can access them.
+
+
+
+Testimonials or poll results
+
+
+
+Optional
+
+
+
+Only real, approved content with permission to publish.
+
+
+
+Instagram and email
+
+
+
+Optional
+
+
+
+Exact public handles/addresses to display.
+
+
+
+Brand asset usage
+
+
+
+High
+
+
+
+Confirm that the BMB logo may be used as the visible brand mark for this programme.
+
+
+
+
+
+4. Design foundation
+
+Design personality: minimalist, warm, modern, welcoming, and executive. It should feel credible and considered, not corporate-cold, generic, or visually noisy.
+
+
+
+
+
+Brand colours
+
+
+
+Deep Navy#142642
+
+
+
+Gold#C9A45C
+
+
+
+White#FFFFFF
+
+Supporting text colour: dark charcoal (working value #30343B; confirm against the client’s official brand specification). Supporting neutral surfaces may use a very light cool grey, but navy, gold, and white remain the dominant identity.
+
+
+
+
+
+Typography
+
+
+
+
+
+Headings: Sora — geometric, crisp, modern; use Medium/Semibold weights and generous line spacing.
+
+
+
+
+
+Body and interface: Manrope — highly legible, clean, and refined; use Regular/Medium.
+
+
+
+
+
+Use a restrained type scale. Avoid overly thin weights, excessive all-caps, decorative display fonts, and too many font families.
+
+These are proposed web fonts, not client-confirmed corporate fonts. If BMB has an official typeface, prioritize the supplied brand guideline.
+
+
+
+
+
+Layout and visual language
+
+
+
+
+
+Content width: approximately 1,160–1,220px; comfortable margins and generous whitespace.
+
+
+
+
+
+Desktop section spacing: approximately 88–112px; mobile: approximately 56–72px.
+
+
+
+
+
+Cards: use only where they clarify the GRID method, programme inclusions, or key facts; avoid a card for every paragraph.
+
+
+
+
+
+Buttons: clear solid navy primary button with white text; gold used as a restrained accent or secondary highlight.
+
+
+
+
+
+Use real host photography and authentic programme imagery when supplied. Do not use fabricated testimonials or generic stock imagery that implies actual participants.
+
+
+
+
+
+Use a restrained graphic language inspired by alignment, pathways, milestones, and structured progress — without creating a new logo.
+
+
+
+
+
+Motion and interaction
+
+
+
+
+
+Subtle fade/slide reveals as sections enter view; reveal once, not continuously.
+
+
+
+
+
+Small hover/focus transitions on buttons and navigation; approximately 200–300ms.
+
+
+
+
+
+A restrained visual treatment for the four GRID stages; no complex animated dashboard or heavy parallax.
+
+
+
+
+
+Respect reduced-motion preferences and keep mobile animations lightweight.
+
+
+
+
+
+5. Technical stack architecture
+
+Recommended stack for a fast, maintainable, frontend-only one-page site:
+
+
+
+Layer
+
+
+
+Technology
+
+
+
+Responsibility
+
+
+
+Framework
+
+
+
+Next.js (App Router) + React + TypeScript
+
+
+
+Page structure, routing foundation, metadata and production build.
+
+
+
+Styling
+
+
+
+Tailwind CSS
+
+
+
+Responsive layout, design tokens and reusable utility styling.
+
+
+
+Motion
+
+
+
+Motion for React (formerly Framer Motion)
+
+
+
+Small, purposeful entrance and interaction animations.
+
+
+
+Icons
+
+
+
+Lucide React
+
+
+
+Consistent interface icons only where useful.
+
+
+
+Fonts
+
+
+
+Sora + Manrope via next/font/google
+
+
+
+Optimized font loading; replace if official brand typography is supplied.
+
+
+
+Contact
+
+
+
+WhatsApp click-to-chat URL
+
+
+
+Opens WhatsApp with a prefilled message; no form submission endpoint.
+
+
+
+Hosting
+
+
+
+Vercel
+
+
+
+Build and deploy the static/Next.js frontend; connect the approved domain.
+
+
+
+Source control
+
+
+
+Git + GitHub
+
+
+
+Version control, review and deployment integration.
+
+
+
+
+
+Application boundaries
+
+
+
+
+
+No database or persistent storage.
+
+
+
+
+
+No authentication, user accounts, admin dashboard, or participant portal.
+
+
+
+
+
+No custom backend, API routes, server actions, or waitlist management.
+
+
+
+
+
+No embedded lead form. WhatsApp is the only primary conversion channel.
+
+
+
+
+
+No payment gateway unless the scope is explicitly changed later; payment details are handled through the client’s confirmed process.
+
+
+
+
+
+WhatsApp interaction
+
+Use a click-to-chat link in the format below. Replace the phone placeholder with the client’s WhatsApp number in international format, digits only, without spaces or the plus sign.
+
+https://wa.me/234XXXXXXXXXX?text=Hello%2C%20I%27m%20interested%20in%20the%20Goal%20Grid%20programme.%20Please%20send%20me%20the%20waitlist%20and%20registration%20details.
+
+Suggested prefilled message: “Hello, I’m interested in the Goal Grid programme. Please send me the waitlist and registration details.” The visitor sends it manually after WhatsApp opens.
+
+
+
+
+
+Deployment flow
+
+Developer → GitHub repository → Vercel build/deployment → custom domain (goalgridproject.com, subject to final ownership/DNS setup) → visitor’s browser → WhatsApp.
+
+Set page title, description, Open Graph image, favicon/logo treatment, canonical domain, sitemap/robots as appropriate, and basic privacy-conscious analytics only if the client approves analytics.
+
+
+
+
+
+6. Website topology
+
+The topology below shows the visitor journey and the website’s component structure. It is a single-page experience, not a multi-page sitemap.
+
+
+
+
+
+Visitor journey
+
+
+
+
+
+Visitor lands on Goal Grid page.
+
+
+
+
+
+Visitor sees the programme promise, dates, price cue and primary WhatsApp action.
+
+
+
+
+
+Visitor scrolls through the problem, GRID method, inclusions, outcomes, audience, host, proof (if supplied), investment and FAQs.
+
+
+
+
+
+Visitor selects any WhatsApp CTA or the persistent floating WhatsApp control.
+
+
+
+
+
+Browser opens WhatsApp with a prefilled message.
+
+
+
+
+
+Visitor sends the message; the host/team responds and handles the confirmed registration process.
+
+
+
+
+
+Page component hierarchy
+
+
+
+
+
+App / Root Layout
+
+
+
+
+
+  ├── Announcement Bar
+
+
+
+
+
+  ├── Header (BMB logo + anchor navigation + CTA)
+
+
+
+
+
+  ├── Hero
+
+
+
+
+
+  ├── Problem / Why Goal Grid
+
+
+
+
+
+  ├── GRID Method (Goal → Roadmap → Implementation → Discipline)
+
+
+
+
+
+  ├── Programme Inclusions
+
+
+
+
+
+  ├── Intended Outcomes
+
+
+
+
+
+  ├── Who It’s For
+
+
+
+
+
+  ├── Host Profile
+
+
+
+
+
+  ├── Testimonials / Proof (conditional)
+
+
+
+
+
+  ├── Investment + How to Join
+
+
+
+
+
+  ├── FAQ
+
+
+
+
+
+  ├── Final CTA
+
+
+
+
+
+  ├── Footer
+
+
+
+
+
+  └── Persistent WhatsApp Button
+
+
+
+
+
+System topology
+
+Visitor device/browser → Next.js frontend hosted on Vercel → WhatsApp click-to-chat URL → WhatsApp app/web → visitor sends message → programme host/team. There is no website database or custom application server in this flow.
+
+
+
+
+
+7. Build and launch checks
+
+
+
+
+
+Confirm all placeholders and obtain written approval for final programme copy.
+
+
+
+
+
+Verify logo asset quality, clear space, and contrast on white/navy surfaces.
+
+
+
+
+
+Test all WhatsApp links with the final number and prefilled message.
+
+
+
+
+
+Check navigation anchors, mobile menu, floating CTA placement and keyboard focus.
+
+
+
+
+
+Test responsive layouts at common mobile, tablet and desktop widths.
+
+
+
+
+
+Check colour contrast, semantic headings, alt text, focus visibility and reduced-motion behavior.
+
+
+
+
+
+Optimize image sizes and avoid unnecessary animation or oversized dependencies.
+
+
+
+
+
+Verify page title, meta description, social preview, favicon and domain.
+
+
+
+
+
+Confirm there is no accidental form, database, authentication, or backend dependency.
+
+
+
+
+
+8. Decisions locked for this build
+
+
+
+
+
+Brand mark: use the existing BMB Strategy & Advisory logo; no new Goal Grid logo.
+
+
+
+
+
+Website format: one-page, concise information website.
+
+
+
+
+
+Conversion: WhatsApp click-to-chat only.
+
+
+
+
+
+Build scope: frontend-only; no database, backend, or waitlist storage.
+
+
+
+
+
+Programme: January–March 2027; three months; stated investment ₦50,000.
+
+
+
+
+
+Visual identity: Deep Navy #142642, Gold #C9A45C, White #FFFFFF, supported by dark charcoal.
+
+
+
+
+
+Design personality: minimalist, warm, modern, welcoming, premium; balanced motion.
+
+
+
+
+
+CONTENT CONTROL  Anything marked [CONFIRM], [INSERT], or [HOST TO CONFIRM] is not approved final copy. Keep it as an internal placeholder until the client supplies the missing information.
+
+
+
+
+
+
+
+

@@ -13,7 +13,7 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 24);
+      setScrolled(window.scrollY > 30);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -25,8 +25,8 @@ export function Header() {
     <header
       className={`sticky top-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-gray-100/90 shadow-xs"
-          : "bg-white/70 lg:bg-transparent backdrop-blur-xs lg:backdrop-blur-none border-b border-transparent"
+          ? "bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs"
+          : "bg-navy/85 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none border-b border-white/5"
       }`}
     >
       <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -39,15 +39,27 @@ export function Header() {
               width={112}
               height={40}
               priority
-              className="object-contain"
+              className={`object-contain transition-all duration-300 ${
+                scrolled ? "" : "filter brightness-0 invert"
+              }`}
             />
           </div>
-          <div className="h-6 w-px bg-gray-200 hidden sm:block" />
+          <div className={`h-6 w-px transition-colors ${scrolled ? "bg-gray-200" : "bg-white/20"} hidden sm:block`} />
           <div className="flex flex-col">
-            <span className="font-heading font-bold text-navy tracking-tight text-base sm:text-lg leading-tight group-hover:text-gold transition-colors">
+            <span
+              className={`font-heading font-bold tracking-tight text-base sm:text-lg leading-tight transition-colors ${
+                scrolled
+                  ? "text-navy group-hover:text-gold"
+                  : "text-white group-hover:text-gold"
+              }`}
+            >
               Goal Grid
             </span>
-            <span className="text-[10px] tracking-widest uppercase font-semibold text-charcoal-muted hidden sm:inline">
+            <span
+              className={`text-[10px] tracking-widest uppercase font-semibold transition-colors hidden sm:inline ${
+                scrolled ? "text-charcoal-muted" : "text-white/60"
+              }`}
+            >
               Q1 2027 Cohort
             </span>
           </div>
@@ -59,7 +71,11 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-charcoal hover:text-navy transition-colors relative py-1 hover:after:w-full after:w-0 after:h-0.5 after:bg-gold after:absolute after:bottom-0 after:left-0 after:transition-all"
+              className={`text-sm font-medium transition-colors relative py-1 hover:after:w-full after:w-0 after:h-0.5 after:bg-gold after:absolute after:bottom-0 after:left-0 after:transition-all ${
+                scrolled
+                  ? "text-charcoal hover:text-navy"
+                  : "text-white/85 hover:text-white"
+              }`}
             >
               {item.label}
             </Link>
@@ -72,9 +88,13 @@ export function Header() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 bg-navy text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-navy-700 shadow-sm transition-all hover:shadow hover:-translate-y-0.5 active:translate-y-0 border border-navy-700"
+            className={`inline-flex items-center gap-2.5 text-sm font-semibold px-5 py-2.5 rounded-full shadow-sm transition-all hover:shadow hover:-translate-y-0.5 active:translate-y-0 ${
+              scrolled
+                ? "bg-navy text-white hover:bg-navy-700 border border-navy-700"
+                : "bg-gold text-navy font-bold hover:bg-gold-400 border border-gold-300"
+            }`}
           >
-            <MessageCircle className="w-4 h-4 text-gold fill-gold/20" />
+            <MessageCircle className={`w-4 h-4 ${scrolled ? "text-gold fill-gold/20" : "text-navy fill-navy/20"}`} />
             <span>Join the Waitlist</span>
           </Link>
         </div>
@@ -84,7 +104,11 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl text-charcoal hover:text-navy hover:bg-gray-100 focus:outline-none transition-colors"
+            className={`p-2 rounded-xl focus:outline-none transition-colors ${
+              scrolled
+                ? "text-charcoal hover:text-navy hover:bg-gray-100"
+                : "text-white hover:text-gold hover:bg-white/10"
+            }`}
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? (

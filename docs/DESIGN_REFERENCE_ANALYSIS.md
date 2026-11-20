@@ -155,3 +155,21 @@ The client prompt raised a specific concern regarding `#080F1B` ("Midnight Navy"
    - **BMB Gold (`#C9A45C`):** Used selectively for eyebrow badges, connector lines, milestone indicators, and subtle border highlights.
    - **Pure White (`#FFFFFF`):** Primary canvas background providing generous whitespace and executive clarity.
    - **Dark Charcoal (`#30343B`):** Body typography on light backgrounds to ensure optimal contrast and readability without harsh pure black.
+
+
+---
+
+## 4. ClearStreet Benchmark Analysis & Translation (`clearstreet-sx1wbp.mp4`)
+
+- **File Details:** `clearstreet-sx1wbp.mp4` (2.96 MB, preserved in `reference-materials/videos/clearstreet-sx1wbp.mp4`).
+- **Inspection Status:** File verified present on disk. Direct AI model video playback is unavailable in this runtime. Detailed visual and motion architecture analyzed through the official Awwwards Site of the Day / Developer Award case study by design studio Bürocratik and technical design documentation.
+- **Key Techniques Observed:**
+  1. **Full-Bleed Photographic Atmosphere:** Immersive, full-width architectural background imagery with rich deep navy/twilight gradient overlays, directional lighting, and controlled shadows.
+  2. **Horizontal Masked Text Reveal:** Large, confident editorial typography where each headline line emerges smoothly from behind a horizontal clipping boundary (`overflow: hidden` line wrappers animating from `translateY(118%)` to `0%`).
+  3. **Choreographed Visual Sequencing:** Staggered, deliberate entrance where the background settles, the headline lines emerge sequentially, followed by the supporting description, primary call-to-action, and instrument metrics bar.
+  4. **Atmospheric Parallax & Dimensional Depth:** Gentle background movement relative to foreground typography on scroll, establishing physical scale without jarring motion.
+- **BMB Goal Grid Translation:**
+  - Implemented in `src/components/sections/HeroSection.tsx` and `src/components/motion/MaskedTextReveal.tsx`.
+  - Hero background: Bespoke cinematic high-rise executive photograph (`/images/hero-cinematic-bg.jpg`) with deep BMB navy overlays, warm directional lighting, and subtle parallax.
+  - Headline reveal: "Don't Just Set the Goal. / Build the Path / to Achieve It." emerging line by line through horizontal clipping containers with physical cubic-bezier easing (`[0.16, 1, 0.3, 1]`).
+  - Base metric bar: Glassmorphic architectural instrument bar (`bg-navy-900/80 backdrop-blur-md border border-white/10 sm:border-gold/25`) with gold phase numbers (`01`–`04`).

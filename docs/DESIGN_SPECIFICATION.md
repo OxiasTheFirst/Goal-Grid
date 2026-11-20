@@ -90,27 +90,22 @@ Approved Section Order:
 
 ---
 
-### Section 03: Hero Section & Key Facts Ribbon (Asymmetric Executive Canvas)
-- **Visual Canvas:** Refined light executive background (`bg-gradient-to-b from-[#FAFBFD] via-white to-[#F5F7FA]`), featuring restrained geometric coordinate lines, warm gold radial ambient illumination, and an asymmetric split composition (approx 58% typography / 42% visual).
-- **Left Column (Command Zone):**
-  - **Eyebrow Badge:** Pill badge in light cream with gold border and pulsing indicator: `A 3-MONTH PROGRAMME FOR BUSINESS OWNERS · JANUARY TO MARCH 2027`.
-  - **Main Headline:** Sora Bold / ExtraBold (`text-3xl sm:text-5xl lg:text-6xl text-navy leading-[1.12]`):
-    `Don’t Just Set the Goal. Build the Path to Achieve It.` (with `Build the Path` accented in BMB Gold with an architectural coordinate underline).
-  - **Subheadline:** Manrope Regular (`text-base sm:text-lg lg:text-xl text-charcoal-light leading-relaxed max-w-xl`):
-    `The Goal Grid Project is a 3-month programme that takes the goal you have carried from one year to the next and turns it into a clear, step-by-step plan, then stays with you while you carry it out.`
-  - **Primary CTA Cluster:**
-    - High-contrast button: `Join the Waitlist` with gold WhatsApp icon and forward arrow.
-    - Inline pricing cue: `₦50,000 · Instalments available`. *(Scarcity claim "Limited places" removed).*
-    - Institutional identifier: `A BMB Strategy & Advisory Executive Programme · Cohort Q1 2027`.
-- **Right Column (Visual Composition):**
-  - **Art-Directed Executive Visual:** High-resolution bespoke photograph (`/images/hero-executive-grid.jpg`) featuring an open architectural planning journal with precision drafting instruments (brass pen, compass, slate cube) in soft morning light.
-  - **Layered CSS GRID Motif:** Subtle rotated geometric coordinate square (`border-gold/30`) with coordinate wireframes, gold corner tick accents, and floating architectural badge (`Architectural Execution · Goal · Roadmap · Implementation · Discipline · Q1 2027`).
-- **Key Facts Ribbon:**
-  - Redesigned from disconnected cards into an authoritative horizontal data bar with clean gold-accented dividers:
-    1. `3 Months / 01` — January to March 2027
-    2. `Daily Tasks / 02` — Action tasks that keep you moving
-    3. `Every Friday / 03` — Live teaching sessions on Google Meet
-    4. `1-on-1 Session / 04` — Private diagnostic session with the host
+### Section 03: Hero Section & Key Facts Ribbon (Cinematic Full-Bleed Canvas)
+- **Visual Canvas:** Full-bleed immersive photographic environment featuring bespoke high-resolution imagery (`/images/hero-cinematic-bg.jpg`) set in a twilight executive boardroom overlooking an illuminated coastal metropolis. Rich Deep Navy (`#142642`) gradient overlays, warm directional lighting reflections, and subtle parallax scrolling movement.
+- **Horizontal Masked Headline Reveal:**
+  - Designed inspired by the Clear Street motion language.
+  - The main headline: `Don’t Just Set the Goal. Build the Path to Achieve It.` is split into sequential horizontal clipping wrappers (`overflow: hidden`).
+  - Line 1: `Don't Just Set the Goal.` (delay 0.25s)
+  - Line 2: `Build the Path` (in BMB Gold with subtle glowing underline, delay 0.48s)
+  - Line 3: `to Achieve It.` (delay 0.7s)
+  - Each line translates from `y: 118%` below the horizontal boundary to `y: 0%` with physical cubic-bezier easing (`[0.16, 1, 0.3, 1]`).
+- **Choreographed Supporting Hierarchy:**
+  - 0.10s: Eyebrow badge in navy glass with pulsing gold indicator.
+  - 0.25s–0.70s: Sequential horizontal masked headline reveal.
+  - 0.85s: High-legibility subheadline.
+  - 1.00s: High-contrast BMB Gold WhatsApp CTA button + scarcity-free pricing cue.
+  - 1.15s: Institutional badge (`BMB Strategy & Advisory Ltd. · Q1 2027 Cohort`).
+  - 1.25s: Glassmorphic architectural instrument bar displaying the 4 key facts (`3 Months / 01`, `Daily Tasks / 02`, `Every Friday / 03`, `1-on-1 Session / 04`).
 
 ---
 

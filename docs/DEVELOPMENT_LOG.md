@@ -296,3 +296,46 @@ The following points from the client foundation brief remain intentionally open 
   - Zero unauthorized colors
   - Zero unverified quotations
   - Zero backend forms
+
+
+---
+
+## Entry 010 — Cinematic Visual Redesign & Horizontal Masked Motion Experience
+- **Date:** 2026-11-20
+- **Status:** Cinematic redesign completed, compiled, and verified.
+
+### 1. ClearStreet Reference Ingestion & Analysis
+- Received reference video `c:\Users\HP\Downloads\clearstreet-sx1wbp.mp4` (2.96 MB). Copied to `reference-materials/videos/clearstreet-sx1wbp.mp4`.
+- Extracted and applied core motion principles from the Clear Street design language (by Bürocratik):
+  1. Immersive full-bleed photographic background with rich deep navy gradient overlays.
+  2. Horizontal masked text reveal where headline lines emerge sequentially from behind an overflow clipping horizon.
+  3. Strict relationship between background imagery, directional lighting, and foreground typography.
+  4. Subtle parallax movement and atmospheric depth.
+
+### 2. Cinematic Hero Overhaul
+- **Removed Isolated Card/Arrow Treatment:** Replaced the previous split-card format with a full-bleed cinematic environment.
+- **Bespoke Imagery:** Invoked `image-generator` subagent to generate an authentic, editorial-quality photograph (`public/images/hero-cinematic-bg.jpg`): an African business executive in a tailored charcoal suit standing thoughtfully by floor-to-ceiling panoramic glass windows at twilight, looking out at an illuminated coastal metropolis skyline, with architectural blueprints, brass ruler, and fountain pen on a dark marble table in the foreground.
+- **Horizontal Masked Reveal Typography:** Created `src/components/motion/MaskedTextReveal.tsx` featuring `MaskedLine`. The headline "Don’t Just Set the Goal. / Build the Path / to Achieve It." emerges smoothly line by line from behind an invisible horizontal clipping plane with custom cubic-bezier easing (`[0.16, 1, 0.3, 1]`).
+- **Choreographed Sequence:**
+  - `0.10s`: Eyebrow pill badge in navy glass with pulsing gold indicator.
+  - `0.25s–0.70s`: Horizontal masked headline reveal.
+  - `0.85s`: Subheadline fade-up.
+  - `1.00s`: Primary Gold WhatsApp CTA button + scarcity-free pricing cue.
+  - `1.15s`: Institutional badge (`BMB Strategy & Advisory Ltd. · Q1 2027 Cohort`).
+  - `1.25s`: Architectural glassmorphic instrument bar displaying the 4 key facts with gold numbers (`01`–`04`).
+- **Adaptive Navigation Header (`Header.tsx`):** Starts transparent with white inverted BMB logo and white navigation links over the dark cinematic hero, transitioning smoothly to `bg-white/95` with deep navy logo and links after 30px scroll.
+
+### 3. Verification & Build
+- `npx tsc --noEmit`: Executed cleanly with Exit Code 0 (0 type errors).
+- `npm run build`: Compiled successfully in 77s. Static route `/` generated at 72.8 kB (176 kB First Load JS).
+- Static HTML assertions test: 17/17 checks passed:
+  - Hero Section ID confirmed (`#programme`)
+  - Cinematic background image verified (`hero-cinematic-bg.jpg`)
+  - Masked headline text confirmed ("Don’t Just Set the Goal.", "Build the Path", "to Achieve It.")
+  - All section IDs confirmed (`#programme`, `#method`, `#outcomes`, `#host`, `#investment`, `#faqs`)
+  - All WhatsApp CTA URLs verified using centralized helper (`https://wa.me/234XXXXXXXXXX`)
+  - BMB logo verified (`bmb-logo-navy.png`)
+  - Zero scarcity claims
+  - Zero unauthorized colors
+  - Zero unverified host quotations
+  - Zero backend/registration forms

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { siteConfig, getWhatsAppUrl } from "@/config/site";
@@ -8,10 +8,27 @@ import { MessageCircle, Menu, X, ArrowUpRight } from "lucide-react";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const whatsappUrl = getWhatsAppUrl("navCta");
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 24);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all">
+    <header
+      className={`sticky top-0 z-40 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-md border-b border-gray-100/90 shadow-xs"
+          : "bg-white/70 lg:bg-transparent backdrop-blur-xs lg:backdrop-blur-none border-b border-transparent"
+      }`}
+    >
       <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand & Programme Identifier */}
         <Link href="/" className="flex items-center gap-3.5 group">
@@ -55,7 +72,7 @@ export function Header() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-navy text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-navy-700 shadow-sm transition-all hover:shadow hover:-translate-y-0.5 active:translate-y-0"
+            className="inline-flex items-center gap-2.5 bg-navy text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-navy-700 shadow-sm transition-all hover:shadow hover:-translate-y-0.5 active:translate-y-0 border border-navy-700"
           >
             <MessageCircle className="w-4 h-4 text-gold fill-gold/20" />
             <span>Join the Waitlist</span>
@@ -67,7 +84,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg text-charcoal hover:text-navy hover:bg-gray-100 focus:outline-none transition-colors"
+            className="p-2 rounded-xl text-charcoal hover:text-navy hover:bg-gray-100 focus:outline-none transition-colors"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? (
@@ -81,14 +98,14 @@ export function Header() {
 
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
-        <div className="sm:hidden border-b border-gray-200 bg-white px-4 pt-2 pb-6 space-y-3 shadow-lg animate-fade-in">
+        <div className="sm:hidden border-b border-gray-200 bg-white/98 backdrop-blur-md px-4 pt-2 pb-6 space-y-3 shadow-xl">
           <nav className="flex flex-col space-y-2 pt-2">
             {siteConfig.navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 text-base font-medium text-charcoal hover:bg-surface-light hover:text-navy rounded-lg transition-colors flex items-center justify-between"
+                className="px-3 py-2 text-base font-medium text-charcoal hover:bg-surface-light hover:text-navy rounded-xl transition-colors flex items-center justify-between"
               >
                 <span>{item.label}</span>
                 <ArrowUpRight className="w-4 h-4 text-charcoal-muted" />
@@ -101,7 +118,7 @@ export function Header() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 bg-navy text-white text-base font-semibold px-5 py-3 rounded-full hover:bg-navy-700 transition-colors"
+              className="w-full flex items-center justify-center gap-2 bg-navy text-white text-base font-semibold px-5 py-3.5 rounded-full hover:bg-navy-700 transition-colors shadow-md"
             >
               <MessageCircle className="w-5 h-5 text-gold fill-gold/20" />
               <span>Join the Waitlist (WhatsApp)</span>

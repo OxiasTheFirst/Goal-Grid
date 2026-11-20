@@ -7,19 +7,16 @@
 This repository contains the completed, fully responsive frontend web application built with **Next.js 15 (App Router)**, **React 19**, **TypeScript**, and **Tailwind CSS**.
 
 ### Key Deliverables Completed:
-1. **Full 15-Section Landing Page:** Assembled in `src/app/page.tsx` adhering strictly to the approved section hierarchy and verified client briefs.
-2. **Centralized WhatsApp Architecture:** Pure WhatsApp conversion flow linking all 11 CTA touchpoints through `src/config/site.ts`. Zero backend forms, registration databases, or application portals.
-3. **Registration Process (Four Steps):** Direct WhatsApp onboarding without confusing forms or timetable download illusions:
-   - Step 1: Click the WhatsApp button
-   - Step 2: Send the prefilled enquiry message
-   - Step 3: Receive programme and waitlist information from the team
-   - Step 4: Follow the instructions provided for registration
-   - Explicit note: *Clicking the button opens an enquiry conversation; it does not automatically register a place until confirmed.*
-4. **FAQ Accuracy:** Audited all 9 FAQs against the brief. All unconfirmed operational parameters (task minutes, session duration, recordings, attendance rules, and instalment dates) explicitly refer the visitor to WhatsApp for official clarification.
-5. **Host Profile Integrity:** Strictly confined to confirmed facts: host name (`@Bolaji Babalola`), role as programme host under BMB Strategy & Advisory Ltd., and confirmed duties (leading Friday Google Meet calls and conducting 1-on-1 private diagnostics). Zero fabricated achievements, client metrics, or biographies.
-6. **Accountability Architecture:** Credibility established through confirmed structures (Daily Tasks, Weekly Live Sessions, and Group & Leader Support), accompanied by an explicit disclaimer distinguishing guidance from guaranteed business results.
-7. **Official BMB Visual Identity:** Strictly grounded in BMB Deep Navy (`#142642`), BMB Gold (`#C9A45C`), Pure White (`#FFFFFF`), and Charcoal (`#30343B`). Unauthorized `#080F1B` completely rejected.
-8. **Architectural & Design Documentation:** Complete design reference analysis (14 items audited), design specification, development log (Entries 001 to 007), and this handover guide.
+1. **Full 15-Section Premium Landing Page:** Assembled in `src/app/page.tsx` adhering strictly to the approved section hierarchy and verified client briefs, redesigned from static card repetitions into an editorial, animated digital experience.
+2. **Art-Directed Executive Hero Visual:** High-resolution bespoke visual (`public/images/hero-executive-grid.jpg`) depicting an architectural planning journal with brass instruments and slate cube, framed with gold coordinate ticks and layered geometric GRID wireframes.
+3. **Comprehensive Motion System (Motion for React v12):** Choreographed scroll-triggered entrances (`useInView`), animated gold progress line in the GRID framework, smooth accordion height transitions (`AnimatePresence`), scroll-aware transparent-to-frosted navigation, and spring-animated floating WhatsApp button. Compliant with `prefers-reduced-motion`.
+4. **Asymmetric Bento Inclusions & Editorial Manifesto Outcomes:** The 6 deliverables are arranged in a dynamic 12-column bento layout (7+5, 5+7, 6+6), while the outcomes section is formatted as a full-bleed Deep Navy (`#142642`) manifesto with oversized numerals (`01`–`06`).
+5. **Centralized WhatsApp Architecture:** Pure WhatsApp conversion flow linking all 11 CTA touchpoints through `src/config/site.ts`. Zero backend forms, registration databases, or application portals.
+6. **Registration Process (Four Steps):** Direct WhatsApp onboarding without confusing forms or timetable download illusions.
+7. **FAQ Accuracy:** Audited all 9 FAQs against the brief. All unconfirmed operational parameters explicitly refer the visitor to WhatsApp for official clarification.
+8. **Host Profile Integrity:** Strictly confined to confirmed facts: host name (`@Bolaji Babalola`), role as programme host under BMB Strategy & Advisory Ltd., and confirmed duties (leading Friday Google Meet calls and conducting 1-on-1 private diagnostics). Architectural executive portrait placeholder frame with monogram seal.
+9. **Official BMB Visual Identity:** Strictly grounded in BMB Deep Navy (`#142642`), BMB Gold (`#C9A45C`), Pure White (`#FFFFFF`), and Charcoal (`#30343B`). All arbitrary green/emerald and unauthorized dark tokens eliminated.
+10. **Architectural & Design Documentation:** Complete design reference analysis (all 14 items audited with transparent environment notes), design specification, development log (Entries 001 to 009), creative direction audit, and this handover guide.
 
 ---
 

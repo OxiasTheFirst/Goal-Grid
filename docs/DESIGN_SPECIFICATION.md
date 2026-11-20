@@ -81,104 +81,86 @@ Approved Section Order:
 ---
 
 ### Section 02: Header & Sticky Navigation
-- **Visual Style:** Sticky header (`top-0 z-50`), Pure White background with 95% opacity and backdrop blur (`backdrop-blur-md`), slim border (`border-gray-100`).
+- **Visual Style:** Dynamic scroll-aware navigation. Starts completely weightless and transparent at the top of the canvas, then transitions smoothly into a frosted-light executive header (`bg-white/95 backdrop-blur-md border-gray-100 shadow-xs`) after 24px of scrolling.
 - **Elements:**
-  - **Left Brand Mark:** Transparent BMB Strategy & Advisory serif logo (`/brand/bmb-logo-navy.png`), paired with the "Goal Grid" programme title.
-  - **Center Navigation Links:** 6 anchor links styled in Sora / Manrope (`#142642` on hover):
-    1. *The Programme* (`#programme`)
-    2. *The GRID Method* (`#method`)
-    3. *What You'll Gain* (`#outcomes`)
-    4. *About the Host* (`#host`)
-    5. *Investment* (`#investment`)
-    6. *FAQs* (`#faqs`)
-  - **Right Action Button:** High-contrast pill button (`px-5 py-2.5 rounded-full`), Deep Navy with gold WhatsApp icon: `Join the Waitlist`.
+  - **Left Brand Mark:** Transparent BMB Strategy & Advisory serif logo (`/brand/bmb-logo-navy.png`), paired with the "Goal Grid" programme title and "Q1 2027 Cohort" identifier.
+  - **Center Navigation Links:** 6 anchor links styled in Sora / Manrope with gold underline hover transitions.
+  - **Right Action Button:** High-contrast pill button, Deep Navy with gold WhatsApp icon: `Join the Waitlist`.
   - **Mobile:** Accessible slide-down navigation drawer with anchor links and a full-width WhatsApp CTA button.
 
 ---
 
-### Section 03: Hero Section & Key Facts Ribbon (Standardised Light Executive Canvas)
-- **Visual Canvas:** Refined light executive background (`bg-gradient-to-b from-[#FAFBFD] via-white to-[#F5F7FA]`), featuring restrained geometric grid coordinate lines (faint gold and navy axis ticks) and subtle ambient radial illumination centered behind the typography.
-- **Elements:**
-  - **Eyebrow Badge:** Pill badge in light cream with gold border: `A 3-MONTH PROGRAMME FOR BUSINESS OWNERS · JANUARY TO MARCH 2027`.
-  - **Main Headline:** Sora Bold / SemiBold (`text-4xl sm:text-5xl lg:text-6xl text-navy leading-[1.15]`):
-    `Don’t Just Set the Goal. Build the Path to Achieve It.` (with `Build the Path` accented in BMB Gold).
-  - **Subheadline:** Manrope Regular (`text-lg sm:text-xl text-charcoal-light leading-relaxed max-w-2xl`):
+### Section 03: Hero Section & Key Facts Ribbon (Asymmetric Executive Canvas)
+- **Visual Canvas:** Refined light executive background (`bg-gradient-to-b from-[#FAFBFD] via-white to-[#F5F7FA]`), featuring restrained geometric coordinate lines, warm gold radial ambient illumination, and an asymmetric split composition (approx 58% typography / 42% visual).
+- **Left Column (Command Zone):**
+  - **Eyebrow Badge:** Pill badge in light cream with gold border and pulsing indicator: `A 3-MONTH PROGRAMME FOR BUSINESS OWNERS · JANUARY TO MARCH 2027`.
+  - **Main Headline:** Sora Bold / ExtraBold (`text-3xl sm:text-5xl lg:text-6xl text-navy leading-[1.12]`):
+    `Don’t Just Set the Goal. Build the Path to Achieve It.` (with `Build the Path` accented in BMB Gold with an architectural coordinate underline).
+  - **Subheadline:** Manrope Regular (`text-base sm:text-lg lg:text-xl text-charcoal-light leading-relaxed max-w-xl`):
     `The Goal Grid Project is a 3-month programme that takes the goal you have carried from one year to the next and turns it into a clear, step-by-step plan, then stays with you while you carry it out.`
   - **Primary CTA Cluster:**
-    - High-contrast button: `Join the Waitlist` with WhatsApp icon and forward arrow.
+    - High-contrast button: `Join the Waitlist` with gold WhatsApp icon and forward arrow.
     - Inline pricing cue: `₦50,000 · Instalments available`. *(Scarcity claim "Limited places" removed).*
-  - **Key Facts Ribbon (4-Column Card Grid):**
-    1. `3 Months` — January to March 2027
-    2. `Daily Tasks` — Action tasks that keep you moving
-    3. `Every Friday` — Live teaching sessions on Google Meet
-    4. `1-on-1 Session` — Private diagnostic session with the host
+    - Institutional identifier: `A BMB Strategy & Advisory Executive Programme · Cohort Q1 2027`.
+- **Right Column (Visual Composition):**
+  - **Art-Directed Executive Visual:** High-resolution bespoke photograph (`/images/hero-executive-grid.jpg`) featuring an open architectural planning journal with precision drafting instruments (brass pen, compass, slate cube) in soft morning light.
+  - **Layered CSS GRID Motif:** Subtle rotated geometric coordinate square (`border-gold/30`) with coordinate wireframes, gold corner tick accents, and floating architectural badge (`Architectural Execution · Goal · Roadmap · Implementation · Discipline · Q1 2027`).
+- **Key Facts Ribbon:**
+  - Redesigned from disconnected cards into an authoritative horizontal data bar with clean gold-accented dividers:
+    1. `3 Months / 01` — January to March 2027
+    2. `Daily Tasks / 02` — Action tasks that keep you moving
+    3. `Every Friday / 03` — Live teaching sessions on Google Meet
+    4. `1-on-1 Session / 04` — Private diagnostic session with the host
 
 ---
 
 ### Section 04: The Problem ("Sound Familiar?" — Illustrative Experiences)
-- **Visual Style:** Light surface (`bg-surface-light py-20 sm:py-28`) with editorial cards.
+- **Visual Style:** Light surface (`bg-[#F8FAFC] py-24 sm:py-32`) with editorial thought progression cards.
 - **Elements:**
   - **Section Label:** Pill badge: `SOUND FAMILIAR?`
   - **Headline:** `You Have the Goal. Where Is the Plan?`
   - **Contextual Intro:** `Every January, you write the goal down. By March, the business is busy again and the goal is still on the page. You are not lazy and you are not alone. A goal tells you where you want to go. It does not tell you what to do on Monday.`
   - **Subtitle / Integrity Note:** `Common experiences business owners share when turning goals into daily execution:`
-  - **4 Illustrative Experience Cards (2x2 Grid):**
+  - **4 Illustrative Experience Cards:**
     - *"I set goals every year, but I don't follow through."*
     - *"I want more sales, but I don't know what to focus on first."*
     - *"I am busy all day, every day, and I still don't see enough progress."*
     - *"I try to do everything alone, and I can't stay consistent."*
-  - **Ethical Integrity Rule:** Labeled explicitly as illustrative owner experiences; never titled or presented as customer testimonials.
-  - **Turning Point Statement:** `You can be busy every day and still feel like your business is not moving forward. Goal Grid changes that.`
+  - **Ethical Integrity Rule:** Labeled explicitly as illustrative owner friction points; never titled or presented as customer testimonials.
+  - **Turning Point Statement:** Elevated gradient box with gold center line: `You can be busy every day and still feel like your business is not moving forward. Goal Grid changes that.`
   - **CTA Button:** `I Want a Clear Plan` linking to WhatsApp.
 
 ---
 
 ### Section 05: The GRID Method Framework
-- **Visual Style:** White canvas with an unbroken progression path connecting 4 sequential stages.
+- **Visual Style:** White canvas with unbroken gold progress line and large expressive ghost display typography (`G`, `R`, `I`, `D`).
 - **Elements:**
   - **Section Label:** `THE METHOD`
   - **Headline:** `Four Steps From "I Want" to "I Did"`
   - **Subtitle:** `Knowing what you want is not enough. You also need to know what to do, where to start, what comes first, who can help, when each thing should happen and how you will know it is working. The Goal Grid is the structure that answers all of that.`
-  - **4 Connected Framework Cards:**
-    - **Stage G — Goal:** *"What exactly do you want to achieve?"* Get clear on one goal, in plain words, so you know what you are aiming at.
-    - **Stage R — Roadmap:** *"What steps will take you there?"* Break the goal into steps you can follow, and decide what to do first.
-    - **Stage I — Implementation:** *"What will you actually do, and when?"* Start the work, one step at a time, with a task for every day.
-    - **Stage D — Discipline:** *"How will you stay on track when things change?"* Keep showing up, check your progress and adjust when the plan meets reality.
-  - **Closing Statement:** `Setting the goal is only the first step. Goal Grid is built for everything that comes after it.`
-  - **Interaction:** Gold connector line lights up smoothly as stages scroll into view (desktop horizontal line; mobile vertical timeline).
+  - **4 Connected Framework Pillars:**
+    - **Stage 01 / G — Goal:** *"What exactly do you want to achieve?"* Get clear on one goal, in plain words, so you know what you are aiming at.
+    - **Stage 02 / R — Roadmap:** *"What steps will take you there?"* Break the goal into steps you can follow, and decide what to do first.
+    - **Stage 03 / I — Implementation:** *"What will you actually do, and when?"* Start the work, one step at a time, with a task for every day.
+    - **Stage 04 / D — Discipline:** *"How will you stay on track when things change?"* Keep showing up, check your progress and adjust when the plan meets reality.
+  - **Interaction:** Animated gold progress line fills smoothly across the stages on scroll / in-view. Large ghost letters illuminate on hover.
 
 ---
 
 ### Section 06: Programme Inclusions ("What You Get")
-- **Visual Style:** Clean neutral surface (`bg-surface-light py-20 sm:py-28`).
+- **Visual Style:** Asymmetric 12-column bento grid (`lg:col-span-7 + lg:col-span-5`, `lg:col-span-5 + lg:col-span-7`, `lg:col-span-6 + lg:col-span-6`) with refined gold border glow on hover (`.card-glow`).
 - **Elements:**
-  - **Section Label:** `WHAT YOU GET`
-  - **Headline:** `Everything Built to Keep You Moving for 3 Months`
-  - **Subtitle:** `Advice is easy to find. Following through is the hard part. So every part of Goal Grid is designed to give you a plan, a reason to act and people who will notice if you stop.`
-  - **6-Card Bento Grid (3 columns on desktop, 1 on mobile):**
-    1. `01 · Daily Tasks:` A clear task each day, so you always know your next move and never have to wonder what to work on.
-    2. `02 · Group Leaders:` You are placed in a group with a leader who guides you, answers questions and keeps the group moving together.
-    3. `03 · Progress Reports:` Regular reports make you look at what you did, what you did not do and what to change. Progress you can see is progress you can build on.
-    4. `04 · Friday Teaching Sessions:` Every Friday, a live teaching session on Google Meet shows you how to plan, prioritise and push through, with practical lessons you can use that same week.
-    5. `05 · Group Presentations:` Present your progress to your group. Knowing you will speak about your results gives you a good reason to show up with something to say, and you learn from what others are doing.
-    6. `06 · Your Private 1-on-1 Session:` One session for you and the host, focused on your goal and your business. Bring your biggest obstacle and leave with a clear next step.
-  - **Card Hover:** Subtle elevation and gold border glow (`hover:border-gold/30`).
+  - 6 verified deliverables (Daily Tasks, Group Leaders, Progress Reports, Friday Teaching Sessions, Group Presentations, Private 1-on-1 Session).
+  - All labeled with fee inclusion ("Included in ₦50,000 fee") and active pillar indicators.
 
 ---
 
 ### Section 07: Expected Outcomes ("What You Stand to Gain")
-- **Visual Style:** Deep Navy background (`bg-navy text-white py-24 sm:py-32`) providing an authoritative contrast break.
+- **Visual Style:** Full-bleed authoritative Deep Navy (`#142642`) background providing a commanding contrast break.
 - **Elements:**
-  - **Section Label:** `WHAT YOU STAND TO GAIN` (Gold uppercase tracking)
-  - **Headline:** `By March, Your Goal Stops Being a Wish and Becomes a Record of Work Done`
-  - **6 Outcome Principles Layout:**
-    1. *One goal, made clear* — You will know exactly what you are working towards and why it matters to your business.
-    2. *A roadmap you can follow* — Your goal broken into steps, each with a place in your week, so you stop guessing what to do first.
-    3. *Real daily momentum* — Daily tasks mean you take action every day for 3 months, not only when you feel motivated.
-    4. *Focus on what moves the business* — You will learn to choose the few actions that matter most, so being busy turns into being productive.
-    5. *Support you do not get alone* — A group, a group leader and a host who will see whether you showed up. Trying to do everything alone is the reason many goals stall, and you will not be doing it alone.
-    6. *Habits that outlast the programme* — The GRID method is a way of working you can reuse on every goal after this one.
-  - **Ethical Integrity Rule:** Described strictly as intended takeaways, habits, and execution capabilities. Zero guaranteed financial metrics or promises.
+  - **Editorial Numbered Manifesto:** 6 numbered principles displayed with oversized monospace numerals (`01` through `06` in gold) and checkmark indicators.
+  - Phrased strictly as intended capabilities and habits, eliminating any implied financial guarantees.
+  - Prominent gold CTA button: `Join the Waitlist`.
 
 ---
 

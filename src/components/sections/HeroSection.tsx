@@ -118,7 +118,7 @@ export function HeroSection() {
         <div className="max-w-[46rem]">
           <motion.p
             {...fade(0.7, 10)}
-            className="mb-6 flex items-center gap-3 font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-gold"
+            className="mb-6 flex items-center gap-3 font-body font-medium text-[10px] sm:text-xs uppercase tracking-[0.16em] text-gold"
           >
             <span className="h-px w-8 flex-shrink-0 bg-gold" aria-hidden="true" />
             <span>{hero.badge}</span>
@@ -130,7 +130,7 @@ export function HeroSection() {
             baseDelay={0.95}
             stagger={0.15}
             label={hero.headline}
-            className="font-heading text-[2.9rem] font-bold text-white leading-[1.02] tracking-[-0.035em] sm:text-6xl md:text-7xl lg:text-[4.75rem] xl:text-[5.5rem] 2xl:text-[6.5rem]"
+            className="font-heading text-[2.9rem] font-semibold text-white leading-[1.02] tracking-[-0.03em] sm:text-6xl md:text-7xl lg:text-[4.75rem] xl:text-[5.5rem] 2xl:text-[6.5rem]"
             lines={[
               { text: "Don’t Just" },
               { text: "Set the Goal." },
@@ -166,7 +166,7 @@ export function HeroSection() {
             const Icon = factIcons[i];
             return (
               <div key={f.title} className="lg:border-l lg:border-white/15 lg:px-6 lg:first:border-l-0 lg:first:pl-0">
-                <dt className="flex items-center gap-2.5 font-heading text-sm font-semibold sm:text-base">
+                <dt className="flex items-center gap-2.5 font-heading text-sm font-medium sm:text-base">
                   <Icon className="h-4 w-4 flex-shrink-0 text-gold" strokeWidth={1.5} aria-hidden="true" />
                   {f.title}
                 </dt>

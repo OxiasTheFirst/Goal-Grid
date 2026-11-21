@@ -18,7 +18,7 @@ export function AudienceQualifierSection() {
             <MaskedTextReveal
               as="h2"
               label={qualifier.headline}
-              className="font-heading text-[2.4rem] font-bold leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3.25rem]"
+              className="font-heading text-[2.4rem] font-medium leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3.25rem]"
               lines={[
                 { text: "Built for" },
                 { text: "Business Owners" },
@@ -34,7 +34,7 @@ export function AudienceQualifierSection() {
           <div className="lg:col-span-7 space-y-14">
             <div>
               <Reveal>
-                <h3 className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-gold-700">
+                <h3 className="mb-2 font-body font-medium text-[11px] uppercase tracking-[0.16em] text-gold-700">
                   Goal Grid is for you if you are
                 </h3>
               </Reveal>
@@ -53,7 +53,7 @@ export function AudienceQualifierSection() {
 
             <div>
               <Reveal>
-                <h3 className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-charcoal-muted">
+                <h3 className="mb-2 font-body font-medium text-[11px] uppercase tracking-[0.16em] text-charcoal-muted">
                   This may not be for you if you are
                 </h3>
               </Reveal>

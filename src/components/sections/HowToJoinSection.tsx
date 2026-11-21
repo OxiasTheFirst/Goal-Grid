@@ -27,7 +27,7 @@ export function HowToJoinSection() {
             <MaskedTextReveal
               as="h2"
               label={howToJoin.headline}
-              className="font-heading text-[2.4rem] font-bold leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3.25rem]"
+              className="font-heading text-[2.4rem] font-medium leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3.25rem]"
               lines={[{ text: "Four Simple" }, { text: "Steps on" }, { text: "WhatsApp", className: "text-gold-600" }]}
             />
             <Reveal delay={0.1}>
@@ -48,12 +48,12 @@ export function HowToJoinSection() {
               <ol ref={ref} className="space-y-12">
                 {howToJoin.steps.map((s) => (
                   <li key={s.step} className="relative pl-16 sm:pl-20">
-                    <span className="absolute left-0 top-0 flex h-[2.3rem] w-[2.3rem] items-center justify-center rounded-full border border-gold bg-white font-mono text-xs font-semibold text-navy">
+                    <span className="absolute left-0 top-0 flex h-[2.3rem] w-[2.3rem] items-center justify-center rounded-full border border-gold bg-white font-heading text-xs font-semibold text-navy">
                       {s.step}
                     </span>
                     <Reveal>
-                      <h3 className="font-heading text-xl font-semibold tracking-tight text-navy sm:text-2xl">{s.title}</h3>
-                      <p className="mt-2 max-w-lg text-[15px] leading-relaxed text-charcoal-light">{s.description}</p>
+                      <h3 className="font-heading text-xl font-medium tracking-tight text-navy sm:text-2xl">{s.title}</h3>
+                      <p className="mt-2 max-w-lg text-base leading-relaxed text-charcoal-light">{s.description}</p>
                     </Reveal>
                   </li>
                 ))}

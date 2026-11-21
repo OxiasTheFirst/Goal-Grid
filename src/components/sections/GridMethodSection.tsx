@@ -62,7 +62,7 @@ function Stage({
             boxShadow: "5px 5px 0 rgba(201,164,92,0.28), 0 18px 28px -6px rgba(0,0,0,0.5)",
           }}
         />
-        <span className="absolute inset-0 flex items-center justify-center font-mono text-[10px] font-semibold text-white mix-blend-difference">
+        <span className="absolute inset-0 flex items-center justify-center font-heading text-[10px] font-semibold text-white mix-blend-difference">
           0{index + 1}
         </span>
       </div>
@@ -70,7 +70,7 @@ function Stage({
       <div style={{ perspective: 900 }}>
         <motion.p
           aria-hidden="true"
-          className="origin-bottom select-none font-heading font-bold leading-[0.9] tracking-[-0.05em] text-outline text-[6.5rem] sm:text-[8rem] lg:text-[clamp(6.5rem,12vw,11.5rem)]"
+          className="origin-bottom select-none font-heading font-semibold leading-[0.9] tracking-[-0.02em] text-outline text-[6.5rem] sm:text-[8rem] lg:text-[clamp(6.5rem,12vw,11.5rem)]"
           style={{ color: letterFill, rotateX: letterTilt }}
         >
           {step.letter}
@@ -78,12 +78,12 @@ function Stage({
       </div>
 
       <motion.div style={{ opacity: copyOpacity }} className="mt-3 lg:mt-6 pr-4">
-        <h3 className="font-heading text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+        <h3 className="font-heading text-2xl font-medium tracking-tight text-white sm:text-3xl">
           <span className="sr-only">{step.letter} — </span>
           {step.name}
         </h3>
         <p className="mt-3 text-sm font-semibold leading-snug text-gold sm:text-base">{step.question}</p>
-        <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/65 sm:text-[15px]">{step.description}</p>
+        <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/65 sm:text-base">{step.description}</p>
       </motion.div>
     </li>
   );
@@ -120,7 +120,7 @@ export function GridMethodSection() {
           <MaskedTextReveal
             as="h2"
             label={gridMethod.headline}
-            className="font-heading text-[2.6rem] font-bold leading-[1.04] tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl"
+            className="font-heading text-[2.6rem] font-medium leading-[1.04] tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl"
             lines={[{ text: "Four Steps" }, { text: "From “I Want”", className: "text-gold" }, { text: "to “I Did”", className: "text-gold" }]}
           />
           <Reveal delay={0.15}>

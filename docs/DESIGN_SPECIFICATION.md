@@ -84,7 +84,7 @@ Approved Section Order:
 - **Visual Style:** Dynamic scroll-aware navigation. Starts completely weightless and transparent at the top of the canvas, then transitions smoothly into a frosted-light executive header (`bg-white/95 backdrop-blur-md border-gray-100 shadow-xs`) after 24px of scrolling.
 - **Elements:**
   - **Left Brand Mark:** Transparent BMB Strategy & Advisory serif logo (`/brand/bmb-logo-navy.png`), paired with the "Goal Grid" programme title and "Q1 2027 Cohort" identifier.
-  - **Center Navigation Links:** 6 anchor links styled in Sora / Manrope with gold underline hover transitions.
+  - **Center Navigation Links:** 6 anchor links styled in DM Sans (Medium) with gold underline hover transitions.
   - **Right Action Button:** High-contrast pill button, Deep Navy with gold WhatsApp icon: `Join the Waitlist`.
   - **Mobile:** Accessible slide-down navigation drawer with anchor links and a full-width WhatsApp CTA button.
 

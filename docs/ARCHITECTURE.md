@@ -23,7 +23,7 @@ Goal Grid/
 │
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx              # Root HTML shell, fonts (Sora/Manrope), SEO metadata
+│   │   ├── layout.tsx              # Root HTML shell, fonts (Space Grotesk/DM Sans), SEO metadata
 │   │   ├── page.tsx                # Single-page landing composition
 │   │   └── favicon.ico             # App icon
 │   │
@@ -143,5 +143,5 @@ Animations are implemented using **Motion for React** (`motion/react`):
 | **Styling** | Tailwind CSS v3 | Utility-first architecture ensures consistent spacing, official BMB color tokens, zero unused CSS in production, and rapid responsive styling. |
 | **Icons** | Lucide React | Modern, tree-shakeable SVG icon library with consistent stroke widths. |
 | **Motion** | Motion for React (`motion`) | Official modern evolution of Framer Motion, best-in-class layout transitions and spring physics. |
-| **Typography** | Sora + Manrope (`next/font/google`) | Zero layout shift (zero CLS), self-hosted at build time with Google Fonts privacy compliance. |
+| **Typography** | Space Grotesk + DM Sans (`next/font/google`) | Zero layout shift (zero CLS), self-hosted at build time with Google Fonts privacy compliance. |
 | **State** | React local state (`useState`) | Only required for UI interactions (mobile navigation menu toggle, FAQ accordion state). No global state manager needed. |

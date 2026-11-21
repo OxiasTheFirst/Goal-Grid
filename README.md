@@ -10,7 +10,7 @@ This repository hosts the official frontend website for Goal Grid: a high-perfor
 
 - **Framework:** [Next.js](https://nextjs.org/) (App Router, React 19, TypeScript)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Typography:** Sora (Headings) & Manrope (Body/UI) via `next/font/google`
+- **Typography:** Space Grotesk (headings, display, numerals) & DM Sans (body, navigation, buttons, labels) via `next/font/google`
 - **Icons:** [Lucide React](https://lucide.dev/)
 - **Motion:** [Motion for React](https://motion.dev/) (formerly Framer Motion)
 - **Package Manager:** npm
@@ -92,7 +92,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 npm run build
 npm run start
 ```
-> `next/font/google` downloads Sora and Manrope at build time. On a machine without access to `fonts.googleapis.com` the build fails with "Failed to fetch font". Build on a connected machine (Vercel is fine), or provide a local stub via `NEXT_FONT_GOOGLE_MOCKED_RESPONSES` for offline verification only.
+> `next/font/google` downloads Space Grotesk and DM Sans at build time. On a machine without access to `fonts.googleapis.com` the build fails with "Failed to fetch font". Build on a connected machine (Vercel is fine), or provide a local stub via `NEXT_FONT_GOOGLE_MOCKED_RESPONSES` for offline verification only.
 
 ---
 

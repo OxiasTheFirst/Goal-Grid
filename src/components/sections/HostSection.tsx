@@ -42,7 +42,7 @@ export function HostSection() {
                   height={50}
                   className="h-12 w-auto opacity-80 brightness-0 invert"
                 />
-                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-gold/80">
+                <p className="font-body font-medium text-[11px] uppercase tracking-[0.16em] text-gold/80">
                   Official portrait to be supplied
                 </p>
               </div>
@@ -54,13 +54,13 @@ export function HostSection() {
             <MaskedTextReveal
               as="h2"
               label={host.headline}
-              className="font-heading text-[2.4rem] font-bold leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3.25rem]"
+              className="font-heading text-[2.4rem] font-medium leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3.25rem]"
               lines={[{ text: "Programme Leadership" }, { text: "& Host Advisory", className: "text-gold-600" }]}
             />
             <Reveal delay={0.1}>
               <div className="border-l-2 border-gold pl-5">
                 <p className="font-heading text-2xl font-semibold text-navy">{host.name}</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-charcoal-muted">
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-charcoal-muted">
                   {host.role} · {host.organization}
                 </p>
               </div>
@@ -75,7 +75,7 @@ export function HostSection() {
                   <li key={d}>
                     <Reveal className="flex items-start gap-4 border-t border-navy/15 py-4">
                       <Icon className="mt-0.5 h-5 w-5 flex-shrink-0 text-gold-600" strokeWidth={1.5} aria-hidden="true" />
-                      <span className="text-[15px] leading-snug text-charcoal">{d}</span>
+                      <span className="text-base leading-snug text-charcoal">{d}</span>
                     </Reveal>
                   </li>
                 );

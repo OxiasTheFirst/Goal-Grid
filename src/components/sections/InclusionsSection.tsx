@@ -39,7 +39,7 @@ export function InclusionsSection() {
             <MaskedTextReveal
               as="h2"
               label={inclusions.headline}
-              className="font-heading text-[2.4rem] font-bold leading-[1.06] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3.25rem]"
+              className="font-heading text-[2.4rem] font-medium leading-[1.06] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3.25rem]"
               lines={[
                 { text: "Everything" },
                 { text: "Built to Keep" },
@@ -63,10 +63,10 @@ export function InclusionsSection() {
               return (
                 <li key={item.id}>
                   <Reveal className="group relative grid grid-cols-[2.75rem_1fr] gap-x-4 gap-y-1 border-t border-navy/15 py-9 sm:grid-cols-[4rem_1fr_auto] sm:py-11">
-                    <span className="pt-1.5 font-mono text-xs text-gold-700">{item.number}</span>
+                    <span className="pt-1.5 font-heading font-medium tabular-nums text-xs text-gold-700">{item.number}</span>
                     <div>
-                      <h3 className="font-heading text-xl font-semibold tracking-tight text-navy sm:text-2xl">{item.title}</h3>
-                      <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-charcoal-light">{item.description}</p>
+                      <h3 className="font-heading text-xl font-medium tracking-tight text-navy sm:text-2xl">{item.title}</h3>
+                      <p className="mt-3 max-w-xl text-base leading-relaxed text-charcoal-light">{item.description}</p>
                     </div>
                     <Icon
                       className="col-start-2 mt-4 h-8 w-8 text-gold-600 transition-transform duration-500 group-hover:-translate-y-1 sm:col-start-3 sm:row-start-1 sm:mt-0"

@@ -357,3 +357,29 @@ The following points from the client foundation brief remain intentionally open 
 - **Content integrity changes:** removed unverified `@bmbstrategy` Instagram and `info@bmbstrategy.com` from the footer, removed the "Goal Grid™" trademark claim, removed the hero line "BMB Strategy & Advisory Ltd. • Q1 2027 Cohort" (entity is already in the header, footer and host section). Nav anchor `#programme` now targets the Inclusions section (previously the hero); hero is `#top`.
 - **Verification performed:** `tsc --noEmit` clean; `next build` clean; rendered screenshots at 390, 768, 1024, 1440, 1920; horizontal-overflow sweep at 12 widths (360–2560) after fixing a real 2 px overflow at 1024 (Accountability display word); mid-animation frames proving the masked reveal; `prefers-reduced-motion` check; FAQ mouse + keyboard; scroll-spy; mobile menu open/Escape/body-lock; 12 WhatsApp links all on the placeholder number with `noopener`.
 - **Environment note:** the sandbox cannot reach Google Fonts, so local builds were run with `NEXT_FONT_GOOGLE_MOCKED_RESPONSES` pointing at a local stub and Sora/Manrope installed as system fonts. Rendering used those system fonts; production uses Google's files.
+
+
+---
+
+## Entry 012 — Typography refinement only (2026-11-21)
+**Decision:** replace Sora + Manrope with **Space Grotesk** (display/headings/numerals) and **DM Sans** (body, navigation, buttons, labels), as specified by the client. No third font. No layout, colour, imagery, content, section or animation changes.
+
+**Implementation**
+- `src/app/layout.tsx`: `next/font/google` now loads `Space_Grotesk` (weights 500/600/700, subsets `latin` + `latin-ext`, CSS var `--font-space-grotesk`) and `DM_Sans` (400/500/600, `--font-dm-sans`). Removed the stale `--font-sora`/`--font-manrope` declarations from `globals.css`.
+- `tailwind.config.ts`: `font-heading` → Space Grotesk; `font-body` → DM Sans, then Space Grotesk, then system. Headings default to weight 500 in the base layer.
+- **Naira sign:** Space Grotesk only ships ₦ in `latin-ext`; DM Sans has no ₦ at all. Without both measures the price rendered in a system fallback. Fixed by loading `latin-ext` and using Space Grotesk as DM Sans's glyph fallback.
+- Weights: hero H1 600; section/feature headings, FAQ questions, numerals 500; GRID letters, the ₦ fee and outlined pillar words 600; navigation/labels 500; buttons 600; body 400.
+- Tracking: negative tracking capped at -0.03em (was down to -0.05em); small uppercase labels moved from monospace to DM Sans Medium at 0.16–0.18em. All `font-mono` usages removed (labels → DM Sans, numerals → Space Grotesk).
+- Supporting copy raised from 15px to 16px (DM Sans reads smaller than Manrope).
+- Accountability heading: "Follow-Through" kept unbroken so it no longer splits at the hyphen on mobile.
+
+**Verification**
+- Chrome's platform-font report across every element on the page shows only Space Grotesk and DM Sans, with no Inter or system fallback glyphs.
+- Process note: my first local preview was silently rendering **Inter** (the font stub did not register), so early screenshots were not valid. This was caught with the platform-font check, the fonts were installed under their real family names, and every typography screenshot used for judgement was retaken afterwards.
+- Screenshots reviewed: desktop and mobile hero, Problem, GRID, Programme, Outcomes, Audience, Accountability, Investment, FAQ. No horizontal overflow at 360, 390, 430, 600, 768, 900, 1024, 1180, 1280, 1440, 1920, 2560 px.
+- `tsc --noEmit` clean, `npm run lint` clean, `next build` clean.
+
+**Known limitations**
+- Local rendering used static Space Grotesk/DM Sans files installed on the build machine, not Google's CDN files. The system DM Sans is the 9pt optical-size cut; Google's file defaults to its standard optical size, so tiny differences are possible. Confirm on the deployed site.
+- `latin-ext` is not preloaded, so on a first visit the ₦ may swap in a moment after first paint.
+- Real-device and non-Chrome browsers were not tested.

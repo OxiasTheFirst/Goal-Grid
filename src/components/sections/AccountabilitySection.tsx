@@ -17,8 +17,8 @@ export function AccountabilitySection() {
           <MaskedTextReveal
             as="h2"
             label={accountability.headline}
-            className="font-heading text-[2.4rem] font-bold leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[3.4rem]"
-            lines={[{ text: "The Programme Structure" }, { text: "That Drives Follow-Through", className: "text-gold-600" }]}
+            className="font-heading text-[2.4rem] font-medium leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[3.4rem]"
+            lines={[{ text: "The Programme Structure" }, { text: <>That Drives <span className="whitespace-nowrap">Follow-Through</span></>, className: "text-gold-600" }]}
           />
           <Reveal delay={0.1}>
             <p className="max-w-2xl text-base leading-relaxed text-charcoal-light sm:text-lg">{accountability.subtitle}</p>
@@ -34,13 +34,13 @@ export function AccountabilitySection() {
             >
               <p
                 aria-hidden="true"
-                className="font-heading text-[3.5rem] font-bold leading-none tracking-[-0.04em] text-outline-light sm:text-7xl lg:text-[3.1rem] xl:text-[4.25rem]"
+                className="font-heading text-[3.5rem] font-semibold leading-none tracking-[-0.03em] text-outline-light sm:text-7xl lg:text-[3.1rem] xl:text-[4.25rem]"
               >
                 {words[i]}
               </p>
-              <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-gold-700">Pillar 0{i + 1}</p>
-              <h3 className="mt-2 font-heading text-xl font-semibold text-navy">{p.title}</h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-charcoal-light">{p.description}</p>
+              <p className="mt-6 font-body font-medium text-[11px] uppercase tracking-[0.16em] text-gold-700">Pillar 0{i + 1}</p>
+              <h3 className="mt-2 font-heading text-xl font-medium text-navy">{p.title}</h3>
+              <p className="mt-3 text-base leading-relaxed text-charcoal-light">{p.description}</p>
             </Reveal>
           ))}
         </div>

@@ -35,7 +35,7 @@ Goal Grid/
 │   └── icons/
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx                 # Root layout, Sora/Manrope fonts, SEO OpenGraph
+│   │   ├── layout.tsx                 # Root layout, Space Grotesk/DM Sans fonts, SEO OpenGraph
 │   │   └── page.tsx                   # Master page integrating all 15 sections
 │   ├── components/
 │   │   ├── layout/
@@ -152,7 +152,7 @@ To inspect the landing page visually in the browser:
 3. **Verify the 15 Sections in Sequence:**
    - [ ] **Announcement Bar:** Confirm Deep Navy `#142642` top bar, pulsing gold live indicator, and WhatsApp link.
    - [ ] **Header:** Check BMB Strategy & Advisory transparent logo (`bmb-logo-navy.png`), 6 anchor navigation links, and desktop CTA button. Test mobile drawer on narrow viewports.
-   - [ ] **Hero Section:** Check light canvas, subtle gold coordinate ticks, Sora headline, Key Facts ribbon (3 Months, Daily Tasks, Every Friday, 1-on-1 Session), and WhatsApp button.
+   - [ ] **Hero Section:** Check light canvas, subtle gold coordinate ticks, Space Grotesk headline, Key Facts ribbon (3 Months, Daily Tasks, Every Friday, 1-on-1 Session), and WhatsApp button.
    - [ ] **Problem Section:** Verify 4 illustrative experience quote cards (2x2 grid) and turning point banner.
    - [ ] **GRID Method:** Test continuous connected gold milestone line across G-R-I-D cards on desktop, and vertical sequence on mobile.
    - [ ] **Programme Inclusions:** Verify 3x2 bento grid detailing the 6 components with hover gold border illumination.
@@ -180,7 +180,7 @@ Typecheck and build clean; 390/768/1024/1440/1920 screenshots reviewed; no horiz
 ### Not verified / known limitations
 - **Live deployment** was unreachable from the build environment. Confirm in the hosting dashboard that production tracks `main`, then compare the live page to this build.
 - Hero photograph is 1376×768; replace with a ≥2560 px original when available.
-- Fonts rendered locally from system copies of Sora/Manrope (Google Fonts blocked); confirm weights on the deployed site.
+- Fonts were rendered locally from system copies of Space Grotesk/DM Sans (Google Fonts blocked); confirm the weights and the ₦ glyph on the deployed site (see Typography below).
 - Real-device and Safari/Firefox testing were not done (Chrome only). Scroll-linked GRID progression should be checked on a physical phone.
 - Without JavaScript, entrance animations are bypassed by a `noscript` rule; not browser-tested.
 
@@ -194,3 +194,7 @@ WhatsApp number; waitlist opening date; official host portrait/biography/credent
 4. Keep every CTA on `WhatsAppButton` / `getWhatsAppUrl`.
 5. After any layout change, check for horizontal overflow at 1024 and 390 px.
 6. Never commit `.env`. Do not invent host details, results, testimonials, instalment terms or scarcity.
+
+### Typography (current, supersedes any earlier mention of Sora/Manrope)
+Two families only: **Space Grotesk** for headings/display/numerals and **DM Sans** for body, navigation, buttons and labels, loaded in `src/app/layout.tsx` and mapped in `tailwind.config.ts` (`font-heading`, `font-body`). Space Grotesk must keep the `latin-ext` subset because it is the only place it ships ₦, and it must stay in DM Sans's fallback stack because DM Sans has no ₦. Do not use `font-mono`. Rationale and weights: DEVELOPMENT_LOG Entry 012 and BRAND_GUIDELINES §4.
+

@@ -23,11 +23,11 @@ function OutcomeRow({ item }: { item: (typeof landingPageData.outcomes.items)[nu
       transition={{ duration: 0.6, ease: EASE_SOFT }}
       className="grid gap-x-8 gap-y-4 border-t border-white/15 py-9 lg:grid-cols-[7rem_1fr_24rem] lg:items-baseline lg:py-12"
     >
-      <span className="font-mono text-sm text-gold">{item.number}</span>
-      <h3 className="font-heading text-[1.75rem] font-semibold leading-[1.12] tracking-[-0.02em] text-white sm:text-4xl lg:text-[2.6rem]">
+      <span className="font-heading font-medium tabular-nums text-sm text-gold">{item.number}</span>
+      <h3 className="font-heading text-[1.75rem] font-medium leading-[1.12] tracking-[-0.02em] text-white sm:text-4xl lg:text-[2.6rem]">
         {item.title}
       </h3>
-      <p className="max-w-md text-[15px] leading-relaxed text-white/65 lg:text-base">{item.description}</p>
+      <p className="max-w-md text-base leading-relaxed text-white/65 lg:text-base">{item.description}</p>
     </motion.li>
   );
 }
@@ -47,7 +47,7 @@ export function OutcomesSection() {
           <MaskedTextReveal
             as="h2"
             label={outcomes.headline}
-            className="font-heading text-[1.85rem] font-bold leading-[1.08] tracking-[-0.035em] text-white min-[400px]:text-[2.1rem] sm:text-5xl lg:text-7xl"
+            className="font-heading text-[1.85rem] font-medium leading-[1.08] tracking-[-0.03em] text-white min-[400px]:text-[2.1rem] sm:text-5xl lg:text-7xl"
             lines={[
               { text: "By March, Your Goal" },
               { text: "Stops Being a Wish" },

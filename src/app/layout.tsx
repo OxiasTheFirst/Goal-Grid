@@ -1,18 +1,23 @@
 import type { Metadata } from "next";
-import { Sora, Manrope } from "next/font/google";
+import { Space_Grotesk, DM_Sans } from "next/font/google";
 import "@/styles/globals.css";
 import { siteConfig } from "@/config/site";
 
-const sora = Sora({
-  subsets: ["latin"],
-  variable: "--font-sora",
+// Typography system: Space Grotesk for display/headings, DM Sans for body and interface.
+// Only the weights actually used are loaded. next/font self-hosts them and generates
+// size-adjusted fallbacks, so swapping fonts causes minimal layout shift.
+// latin-ext is required for the Naira sign (₦, U+20A6), which Space Grotesk only ships there.
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-space-grotesk",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600", "700"],
 });
 
-const manrope = Manrope({
+// DM Sans has no ₦ glyph; Space Grotesk is its glyph-level fallback (see tailwind.config.ts).
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-dm-sans",
   display: "swap",
   weight: ["400", "500", "600"],
 });
@@ -50,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sora.variable} ${manrope.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
       <body className="min-h-screen bg-white text-charcoal font-body antialiased">
         {/* Without JS the entrance animations can never run: show all content in its final state. */}
         <noscript>

@@ -25,13 +25,13 @@ export function FinalCtaSection() {
             height={50}
             className="h-11 w-auto brightness-0 invert"
           />
-          <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-gold">{finalCta.badge}</p>
+          <p className="font-body font-medium text-[11px] uppercase tracking-[0.18em] text-gold">{finalCta.badge}</p>
         </Reveal>
 
         <MaskedTextReveal
           as="h2"
           label={finalCta.headline}
-          className="mx-auto max-w-4xl font-heading text-[2.2rem] font-bold leading-[1.06] tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl"
+          className="mx-auto max-w-4xl font-heading text-[2.2rem] font-medium leading-[1.06] tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl"
           lines={[
             { text: "Another Year" },
             { text: "With the Same" },

@@ -22,7 +22,7 @@ export function Footer() {
               </div>
               <div>
                 <p className="font-heading text-lg font-semibold">{footer.programmeName}</p>
-                <p className="text-xs uppercase tracking-[0.2em] text-gold">{footer.advisoryEntity}</p>
+                <p className="text-xs uppercase tracking-[0.16em] text-gold">{footer.advisoryEntity}</p>
               </div>
             </div>
             <p className="max-w-md text-sm leading-relaxed text-white/65">
@@ -31,7 +31,7 @@ export function Footer() {
           </div>
 
           <nav className="md:col-span-3" aria-label="Footer">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.22em] text-gold">Navigate</p>
+            <p className="mb-5 font-body font-medium text-[11px] uppercase tracking-[0.18em] text-gold">Navigate</p>
             <ul className="space-y-3">
               {footer.links.map((l) => (
                 <li key={l.href}>
@@ -45,7 +45,7 @@ export function Footer() {
           </nav>
 
           <div className="md:col-span-3">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.22em] text-gold">Contact</p>
+            <p className="mb-5 font-body font-medium text-[11px] uppercase tracking-[0.18em] text-gold">Contact</p>
             <p className="mb-4 text-sm leading-relaxed text-white/65">
               Questions about the programme or enrolment? Message the advisory team directly.
             </p>

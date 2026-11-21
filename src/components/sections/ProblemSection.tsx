@@ -23,7 +23,7 @@ export function ProblemSection() {
             <MaskedTextReveal
               as="h2"
               label={problem.headline}
-              className="font-heading text-[2.6rem] font-bold leading-[1.04] tracking-[-0.03em] text-navy sm:text-6xl lg:text-[4rem] xl:text-[4.5rem]"
+              className="font-heading text-[2.6rem] font-medium leading-[1.04] tracking-[-0.03em] text-navy sm:text-6xl lg:text-[4rem] xl:text-[4.5rem]"
               lines={[{ text: "You Have" }, { text: "the Goal." }, { text: "Where Is", className: "text-gold-600" }, { text: "the Plan?", className: "text-gold-600" }]}
             />
             <Reveal delay={0.2}>
@@ -33,7 +33,7 @@ export function ProblemSection() {
 
           <div className="lg:col-span-7">
             <Reveal>
-              <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-charcoal-muted">
+              <p className="mb-2 font-body font-medium text-[11px] uppercase tracking-[0.16em] text-charcoal-muted">
                 {problem.subtitle}
               </p>
             </Reveal>
@@ -41,12 +41,12 @@ export function ProblemSection() {
               {problem.experiences.map((e, i) => (
                 <li key={e.theme}>
                   <Reveal delay={0.05} className="grid grid-cols-[2.5rem_1fr] gap-x-4 border-t border-navy/15 py-8 sm:grid-cols-[4rem_1fr] sm:py-10">
-                    <span className="pt-2 font-mono text-xs text-gold-700">0{i + 1}</span>
+                    <span className="pt-2 font-heading font-medium tabular-nums text-xs text-gold-700">0{i + 1}</span>
                     <div>
-                      <p className="font-heading text-2xl font-semibold leading-snug tracking-tight text-navy sm:text-[1.9rem] sm:leading-[1.25]">
+                      <p className="font-heading text-2xl font-medium leading-snug tracking-tight text-navy sm:text-[1.9rem] sm:leading-[1.25]">
                         {e.quote.replace(/^["“]|["”]$/g, "")}
                       </p>
-                      <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-charcoal-muted">
+                      <p className="mt-3 font-body font-medium text-[11px] uppercase tracking-[0.16em] text-charcoal-muted">
                         {e.theme}
                       </p>
                     </div>
@@ -74,7 +74,7 @@ export function ProblemSection() {
           <MaskedTextReveal
             as="p"
             label={problem.closingStatement}
-            className="max-w-4xl font-heading text-[1.65rem] font-semibold leading-[1.14] tracking-[-0.025em] text-white min-[400px]:text-[1.85rem] sm:text-5xl lg:text-6xl"
+            className="max-w-4xl font-heading text-[1.65rem] font-medium leading-[1.14] tracking-[-0.025em] text-white min-[400px]:text-[1.85rem] sm:text-5xl lg:text-6xl"
             lines={[
               { text: "You can be busy" },
               { text: "every day and still" },

@@ -9,7 +9,7 @@ export function AnnouncementBar() {
       <div className="mx-auto flex h-9 max-w-container items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
         <p className="flex items-center gap-2.5 truncate">
           <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gold" aria-hidden="true" />
-          <span className="font-semibold uppercase tracking-[0.18em] text-gold">Waitlist opens December 2026</span>
+          <span className="font-semibold uppercase tracking-[0.16em] text-gold">Waitlist opens December 2026</span>
           <span className="hidden md:inline text-white/40">/</span>
           <span className="hidden md:inline text-white/70">Programme runs January–March 2027</span>
         </p>

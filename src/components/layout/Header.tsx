@@ -85,7 +85,7 @@ export function Header() {
             <span className="hidden h-6 w-px bg-white/25 sm:block" aria-hidden="true" />
             <span className="hidden sm:flex flex-col leading-tight">
               <span className="font-heading text-base font-semibold tracking-tight text-white">Goal Grid</span>
-              <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/55">Q1 2027 Cohort</span>
+              <span className="text-[10px] font-medium uppercase tracking-[0.16em] text-white/55">Q1 2027 Cohort</span>
             </span>
           </Link>
 
@@ -158,9 +158,9 @@ export function Header() {
                     <Link
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="flex items-baseline gap-4 py-4 font-heading text-2xl font-semibold text-white"
+                      className="flex items-baseline gap-4 py-4 font-heading text-2xl font-medium text-white"
                     >
-                      <span className="font-mono text-xs text-gold">0{i + 1}</span>
+                      <span className="font-heading font-medium tabular-nums text-xs text-gold">0{i + 1}</span>
                       {item.label}
                     </Link>
                   </motion.span>

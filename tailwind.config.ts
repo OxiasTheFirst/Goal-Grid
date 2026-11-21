@@ -47,8 +47,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        heading: ["var(--font-sora)", "sans-serif"],
-        body: ["var(--font-manrope)", "sans-serif"],
+        heading: ["var(--font-space-grotesk)", "ui-sans-serif", "system-ui", "sans-serif"],
+        body: ["var(--font-dm-sans)", "var(--font-space-grotesk)", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       maxWidth: {
         container: "1220px",

@@ -57,17 +57,20 @@ The project utilises two supplied official BMB Strategy & Advisory logo assets l
 
 The typographic system balances executive authority with modern clarity.
 
-### Primary Heading Typeface: **Sora**
-- **Classification:** Geometric Sans-Serif with refined humanist curves.
-- **Provider:** Google Fonts via `next/font/google`.
-- **Weights Used:** Medium (`500`), SemiBold (`600`), Bold (`700`).
-- **Styling Rules:** Generous line spacing (`leading-tight` or `leading-[1.15]`), tight letter-spacing (`tracking-tight`), balance text wrap (`text-balance`).
+### Primary Heading Typeface: **Space Grotesk**
+- **Classification:** Sharp, contemporary grotesque with a technical-editorial character.
+- **Provider:** Google Fonts via `next/font/google` (subsets: `latin`, `latin-ext`; `latin-ext` is required for the Naira sign ₦).
+- **Weights Used:** Medium (`500`) for section and feature headings and numerals, SemiBold (`600`) for the hero headline, GRID letters and the ₦ fee, Bold (`700`) reserved.
+- **Styling Rules:** Controlled line-height (about `1.02–1.1` for display sizes), negative tracking never tighter than `-0.03em`, no thin weights.
 
-### Body & Interface Typeface: **Manrope**
-- **Classification:** Clean, open, semi-geometric grotesque.
+### Body & Interface Typeface: **DM Sans**
+- **Classification:** Clean, low-contrast geometric sans, effortless at small sizes.
 - **Provider:** Google Fonts via `next/font/google`.
-- **Weights Used:** Regular (`400`), Medium (`500`), SemiBold (`600`).
-- **Styling Rules:** Optimal reading line height (`leading-relaxed`), comfortable paragraph margins, high contrast on light backgrounds.
+- **Weights Used:** Regular (`400`) body, Medium (`500`) navigation and labels, SemiBold (`600`) buttons.
+- **Styling Rules:** Comfortable reading line-height (`leading-relaxed`), supporting copy at 16px minimum, small uppercase labels at `0.16–0.18em` tracking.
+- **Glyph fallback:** DM Sans has no ₦ glyph, so Space Grotesk is its next family in the stack. This keeps the Naira sign in a brand font rather than a system fallback.
+
+**Rule:** two families only. Do not add a third.
 
 ---
 

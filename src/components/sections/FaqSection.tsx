@@ -31,7 +31,7 @@ export function FaqSection() {
             <MaskedTextReveal
               as="h2"
               label={faq.headline}
-              className="font-heading text-[2.4rem] font-bold leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3rem]"
+              className="font-heading text-[2.4rem] font-medium leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3rem]"
               lines={[{ text: "Frequently" }, { text: "Asked", className: "text-gold-600" }, { text: "Questions", className: "text-gold-600" }]}
             />
             <Reveal delay={0.1} className="space-y-4">
@@ -58,7 +58,7 @@ export function FaqSection() {
                         className="group flex w-full items-center justify-between gap-6 py-6 text-left transition-colors focus-visible:outline-offset-[-2px]"
                       >
                         <span
-                          className={`font-heading text-lg font-semibold leading-snug transition-colors duration-300 sm:text-xl ${
+                          className={`font-heading text-lg font-medium leading-snug transition-colors duration-300 sm:text-xl ${
                             isOpen ? "text-navy" : "text-navy/80 group-hover:text-navy"
                           }`}
                         >
@@ -88,7 +88,7 @@ export function FaqSection() {
                           transition={{ duration: 0.5, ease: EASE_INOUT }}
                           className="overflow-hidden"
                         >
-                          <div className="max-w-2xl space-y-4 pb-7 pr-12 text-[15px] leading-relaxed text-charcoal-light sm:text-base">
+                          <div className="max-w-2xl space-y-4 pb-7 pr-12 text-base leading-relaxed text-charcoal-light sm:text-base">
                             <p>{item.answer}</p>
                             {item.statusNote && (
                               <Link

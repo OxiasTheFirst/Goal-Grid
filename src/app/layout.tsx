@@ -52,6 +52,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sora.variable} ${manrope.variable}`}>
       <body className="min-h-screen bg-white text-charcoal font-body antialiased">
+        {/* Without JS the entrance animations can never run: show all content in its final state. */}
+        <noscript>
+          <style>{`[style*="opacity: 0"],[style*="opacity:0"]{opacity:1!important;transform:none!important}h1 > span > span,h2 > span > span,p > span > span{transform:none!important}`}</style>
+        </noscript>
         {children}
       </body>
     </html>

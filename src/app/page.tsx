@@ -1,4 +1,3 @@
-import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Header } from "@/components/layout/Header";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ProblemSection } from "@/components/sections/ProblemSection";
@@ -18,10 +17,7 @@ import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-white text-charcoal antialiased selection:bg-gold/20 selection:text-navy">
-      {/* 01. Sticky Top Announcement Bar */}
-      <AnnouncementBar />
-
-      {/* 02. Header & Sticky Navigation */}
+      {/* 01–02. Fixed header (contains the announcement strip) floating over the hero */}
       <Header />
 
       <main className="flex-1">

@@ -1,43 +1,46 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
-import { getWhatsAppUrl } from "@/config/site";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { MessageCircle } from "lucide-react";
+import { getWhatsAppUrl } from "@/config/site";
 
+/** Appears once the hero CTA has scrolled away. Icon-only on small screens so it never covers copy. */
 export function FloatingWhatsApp() {
-  const whatsappUrl = getWhatsAppUrl("floatingBubble");
-  const shouldReduceMotion = useReducedMotion();
+  const [show, setShow] = useState(false);
+  const reduce = useReducedMotion();
+
+  useEffect(() => {
+    const onScroll = () => setShow(window.scrollY > window.innerHeight * 0.7);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <motion.aside
-      aria-label="Contact options"
-      initial={shouldReduceMotion ? { y: 0, opacity: 1 } : { y: 80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{
-        type: "spring",
-        stiffness: 240,
-        damping: 22,
-        delay: shouldReduceMotion ? 0 : 1.2,
-      }}
-      className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 group"
-    >
-      <Link
-        href={whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat with the Goal Grid team on WhatsApp"
-        className="flex items-center gap-2.5 bg-navy text-white px-4 py-3 rounded-full shadow-2xl hover:shadow-gold/20 border border-gold/40 hover:border-gold hover:bg-navy-700 transition-all transform hover:-translate-y-1 active:translate-y-0"
-      >
-        <span className="relative flex h-2.5 w-2.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-gold"></span>
-        </span>
-        <MessageCircle className="w-5 h-5 text-gold fill-gold/20" />
-        <span className="font-heading font-semibold text-xs sm:text-sm tracking-wide">
-          Chat with us
-        </span>
-      </Link>
-    </motion.aside>
+    <AnimatePresence>
+      {show && (
+        <motion.aside
+          aria-label="Contact options"
+          className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-40"
+          initial={reduce ? false : { y: 24, opacity: 0, scale: 0.9 }}
+          animate={{ y: 0, opacity: 1, scale: 1 }}
+          exit={{ y: 24, opacity: 0, scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 260, damping: 24 }}
+        >
+          <Link
+            href={getWhatsAppUrl("floatingBubble")}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat with the Goal Grid team on WhatsApp"
+            className="flex items-center gap-2.5 rounded-full border border-gold/50 bg-navy/95 p-3.5 sm:px-5 sm:py-3 text-white shadow-[0_12px_40px_-8px_rgba(20,38,66,0.7)] backdrop-blur transition-colors hover:border-gold hover:bg-navy"
+          >
+            <MessageCircle className="h-5 w-5 text-gold" strokeWidth={1.75} aria-hidden="true" />
+            <span className="hidden sm:inline text-sm font-semibold tracking-wide">Chat with us</span>
+          </Link>
+        </motion.aside>
+      )}
+    </AnimatePresence>
   );
 }

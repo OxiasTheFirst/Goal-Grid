@@ -339,3 +339,21 @@ The following points from the client foundation brief remain intentionally open 
   - Zero unauthorized colors
   - Zero unverified host quotations
   - Zero backend/registration forms
+
+---
+
+## Entry 011 — Takeover, cinematic redesign pass 2 (2026-11-20)
+- **Repository state at takeover:** single branch `main`, head `768f152` ("Feat: cinimatic creative redesign"), 5 commits. Remote and local were identical.
+- **Live site vs repository: NOT VERIFIED.** The working environment could not fetch `goalgridproject.com` (outbound allowlist), so deployment state, branch binding and whether the previous cinematic hero is live remain unconfirmed. Check the host dashboard (see HANDOVER §7).
+- **Baseline audit (rendered, not just built):** the fixed-less header sat on a white strip with an invisible white logo/nav over the hero on desktop; headline reveal used opacity + translate; every section below the hero was a repeat of rounded cards; footer showed an Instagram handle and email not present in the client brief.
+- **Reference study:** `clearstreet-sx1wbp.mp4` (6.85 s, 1920×1198, 60 fps) was decoded with FFmpeg into a 6×4 contact sheet and the frames were inspected. Findings are in DESIGN_REFERENCE_ANALYSIS.md. The other 12 reference videos were **not** re-inspected in this session.
+- **Implemented:**
+  - Motion architecture: `src/lib/motion.ts` (easing/duration tokens), `MaskedTextReveal` (true `overflow-hidden` per-line clip, `y:112%→0`, no opacity fade, staggered, `mount`/`inView` triggers, descender-safe padding, sr-only label), `Reveal`, `ParallaxImage`.
+  - Hero rebuilt: full-bleed photograph with slow push-in, scroll parallax, counter-moving warm light, directional navy gradients, film grain, desktop hairlines, 4 masked headline lines, choreographed entrance (scene → identifier → headline → copy → CTA → price → facts). Mobile recomposes the photo into the top 72svh with a mask fade so the subject stays clear of the type.
+  - Header is now fixed over the hero (announcement strip folded in and collapses on scroll), scroll-spy underline, full-screen masked mobile menu, hamburger below 1280 px.
+  - Sections re-art-directed: Problem (editorial list + photographic transition band), GRID (scroll-linked progress line, perspective letters, isometric stage tiles), Inclusions (sticky statement + ledger), Outcomes (focus-band highlight), Audience (typographic lists), Host (placeholder retained), Accountability (oversized-word triptych), Investment (₦ fee as the hero), How to Join (self-drawing path), FAQ (ruled accordion, WhatsApp routing for unconfirmed answers), Final CTA (skyline crop of the hero photograph).
+  - Shared `WhatsAppButton` and `SectionLabel`; all CTAs still resolve through `getWhatsAppUrl()`.
+  - Floating WhatsApp now appears after the hero and is icon-only on small screens.
+- **Content integrity changes:** removed unverified `@bmbstrategy` Instagram and `info@bmbstrategy.com` from the footer, removed the "Goal Grid™" trademark claim, removed the hero line "BMB Strategy & Advisory Ltd. • Q1 2027 Cohort" (entity is already in the header, footer and host section). Nav anchor `#programme` now targets the Inclusions section (previously the hero); hero is `#top`.
+- **Verification performed:** `tsc --noEmit` clean; `next build` clean; rendered screenshots at 390, 768, 1024, 1440, 1920; horizontal-overflow sweep at 12 widths (360–2560) after fixing a real 2 px overflow at 1024 (Accountability display word); mid-animation frames proving the masked reveal; `prefers-reduced-motion` check; FAQ mouse + keyboard; scroll-spy; mobile menu open/Escape/body-lock; 12 WhatsApp links all on the placeholder number with `noopener`.
+- **Environment note:** the sandbox cannot reach Google Fonts, so local builds were run with `NEXT_FONT_GOOGLE_MOCKED_RESPONSES` pointing at a local stub and Sora/Manrope installed as system fonts. Rendering used those system fonts; production uses Google's files.

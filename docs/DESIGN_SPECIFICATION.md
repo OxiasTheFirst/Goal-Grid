@@ -291,3 +291,14 @@ Approved Section Order:
 3. **Timeline Progression:** Smooth line fill on scroll for the GRID method without abrupt snapping.
 4. **Accordion Motion:** CSS/Motion height auto-animation with rotating indicator (`0deg` to `45deg`).
 5. **No Decorative Noise:** No drifting particles, no chaotic cursor trails, no unnecessary floating blobs.
+
+---
+
+## Revision 2 — Cinematic pass (2026-11-20)
+**Rhythm:** hero (navy photograph) → Problem (white, editorial) → photographic band → GRID (navy) → Programme (off-white ledger) → Outcomes (navy, large type) → Audience (white) → Host (off-white, placeholder) → Accountability (white triptych) → Investment (navy) → How to Join (white) → FAQ (off-white) → Final CTA (navy photograph) → Footer (navy).
+
+**Hero:** 4 intentional lines — "Don’t Just / Set the Goal. / Build the Path (gold) / to Achieve It." — each in its own clipping container. Sizes: 2.9rem (mobile) → 6.5rem (2xl). Photograph `hero-cinematic-bg.jpg` retained after critical review: composition has a calm dark left for type and a clear focal subject at right. **Weakness:** source is 1376×768 and is upscaled on large screens; grain masks softness but a higher-resolution original should replace it.
+
+**Motion tokens** (`src/lib/motion.ts`): reveal ease `[0.22,1,0.36,1]`, soft ease `[0.16,1,0.3,1]`, in-out `[0.65,0,0.35,1]`; line duration 1.15 s, base 0.7 s. Reduced motion renders final states; `noscript` rule reveals content without JS.
+
+**Rules kept:** BMB palette only (navy, gold, white, charcoal; tints of these), no Goal Grid logo, no forms/backends, placeholder WhatsApp number, no scarcity, no invented instalment schedule, no host credentials.

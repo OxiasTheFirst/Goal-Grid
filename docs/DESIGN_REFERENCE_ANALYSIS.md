@@ -173,3 +173,23 @@ The client prompt raised a specific concern regarding `#080F1B` ("Midnight Navy"
   - Hero background: Bespoke cinematic high-rise executive photograph (`/images/hero-cinematic-bg.jpg`) with deep BMB navy overlays, warm directional lighting, and subtle parallax.
   - Headline reveal: "Don't Just Set the Goal. / Build the Path / to Achieve It." emerging line by line through horizontal clipping containers with physical cubic-bezier easing (`[0.16, 1, 0.3, 1]`).
   - Base metric bar: Glassmorphic architectural instrument bar (`bg-navy-900/80 backdrop-blur-md border border-white/10 sm:border-gold/25`) with gold phase numbers (`01`–`04`).
+
+---
+
+## Addendum — ClearStreet reference, frame-level study (2026-11-20)
+
+**Method (what was actually done):** `clearstreet-sx1wbp.mp4` (H.264, 1920×1198, 60 fps, 6.85 s) was sampled with FFmpeg at ~3.5 fps into a 24-tile contact sheet and inspected visually. Only still frames were examined; motion between frames (easing curves, exact timings) is **inferred, not observed**. The remaining reference videos were not re-opened in this session, and earlier claims that all 14 files were individually reviewed could not be re-verified.
+
+**Observed in the frames**
+1. Opens on a saturated blue UI scene, then cuts to full-bleed, dark, desaturated photographic scenes (tower facade at dusk, tape-reel machinery, stacked bound folders).
+2. Each scene carries one centred, short white sentence at modest size; text appears to enter and leave per scene (frames show it partially transparent/soft at scene edges).
+3. Scenes cross-dissolve; the image darkens toward the scene change and appears to drift/scale slowly.
+4. Heavy, even navy-black treatment keeps the photograph visible but subordinate to type; no flat opaque overlay.
+5. Final scene flips to a light canvas with a large typographic statement: a hard dark→light rhythm.
+6. A floating pill navigation sits over every scene.
+
+**Translation to Goal Grid (principles, not a copy)**
+- Full-bleed photograph as the scene, type placed in its calm region, navy gradient where type sits and open where the subject stands.
+- Slow push-in + scroll parallax for depth; grain to unify the photograph.
+- Dark/light section rhythm with a full-width photographic moment between Problem and GRID, and a skyline crop at the close.
+- Entrance is a **masked line reveal** (specified by the client brief) rather than ClearStreet's observed fade; this is a deliberate departure.

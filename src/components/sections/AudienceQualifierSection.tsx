@@ -1,142 +1,86 @@
-"use client";
-
-import { useRef } from "react";
-import Link from "next/link";
-import { motion, useInView, useReducedMotion } from "motion/react";
-import { getWhatsAppUrl } from "@/config/site";
+import { Check, X } from "lucide-react";
 import { landingPageData } from "@/data/landing-page-data";
-import { Check, X, ArrowRight, MessageCircle } from "lucide-react";
+import { MaskedTextReveal } from "@/components/motion/MaskedTextReveal";
+import { Reveal } from "@/components/motion/Reveal";
+import { SectionLabel } from "@/components/ui/SectionLabel";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
+/** Qualification as two typographic lists, not two cards. */
 export function AudienceQualifierSection() {
   const { qualifier } = landingPageData;
-  const whatsappUrl = getWhatsAppUrl("qualifierCta");
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
-  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-24 lg:py-32 bg-white border-b border-gray-100 relative overflow-hidden"
-    >
-      <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          className="max-w-3xl mx-auto text-center space-y-4 mb-16 lg:mb-20"
-          initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          animate={isInView || shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-xs font-semibold tracking-wider uppercase text-navy shadow-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-            <span>{qualifier.badge}</span>
+    <section id="audience" className="bg-white">
+      <div className="mx-auto max-w-container px-4 sm:px-6 lg:px-8 py-24 lg:py-40">
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
+          <div className="lg:col-span-5 space-y-8">
+            <SectionLabel>{qualifier.badge}</SectionLabel>
+            <MaskedTextReveal
+              as="h2"
+              label={qualifier.headline}
+              className="font-heading text-[2.4rem] font-bold leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3.25rem]"
+              lines={[
+                { text: "Built for" },
+                { text: "Business Owners" },
+                { text: "Ready to Act,", },
+                { text: "Not Just Plan", className: "text-gold-600" },
+              ]}
+            />
+            <Reveal delay={0.15}>
+              <p className="max-w-md text-base leading-relaxed text-charcoal-light sm:text-lg">{qualifier.subtitle}</p>
+            </Reveal>
           </div>
 
-          <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-navy tracking-tight leading-tight">
-            {qualifier.headline}
-          </h2>
-
-          <p className="text-base sm:text-lg text-charcoal-light leading-relaxed max-w-2xl mx-auto">
-            {qualifier.subtitle}
-          </p>
-        </motion.div>
-
-        {/* Two-Column Qualifier Comparison with Disciplined BMB Brand Palette */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
-          {/* Left Column: Who This Is For */}
-          <motion.div
-            initial={shouldReduceMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: -24 }}
-            animate={
-              isInView || shouldReduceMotion
-                ? { opacity: 1, x: 0 }
-                : { opacity: 0, x: -24 }
-            }
-            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-[#FAFBFD] rounded-3xl p-8 sm:p-10 border border-gray-200/90 shadow-sm space-y-6 card-glow"
-          >
-            <div className="flex items-center gap-3.5 pb-4 border-b border-gray-200/80">
-              <div className="w-9 h-9 rounded-xl bg-gold/15 text-gold flex items-center justify-center font-bold border border-gold/30">
-                <Check className="w-5 h-5" />
-              </div>
-              <h3 className="font-heading font-bold text-xl sm:text-2xl text-navy">
-                Goal Grid Is For You If:
-              </h3>
+          <div className="lg:col-span-7 space-y-14">
+            <div>
+              <Reveal>
+                <h3 className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-gold-700">
+                  Goal Grid is for you if you are
+                </h3>
+              </Reveal>
+              <ul>
+                {qualifier.criteriaForYou.map((c) => (
+                  <li key={c}>
+                    <Reveal className="flex items-start gap-4 border-t border-navy/15 py-5">
+                      <Check className="mt-1 h-5 w-5 flex-shrink-0 text-gold-600" strokeWidth={2} aria-hidden="true" />
+                      <span className="font-heading text-lg font-medium leading-snug text-navy sm:text-xl">{c}</span>
+                    </Reveal>
+                  </li>
+                ))}
+                <li className="border-t border-navy/15" aria-hidden="true" />
+              </ul>
             </div>
 
-            <ul className="space-y-4">
-              {qualifier.criteriaForYou.map((item) => (
-                <li key={item} className="flex items-start gap-3.5">
-                  <div className="w-5 h-5 rounded-full bg-gold/10 text-gold flex items-center justify-center flex-shrink-0 mt-0.5 border border-gold/30">
-                    <Check className="w-3.5 h-3.5" />
-                  </div>
-                  <span className="text-sm sm:text-base text-charcoal-light leading-relaxed">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Right Column: Who This May Not Be For */}
-          <motion.div
-            initial={shouldReduceMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: 24 }}
-            animate={
-              isInView || shouldReduceMotion
-                ? { opacity: 1, x: 0 }
-                : { opacity: 0, x: 24 }
-            }
-            transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-[#FAFBFD] rounded-3xl p-8 sm:p-10 border border-gray-200/90 shadow-sm space-y-6 card-glow"
-          >
-            <div className="flex items-center gap-3.5 pb-4 border-b border-gray-200/80">
-              <div className="w-9 h-9 rounded-xl bg-navy/10 text-navy flex items-center justify-center font-bold border border-navy/20">
-                <X className="w-5 h-5" />
-              </div>
-              <h3 className="font-heading font-bold text-xl sm:text-2xl text-navy">
-                This May Not Be For You If:
-              </h3>
-            </div>
-
-            <ul className="space-y-4">
-              {qualifier.criteriaNotForYou.map((item) => (
-                <li key={item} className="flex items-start gap-3.5">
-                  <div className="w-5 h-5 rounded-full bg-gray-100 text-charcoal-muted flex items-center justify-center flex-shrink-0 mt-0.5 border border-gray-200">
-                    <X className="w-3.5 h-3.5" />
-                  </div>
-                  <span className="text-sm sm:text-base text-charcoal-light leading-relaxed">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="pt-4 border-t border-gray-200/70">
-              <p className="text-xs text-charcoal-muted leading-relaxed italic">
-                Goal Grid asks for daily action and your presence at scheduled
-                sessions. If you can commit that time, it will repay it.
+            <div>
+              <Reveal>
+                <h3 className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-charcoal-muted">
+                  This may not be for you if you are
+                </h3>
+              </Reveal>
+              <ul>
+                {qualifier.criteriaNotForYou.map((c) => (
+                  <li key={c}>
+                    <Reveal className="flex items-start gap-4 border-t border-navy/10 py-4">
+                      <X className="mt-1 h-5 w-5 flex-shrink-0 text-charcoal-muted" strokeWidth={1.75} aria-hidden="true" />
+                      <span className="text-base leading-snug text-charcoal-light">{c}</span>
+                    </Reveal>
+                  </li>
+                ))}
+                <li className="border-t border-navy/10" aria-hidden="true" />
+              </ul>
+              <p className="mt-5 text-xs italic leading-relaxed text-charcoal-muted">
+                Goal Grid asks for daily action and your presence at scheduled sessions. If you can commit that time, it
+                will repay it.
               </p>
             </div>
-          </motion.div>
-        </div>
 
-        {/* Section Action Trigger */}
-        <motion.div
-          className="text-center"
-          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
-          animate={isInView || shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <Link
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-navy text-white text-base font-semibold px-8 py-4 rounded-full hover:bg-navy-700 transition-all shadow-md group transform hover:-translate-y-0.5 active:translate-y-0"
-          >
-            <MessageCircle className="w-5 h-5 text-gold fill-gold/20" />
-            <span>{qualifier.ctaText}</span>
-            <ArrowRight className="w-4 h-4 text-gold/80 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </motion.div>
+            <Reveal>
+              <WhatsAppButton messageKey="qualifierCta" variant="navy">
+                {qualifier.ctaText}
+              </WhatsAppButton>
+            </Reveal>
+          </div>
+        </div>
       </div>
     </section>
   );

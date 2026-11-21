@@ -1,143 +1,89 @@
-"use client";
-
-import { useRef } from "react";
 import Image from "next/image";
-import { motion, useInView, useReducedMotion } from "motion/react";
+import { Calendar, ShieldCheck, Users } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { landingPageData } from "@/data/landing-page-data";
-import { ShieldCheck, Calendar, Users, Info, CheckCircle2 } from "lucide-react";
+import { MaskedTextReveal } from "@/components/motion/MaskedTextReveal";
+import { Reveal } from "@/components/motion/Reveal";
+import { SectionLabel } from "@/components/ui/SectionLabel";
+
+/**
+ * Host. Placeholder status is retained on purpose: no portrait, biography, credentials or quotes
+ * have been supplied, so none are invented. Only the programme role and confirmed duties appear.
+ */
+const dutyIcons = [Calendar, Users, ShieldCheck];
 
 export function HostSection() {
   const { host } = landingPageData;
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
-  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section
-      id="host"
-      ref={sectionRef}
-      className="py-24 lg:py-32 bg-[#F8FAFC] border-b border-gray-100 relative overflow-hidden"
-    >
-      <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          {/* Executive Split Container */}
-          <motion.div
-            initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            animate={isInView || shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-white rounded-3xl border border-gray-200/90 shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-0 card-glow"
-          >
-            {/* Left Column: Architectural Portrait Placeholder & Role Container */}
-            <div className="lg:col-span-5 bg-navy p-8 sm:p-12 flex flex-col justify-between items-center text-center relative overflow-hidden text-white">
-              {/* Subtle Coordinate Grid in Navy Panel */}
+    <section id="host" className="bg-surface-light">
+      <div className="mx-auto max-w-container px-4 sm:px-6 lg:px-8 py-24 lg:py-40">
+        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
+          {/* Portrait placeholder frame */}
+          <Reveal className="lg:col-span-5">
+            <div className="grain relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden bg-navy">
               <div
-                className="absolute inset-0 pointer-events-none opacity-[0.04]"
+                aria-hidden="true"
+                className="absolute inset-0 opacity-[0.12]"
                 style={{
-                  backgroundImage: `radial-gradient(#C9A45C 1px, transparent 1px)`,
-                  backgroundSize: "24px 24px",
+                  backgroundImage: "radial-gradient(#C9A45C 1px, transparent 1px)",
+                  backgroundSize: "22px 22px",
                 }}
               />
-              <div className="absolute top-0 right-0 w-48 h-48 bg-gold/10 blur-[90px] rounded-full pointer-events-none" />
-
-              <div className="relative z-10 w-full flex flex-col items-center">
-                {/* Architectural Formal Framing Container */}
-                <div className="relative w-44 h-44 sm:w-52 sm:h-52 rounded-3xl overflow-hidden border-2 border-gold/40 shadow-2xl mb-5 bg-navy-700/80 flex flex-col items-center justify-center p-4">
-                  {/* Executive Monogram & Institutional Badge */}
-                  <div className="w-16 h-16 rounded-2xl bg-gold/15 border border-gold/40 flex items-center justify-center font-heading font-extrabold text-2xl text-gold mb-3 shadow-inner">
-                    BB
-                  </div>
-                  <div className="relative h-6 w-24">
-                    <Image
-                      src={siteConfig.brand.logoNavy}
-                      alt="BMB Strategy & Advisory"
-                      fill
-                      className="object-contain filter invert brightness-200 opacity-70"
-                    />
-                  </div>
-
-                  {/* Corner Coordinate Accent Marks */}
-                  <div className="absolute top-2 left-2 w-2.5 h-2.5 border-t-2 border-l-2 border-gold/60" />
-                  <div className="absolute top-2 right-2 w-2.5 h-2.5 border-t-2 border-r-2 border-gold/60" />
-                  <div className="absolute bottom-2 left-2 w-2.5 h-2.5 border-b-2 border-l-2 border-gold/60" />
-                  <div className="absolute bottom-2 right-2 w-2.5 h-2.5 border-b-2 border-r-2 border-gold/60" />
-                </div>
-
-                <p className="text-[11px] text-gold/75 font-mono uppercase tracking-wider mb-3">
-                  Official portrait pending client confirmation
+              <div aria-hidden="true" className="absolute -right-10 -top-10 h-64 w-64 rounded-full bg-gold/20 blur-[90px]" />
+              {["top-4 left-4 border-t border-l", "top-4 right-4 border-t border-r", "bottom-4 left-4 border-b border-l", "bottom-4 right-4 border-b border-r"].map((c) => (
+                <span key={c} aria-hidden="true" className={`absolute h-5 w-5 border-gold/70 ${c}`} />
+              ))}
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 p-8 text-center">
+                <Image
+                  src={siteConfig.brand.logoNavy}
+                  alt="BMB Strategy & Advisory"
+                  width={140}
+                  height={50}
+                  className="h-12 w-auto opacity-80 brightness-0 invert"
+                />
+                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-gold/80">
+                  Official portrait to be supplied
                 </p>
-
-                <h3 className="font-heading font-bold text-2xl text-white">
-                  {host.name}
-                </h3>
-                <p className="text-xs font-semibold text-gold uppercase tracking-widest mt-1">
-                  {host.role}
-                </p>
-                <p className="text-xs text-white/60 mt-0.5 font-medium">
-                  {host.organization}
-                </p>
-              </div>
-
-              {/* Advisory Inclusions Pills */}
-              <div className="relative z-10 w-full mt-8 pt-6 border-t border-navy-700/90 space-y-2.5 text-left">
-                <div className="flex items-center gap-3 text-xs text-white/80">
-                  <Calendar className="w-4 h-4 text-gold flex-shrink-0" />
-                  <span>Leads weekly Friday teaching calls</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs text-white/80">
-                  <Users className="w-4 h-4 text-gold flex-shrink-0" />
-                  <span>Guides cohort curriculum</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs text-white/80">
-                  <ShieldCheck className="w-4 h-4 text-gold flex-shrink-0" />
-                  <span>Conducts your private 1-on-1 session</span>
-                </div>
               </div>
             </div>
+          </Reveal>
 
-            {/* Right Column: Verified Narrative & Role Structure */}
-            <div className="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-between space-y-6">
-              <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-xs font-semibold tracking-wider uppercase text-navy">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-                  <span>{host.badge}</span>
-                </div>
-
-                <h2 className="font-heading font-bold text-2xl sm:text-3xl text-navy tracking-tight leading-snug">
-                  {host.headline}
-                </h2>
-
-                <p className="text-sm sm:text-base text-charcoal-light leading-relaxed">
-                  {host.biography}
+          <div className="lg:col-span-7 space-y-8">
+            <SectionLabel>{host.badge}</SectionLabel>
+            <MaskedTextReveal
+              as="h2"
+              label={host.headline}
+              className="font-heading text-[2.4rem] font-bold leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3.25rem]"
+              lines={[{ text: "Programme Leadership" }, { text: "& Host Advisory", className: "text-gold-600" }]}
+            />
+            <Reveal delay={0.1}>
+              <div className="border-l-2 border-gold pl-5">
+                <p className="font-heading text-2xl font-semibold text-navy">{host.name}</p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-charcoal-muted">
+                  {host.role} · {host.organization}
                 </p>
-
-                <div className="pt-3 space-y-3">
-                  <h4 className="text-xs font-bold text-navy uppercase tracking-wider font-mono">
-                    Confirmed Host Deliverables:
-                  </h4>
-                  <ul className="space-y-2.5">
-                    {host.duties.map((duty) => (
-                      <li
-                        key={duty}
-                        className="flex items-start gap-3 text-xs sm:text-sm text-charcoal-light leading-snug"
-                      >
-                        <CheckCircle2 className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
-                        <span>{duty}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
-
-              {/* Status Note on Credentials Sign-Off */}
-              <div className="pt-4 border-t border-gray-100 flex items-start gap-2.5 text-xs text-charcoal-muted leading-relaxed">
-                <Info className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
-                <span className="italic">
-                  {host.credentialsConfirmationNote}
-                </span>
-              </div>
-            </div>
-          </motion.div>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <p className="max-w-xl text-base leading-relaxed text-charcoal-light sm:text-lg">{host.biography}</p>
+            </Reveal>
+            <ul>
+              {host.duties.map((d, i) => {
+                const Icon = dutyIcons[i] ?? ShieldCheck;
+                return (
+                  <li key={d}>
+                    <Reveal className="flex items-start gap-4 border-t border-navy/15 py-4">
+                      <Icon className="mt-0.5 h-5 w-5 flex-shrink-0 text-gold-600" strokeWidth={1.5} aria-hidden="true" />
+                      <span className="text-[15px] leading-snug text-charcoal">{d}</span>
+                    </Reveal>
+                  </li>
+                );
+              })}
+              <li className="border-t border-navy/15" aria-hidden="true" />
+            </ul>
+            <p className="text-xs italic leading-relaxed text-charcoal-muted">{host.credentialsConfirmationNote}</p>
+          </div>
         </div>
       </div>
     </section>

@@ -1,37 +1,26 @@
-"use client";
-
 import Link from "next/link";
 import { getWhatsAppUrl } from "@/config/site";
 import { ArrowRight } from "lucide-react";
 
+/** Slim programme strip. Rendered inside <Header /> so the two stay stacked over the hero. */
 export function AnnouncementBar() {
-  const whatsappUrl = getWhatsAppUrl("announcement");
-
   return (
-    <div className="bg-navy border-b border-navy-700 text-white text-xs sm:text-sm py-2 px-4 transition-colors">
-      <div className="max-w-container mx-auto flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
-          <span className="relative flex h-2 w-2 flex-shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
-          </span>
-          <span className="font-heading font-semibold tracking-wider uppercase text-gold">
-            Waitlist Opens December 2026
-          </span>
-          <span className="hidden md:inline text-white/50">|</span>
-          <span className="hidden md:inline text-white/80">
-            Programme Runs January–March 2027
-          </span>
-        </div>
-
+    <div className="border-b border-white/10 bg-navy text-white text-[11px] sm:text-xs">
+      <div className="mx-auto flex h-9 max-w-container items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+        <p className="flex items-center gap-2.5 truncate">
+          <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gold" aria-hidden="true" />
+          <span className="font-semibold uppercase tracking-[0.18em] text-gold">Waitlist opens December 2026</span>
+          <span className="hidden md:inline text-white/40">/</span>
+          <span className="hidden md:inline text-white/70">Programme runs January–March 2027</span>
+        </p>
         <Link
-          href={whatsappUrl}
+          href={getWhatsAppUrl("announcement")}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-shrink-0 inline-flex items-center gap-1.5 font-medium text-gold hover:text-white transition-colors group"
+          className="group inline-flex flex-shrink-0 items-center gap-1.5 font-medium text-gold transition-colors hover:text-white"
         >
           <span>Get updates</span>
-          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
         </Link>
       </div>
     </div>

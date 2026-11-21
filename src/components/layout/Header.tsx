@@ -1,155 +1,185 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { siteConfig, getWhatsAppUrl } from "@/config/site";
-import { MessageCircle, Menu, X, ArrowUpRight } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { Menu, MessageCircle, X } from "lucide-react";
+import { getWhatsAppUrl, siteConfig } from "@/config/site";
+import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
+import { EASE_INOUT, EASE_REVEAL } from "@/lib/motion";
 
+/**
+ * Fixed header that floats over the hero.
+ * - Transparent at the top, deep-navy glass once scrolled; the announcement strip collapses away.
+ * - Scroll-spy underlines the section currently in view.
+ * - Mobile menu is a full-screen navy sheet with staggered masked links.
+ */
 export function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const whatsappUrl = getWhatsAppUrl("navCta");
+  const [active, setActive] = useState<string>("");
+  const reduce = useReducedMotion();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Scroll-spy
+  useEffect(() => {
+    const ids = siteConfig.navItems.map((n) => n.href.slice(1));
+    const els = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => e.isIntersecting && setActive(e.target.id));
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  // Menu: lock scroll + Escape to close
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
   return (
-    <header
-      className={`sticky top-0 z-40 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs"
-          : "bg-navy/85 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none border-b border-white/5"
-      }`}
-    >
-      <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Brand & Programme Identifier */}
-        <Link href="/" className="flex items-center gap-3.5 group">
-          <div className="relative h-10 w-24 sm:w-28 flex items-center">
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div
+        className={`overflow-hidden transition-[max-height,opacity] duration-500 ease-out ${
+          scrolled ? "max-h-0 opacity-0" : "max-h-9 opacity-100"
+        }`}
+      >
+        <AnnouncementBar />
+      </div>
+
+      <div
+        className={`transition-[background-color,box-shadow,backdrop-filter] duration-500 ${
+          scrolled || open
+            ? "bg-navy/90 backdrop-blur-xl shadow-[0_1px_0_rgba(201,164,92,0.18)]"
+            : "bg-gradient-to-b from-navy/70 to-transparent"
+        }`}
+      >
+        <div className="mx-auto flex h-[4.25rem] max-w-container items-center justify-between px-4 sm:px-6 lg:px-8">
+          <Link href="#top" className="flex items-center gap-4" aria-label="Goal Grid — BMB Strategy & Advisory, back to top">
             <Image
               src={siteConfig.brand.logoNavy}
               alt="BMB Strategy & Advisory"
               width={112}
               height={40}
               priority
-              className={`object-contain transition-all duration-300 ${
-                scrolled ? "" : "filter brightness-0 invert"
-              }`}
+              className="h-9 w-auto object-contain brightness-0 invert"
             />
-          </div>
-          <div className={`h-6 w-px transition-colors ${scrolled ? "bg-gray-200" : "bg-white/20"} hidden sm:block`} />
-          <div className="flex flex-col">
-            <span
-              className={`font-heading font-bold tracking-tight text-base sm:text-lg leading-tight transition-colors ${
-                scrolled
-                  ? "text-navy group-hover:text-gold"
-                  : "text-white group-hover:text-gold"
-              }`}
-            >
-              Goal Grid
+            <span className="hidden h-6 w-px bg-white/25 sm:block" aria-hidden="true" />
+            <span className="hidden sm:flex flex-col leading-tight">
+              <span className="font-heading text-base font-semibold tracking-tight text-white">Goal Grid</span>
+              <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/55">Q1 2027 Cohort</span>
             </span>
-            <span
-              className={`text-[10px] tracking-widest uppercase font-semibold transition-colors hidden sm:inline ${
-                scrolled ? "text-charcoal-muted" : "text-white/60"
-              }`}
-            >
-              Q1 2027 Cohort
-            </span>
-          </div>
-        </Link>
-
-        {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-7">
-          {siteConfig.navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`text-sm font-medium transition-colors relative py-1 hover:after:w-full after:w-0 after:h-0.5 after:bg-gold after:absolute after:bottom-0 after:left-0 after:transition-all ${
-                scrolled
-                  ? "text-charcoal hover:text-navy"
-                  : "text-white/85 hover:text-white"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Desktop CTA Button */}
-        <div className="hidden sm:flex items-center gap-4">
-          <Link
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`inline-flex items-center gap-2.5 text-sm font-semibold px-5 py-2.5 rounded-full shadow-sm transition-all hover:shadow hover:-translate-y-0.5 active:translate-y-0 ${
-              scrolled
-                ? "bg-navy text-white hover:bg-navy-700 border border-navy-700"
-                : "bg-gold text-navy font-bold hover:bg-gold-400 border border-gold-300"
-            }`}
-          >
-            <MessageCircle className={`w-4 h-4 ${scrolled ? "text-gold fill-gold/20" : "text-navy fill-navy/20"}`} />
-            <span>Join the Waitlist</span>
           </Link>
-        </div>
 
-        {/* Mobile Menu Trigger */}
-        <div className="flex items-center gap-2 sm:hidden">
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`p-2 rounded-xl focus:outline-none transition-colors ${
-              scrolled
-                ? "text-charcoal hover:text-navy hover:bg-gray-100"
-                : "text-white hover:text-gold hover:bg-white/10"
-            }`}
-            aria-label="Toggle navigation menu"
-          >
-            {mobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+          <nav className="hidden xl:flex items-center gap-8" aria-label="Primary">
+            {siteConfig.navItems.map((item) => {
+              const isActive = active === item.href.slice(1);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`relative whitespace-nowrap py-1 text-sm font-medium transition-colors duration-300 ${
+                    isActive ? "text-white" : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                  <span
+                    className={`absolute -bottom-0.5 left-0 h-px w-full origin-left bg-gold transition-transform duration-500 ${
+                      isActive ? "scale-x-100" : "scale-x-0"
+                    }`}
+                  />
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <Link
+              href={getWhatsAppUrl("navCta")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-navy transition-colors hover:bg-gold-300"
+            >
+              <MessageCircle className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+              Join the Waitlist
+            </Link>
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+              className="xl:hidden rounded-full p-2.5 text-white transition-colors hover:bg-white/10"
+            >
+              {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Drawer Navigation */}
-      {mobileMenuOpen && (
-        <div className="sm:hidden border-b border-gray-200 bg-white/98 backdrop-blur-md px-4 pt-2 pb-6 space-y-3 shadow-xl">
-          <nav className="flex flex-col space-y-2 pt-2">
-            {siteConfig.navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 text-base font-medium text-charcoal hover:bg-surface-light hover:text-navy rounded-xl transition-colors flex items-center justify-between"
-              >
-                <span>{item.label}</span>
-                <ArrowUpRight className="w-4 h-4 text-charcoal-muted" />
-              </Link>
-            ))}
-          </nav>
-          <div className="pt-3 border-t border-gray-100">
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="mobile-menu"
+            className="xl:hidden fixed inset-0 top-0 -z-10 bg-navy pt-28 px-6 pb-10 flex flex-col"
+            initial={reduce ? false : { clipPath: "inset(0 0 100% 0)" }}
+            animate={{ clipPath: "inset(0 0 0% 0)" }}
+            exit={{ clipPath: "inset(0 0 100% 0)" }}
+            transition={{ duration: 0.6, ease: EASE_INOUT }}
+          >
+            <nav className="flex flex-col" aria-label="Mobile">
+              {siteConfig.navItems.map((item, i) => (
+                <span key={item.href} className="block overflow-hidden border-b border-white/10">
+                  <motion.span
+                    className="block"
+                    initial={reduce ? false : { y: "100%" }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.25 + i * 0.07, ease: EASE_REVEAL }}
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="flex items-baseline gap-4 py-4 font-heading text-2xl font-semibold text-white"
+                    >
+                      <span className="font-mono text-xs text-gold">0{i + 1}</span>
+                      {item.label}
+                    </Link>
+                  </motion.span>
+                </span>
+              ))}
+            </nav>
             <Link
-              href={whatsappUrl}
+              href={getWhatsAppUrl("navCta")}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 bg-navy text-white text-base font-semibold px-5 py-3.5 rounded-full hover:bg-navy-700 transition-colors shadow-md"
+              onClick={() => setOpen(false)}
+              className="mt-auto flex items-center justify-center gap-2 rounded-full bg-gold py-4 text-base font-semibold text-navy"
             >
-              <MessageCircle className="w-5 h-5 text-gold fill-gold/20" />
-              <span>Join the Waitlist (WhatsApp)</span>
+              <MessageCircle className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
+              Join the Waitlist on WhatsApp
             </Link>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

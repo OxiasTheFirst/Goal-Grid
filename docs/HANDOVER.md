@@ -1,5 +1,7 @@
 # Goal Grid — Project Handover & Deployment Guide
 
+> **Current state (2026-11-20, cinematic pass 2).** Sections 1–2 below describe the earlier (pass 1) build and are kept for history. **Section 7 is authoritative** for what exists now, what was verified, and what is still open.
+
 ## 1. Project Overview & Deliverable Summary
 
 **Goal Grid** is an executive-level goal execution programme for business owners, organized and delivered under **BMB Strategy & Advisory Ltd.** scheduled for **January–March 2027**.
@@ -164,3 +166,31 @@ To inspect the landing page visually in the browser:
    - [ ] **Final CTA Card:** Check floating Deep Navy card ("YOUR 2027 STARTS NOW") and CTA button.
    - [ ] **Footer:** Verify Deep Navy `#142642` background, square BMB badge logo (`bmb-logo-badge.jpg`), links, and copyright.
    - [ ] **Floating Button:** Check persistent bottom-right WhatsApp action pill.
+
+---
+
+## 7. Pass 2 handover (authoritative)
+
+### What changed
+See DEVELOPMENT_LOG Entry 011. Components modified: every file in `src/components/sections/`, `layout/Header.tsx`, `layout/Footer.tsx`, `layout/AnnouncementBar.tsx`, `ui/FloatingWhatsApp.tsx`, `motion/MaskedTextReveal.tsx`, `app/page.tsx`, `app/layout.tsx` (noscript fallback), `styles/globals.css` (grain, outline text, focus ring). New: `lib/motion.ts`, `motion/Reveal.tsx`, `motion/ParallaxImage.tsx`, `ui/WhatsAppButton.tsx`, `ui/SectionLabel.tsx`. No new dependencies. No new image assets (the two existing photographs are reused with different crops).
+
+### Verified (rendered in headless Chrome against a production build)
+Typecheck and build clean; 390/768/1024/1440/1920 screenshots reviewed; no horizontal overflow from 360–2560 px; masked reveal captured mid-animation; reduced-motion renders final state; FAQ (mouse + keyboard), scroll-spy, mobile menu, all 6 nav anchors; 12 WhatsApp links use `getWhatsAppUrl` and the placeholder number.
+
+### Not verified / known limitations
+- **Live deployment** was unreachable from the build environment. Confirm in the hosting dashboard that production tracks `main`, then compare the live page to this build.
+- Hero photograph is 1376×768; replace with a ≥2560 px original when available.
+- Fonts rendered locally from system copies of Sora/Manrope (Google Fonts blocked); confirm weights on the deployed site.
+- Real-device and Safari/Firefox testing were not done (Chrome only). Scroll-linked GRID progression should be checked on a physical phone.
+- Without JavaScript, entrance animations are bypassed by a `noscript` rule; not browser-tested.
+
+### Outstanding client confirmations (unchanged)
+WhatsApp number; waitlist opening date; official host portrait/biography/credentials (name currently `@Bolaji Babalola` as in the brief header, spelling unconfirmed); instalment schedule; daily time and session length; missed-session and recording policy; official Instagram/email (removed from footer until supplied).
+
+### Instructions for the next developer or AI
+1. `npm ci`, copy `.env.example` to `.env.local`, set `NEXT_PUBLIC_WHATSAPP_PHONE`.
+2. Edit copy only in `src/data/landing-page-data.ts`; edit WhatsApp messages only in `src/config/site.ts`.
+3. Use `MaskedTextReveal` for headings and `Reveal` for blocks; take easing from `src/lib/motion.ts`. Always set an explicit text colour on headings placed on dark backgrounds (the global `h1–h6` rule sets navy).
+4. Keep every CTA on `WhatsAppButton` / `getWhatsAppUrl`.
+5. After any layout change, check for horizontal overflow at 1024 and 390 px.
+6. Never commit `.env`. Do not invent host details, results, testimonials, instalment terms or scarcity.

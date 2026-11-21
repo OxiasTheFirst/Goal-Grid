@@ -1,146 +1,116 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, useInView, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { MessageCircle, Plus } from "lucide-react";
 import { getWhatsAppUrl } from "@/config/site";
 import { landingPageData } from "@/data/landing-page-data";
-import { ChevronDown, MessageCircle, HelpCircle } from "lucide-react";
+import { MaskedTextReveal } from "@/components/motion/MaskedTextReveal";
+import { Reveal } from "@/components/motion/Reveal";
+import { SectionLabel } from "@/components/ui/SectionLabel";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { EASE_INOUT } from "@/lib/motion";
 
+/**
+ * FAQ accordion: ruled list, smooth height transition, +/× toggle, real <button aria-expanded>
+ * controls with region labelling. Answers that depend on unconfirmed details route the visitor
+ * to WhatsApp (with their question prefilled) instead of inventing an answer.
+ */
 export function FaqSection() {
   const { faq } = landingPageData;
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // First item open by default
-  const whatsappUrl = getWhatsAppUrl("faqCta");
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
-  const shouldReduceMotion = useReducedMotion();
-
-  const toggleItem = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+  const [open, setOpen] = useState<number | null>(0);
+  const reduce = useReducedMotion();
 
   return (
-    <section
-      id="faqs"
-      ref={sectionRef}
-      className="py-24 lg:py-32 bg-[#F8FAFC] border-b border-gray-100 relative overflow-hidden"
-    >
-      <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          className="max-w-3xl mx-auto text-center space-y-4 mb-16 lg:mb-20"
-          initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          animate={isInView || shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-xs font-semibold tracking-wider uppercase text-navy">
-            <span className="w-1.5 h-1.5 rounded-full bg-navy" />
-            <span>{faq.badge}</span>
+    <section id="faqs" className="bg-surface-light">
+      <div className="mx-auto max-w-container px-4 sm:px-6 lg:px-8 py-24 lg:py-40">
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
+          <div className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start space-y-8">
+            <SectionLabel>{faq.badge}</SectionLabel>
+            <MaskedTextReveal
+              as="h2"
+              label={faq.headline}
+              className="font-heading text-[2.4rem] font-bold leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3rem]"
+              lines={[{ text: "Frequently" }, { text: "Asked", className: "text-gold-600" }, { text: "Questions", className: "text-gold-600" }]}
+            />
+            <Reveal delay={0.1} className="space-y-4">
+              <p className="text-base text-charcoal-light">{faq.helpPrompt}</p>
+              <WhatsAppButton messageKey="faqCta" variant="navy">
+                {faq.ctaText}
+              </WhatsAppButton>
+            </Reveal>
           </div>
 
-          <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-navy tracking-tight leading-tight">
-            {faq.headline}
-          </h2>
-        </motion.div>
-
-        {/* 9-Item Accordion List with Smooth Height Animation */}
-        <div className="max-w-3xl mx-auto space-y-4 mb-16">
-          {faq.items.map((item, index) => {
-            const isOpen = openIndex === index;
-
-            return (
-              <motion.div
-                key={item.question}
-                initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-                animate={
-                  isInView || shouldReduceMotion
-                    ? { opacity: 1, y: 0 }
-                    : { opacity: 0, y: 16 }
-                }
-                transition={{
-                  duration: 0.5,
-                  delay: shouldReduceMotion ? 0 : 0.04 * index,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className={`bg-white rounded-2xl border transition-all duration-300 overflow-hidden ${
-                  isOpen
-                    ? "border-gold/50 shadow-md"
-                    : "border-gray-200/90 shadow-xs hover:border-gold/30"
-                }`}
-              >
-                <button
-                  type="button"
-                  id={`faq-question-${index}`}
-                  aria-controls={`faq-answer-${index}`}
-                  aria-expanded={isOpen}
-                  onClick={() => toggleItem(index)}
-                  className="w-full text-left px-6 py-5 sm:px-7 sm:py-6 flex items-center justify-between gap-4 hover:bg-gray-50/50 transition-colors focus:outline-none"
-                >
-                  <span className="font-heading font-bold text-base sm:text-lg text-navy pr-2 leading-snug">
-                    {item.question}
-                  </span>
-                  <motion.div
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                    className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-colors ${
-                      isOpen
-                        ? "bg-navy text-white"
-                        : "bg-gray-100 text-charcoal hover:bg-gray-200"
-                    }`}
-                  >
-                    <ChevronDown className="w-4 h-4" />
-                  </motion.div>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      id={`faq-answer-${index}`}
-                      role="region"
-                      aria-labelledby={`faq-question-${index}`}
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 pb-6 pt-1 sm:px-7 sm:pb-7 text-sm sm:text-base text-charcoal-light leading-relaxed border-t border-gray-100 space-y-3">
-                        <p>{item.answer}</p>
-                        {item.statusNote && (
-                          <div className="inline-flex items-center gap-2 text-xs font-semibold text-navy bg-gold/15 px-3 py-1.5 rounded-lg border border-gold/30">
-                            <HelpCircle className="w-4 h-4 text-gold flex-shrink-0" />
-                            <span>{item.statusNote}</span>
+          <div className="lg:col-span-8">
+            <ul className="border-b border-navy/15">
+              {faq.items.map((item, i) => {
+                const isOpen = open === i;
+                return (
+                  <li key={item.question} className="border-t border-navy/15">
+                    <h3>
+                      <button
+                        type="button"
+                        id={`faq-q-${i}`}
+                        aria-expanded={isOpen}
+                        aria-controls={`faq-a-${i}`}
+                        onClick={() => setOpen(isOpen ? null : i)}
+                        className="group flex w-full items-center justify-between gap-6 py-6 text-left transition-colors focus-visible:outline-offset-[-2px]"
+                      >
+                        <span
+                          className={`font-heading text-lg font-semibold leading-snug transition-colors duration-300 sm:text-xl ${
+                            isOpen ? "text-navy" : "text-navy/80 group-hover:text-navy"
+                          }`}
+                        >
+                          {item.question}
+                        </span>
+                        <span
+                          className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border transition-all duration-500 ${
+                            isOpen
+                              ? "rotate-45 border-gold bg-gold text-navy"
+                              : "border-navy/25 text-navy group-hover:border-gold"
+                          }`}
+                          aria-hidden="true"
+                        >
+                          <Plus className="h-4 w-4" strokeWidth={2} />
+                        </span>
+                      </button>
+                    </h3>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          id={`faq-a-${i}`}
+                          role="region"
+                          aria-labelledby={`faq-q-${i}`}
+                          initial={reduce ? false : { height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
+                          transition={{ duration: 0.5, ease: EASE_INOUT }}
+                          className="overflow-hidden"
+                        >
+                          <div className="max-w-2xl space-y-4 pb-7 pr-12 text-[15px] leading-relaxed text-charcoal-light sm:text-base">
+                            <p>{item.answer}</p>
+                            {item.statusNote && (
+                              <Link
+                                href={getWhatsAppUrl(`Hello, I have a question about the Goal Grid programme: ${item.question}`)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 text-sm font-semibold text-navy underline decoration-gold decoration-2 underline-offset-4 transition-colors hover:text-gold-700"
+                              >
+                                <MessageCircle className="h-4 w-4 text-gold-600" strokeWidth={1.75} aria-hidden="true" />
+                                Ask the team on WhatsApp
+                              </Link>
+                            )}
                           </div>
-                        )}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
-
-        {/* Bottom Contact Touchpoint */}
-        <motion.div
-          className="max-w-md mx-auto text-center space-y-3 bg-white p-6 rounded-2xl border border-gray-200/90 shadow-sm"
-          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
-          animate={isInView || shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <p className="text-sm text-charcoal-light font-medium">
-            {faq.helpPrompt}
-          </p>
-          <Link
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-navy hover:text-gold transition-colors"
-          >
-            <MessageCircle className="w-4 h-4 text-gold fill-gold/20" />
-            <span>{faq.ctaText} →</span>
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

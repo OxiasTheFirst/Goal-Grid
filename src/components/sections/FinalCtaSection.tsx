@@ -1,80 +1,56 @@
-"use client";
-
-import { useRef } from "react";
-import Link from "next/link";
-import { motion, useInView, useReducedMotion } from "motion/react";
-import { getWhatsAppUrl } from "@/config/site";
+import Image from "next/image";
+import { siteConfig } from "@/config/site";
 import { landingPageData } from "@/data/landing-page-data";
-import { MessageCircle, ArrowRight } from "lucide-react";
+import { MaskedTextReveal } from "@/components/motion/MaskedTextReveal";
+import { ParallaxImage } from "@/components/motion/ParallaxImage";
+import { Reveal } from "@/components/motion/Reveal";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
+/** Closing scene: the skyline from the hero photograph (a different crop), BMB identity, one clear action. */
 export function FinalCtaSection() {
   const { finalCta } = landingPageData;
-  const whatsappUrl = getWhatsAppUrl("finalCta");
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
-  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section ref={sectionRef} className="py-24 lg:py-36 bg-white relative overflow-hidden">
-      <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Floating High-Contrast Container in Deep Navy #142642 */}
-        <motion.div
-          initial={shouldReduceMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.96 }}
-          animate={isInView || shouldReduceMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.96 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="relative bg-navy text-white rounded-3xl p-8 sm:p-14 lg:p-20 border-2 border-gold/40 shadow-2xl overflow-hidden max-w-5xl mx-auto"
-        >
-          {/* Subtle Ambient Radial Highlight */}
-          <div className="absolute -top-32 -right-32 w-96 h-96 bg-gold/15 blur-[120px] rounded-full pointer-events-none" />
-          <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-navy-600/40 blur-[120px] rounded-full pointer-events-none" />
+    <section id="join" className="grain relative isolate flex min-h-[44rem] items-center overflow-hidden bg-navy text-white lg:min-h-[52rem]">
+      <ParallaxImage src="/images/hero-cinematic-bg.jpg" imgClassName="object-cover object-[88%_20%] scale-125 origin-[88%_20%]" />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-navy via-navy/70 to-navy" />
+      <div aria-hidden="true" className="absolute inset-0 bg-navy/35" />
 
-          {/* Coordinate Pattern Accent */}
-          <div
-            className="absolute inset-0 pointer-events-none opacity-[0.035]"
-            style={{
-              backgroundImage: `linear-gradient(to right, #FFFFFF 1px, transparent 1px), linear-gradient(to bottom, #FFFFFF 1px, transparent 1px)`,
-              backgroundSize: "40px 40px",
-            }}
+      <div className="relative mx-auto w-full max-w-container px-4 sm:px-6 lg:px-8 py-24 text-center">
+        <Reveal className="mb-10 flex flex-col items-center gap-4">
+          <Image
+            src={siteConfig.brand.logoNavy}
+            alt="BMB Strategy & Advisory"
+            width={140}
+            height={50}
+            className="h-11 w-auto brightness-0 invert"
           />
+          <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-gold">{finalCta.badge}</p>
+        </Reveal>
 
-          <div className="relative z-10 max-w-3xl mx-auto text-center space-y-6 sm:space-y-8">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-gold/30 text-xs font-semibold tracking-wider uppercase text-gold shadow-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-              <span>{finalCta.badge}</span>
-            </div>
+        <MaskedTextReveal
+          as="h2"
+          label={finalCta.headline}
+          className="mx-auto max-w-4xl font-heading text-[2.2rem] font-bold leading-[1.06] tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl"
+          lines={[
+            { text: "Another Year" },
+            { text: "With the Same" },
+            { text: "Unfinished Goal," },
+            { text: "or Three Months", className: "text-gold" },
+            { text: "That Change It?", className: "text-gold" },
+          ]}
+        />
 
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
-              {finalCta.headline}
-            </h2>
-
-            <p className="text-base sm:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto font-normal">
-              {finalCta.subheadline}
-            </p>
-
-            <div className="pt-4 flex flex-col items-center gap-3">
-              <Link
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-gold text-navy text-base sm:text-lg font-bold px-10 py-4.5 rounded-full hover:bg-gold-400 transition-all shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 group"
-              >
-                <MessageCircle className="w-5 h-5 text-navy fill-navy/20" />
-                <span>{finalCta.ctaText}</span>
-                <ArrowRight className="w-4 h-4 text-navy transition-transform group-hover:translate-x-1" />
-              </Link>
-
-              <p className="text-xs sm:text-sm font-medium text-white/60">
-                {finalCta.pricingNote}
-              </p>
-            </div>
-
-            <div className="pt-6 border-t border-navy-700/90">
-              <p className="text-sm text-gold font-medium tracking-wide">
-                “{finalCta.closingNote}”
-              </p>
-            </div>
-          </div>
-        </motion.div>
+        <Reveal delay={0.1}>
+          <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">{finalCta.subheadline}</p>
+        </Reveal>
+        <Reveal delay={0.2} className="mt-10 flex flex-col items-center gap-4">
+          <WhatsAppButton messageKey="finalCta" variant="gold" className="px-9 py-4 text-base">
+            {finalCta.ctaText}
+          </WhatsAppButton>
+          <p className="text-sm font-semibold text-gold">{finalCta.pricingNote}</p>
+          <p className="text-sm text-white/55">{finalCta.closingNote}</p>
+        </Reveal>
       </div>
     </section>
   );

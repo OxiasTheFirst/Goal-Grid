@@ -1,117 +1,67 @@
 import Image from "next/image";
 import Link from "next/link";
-import { siteConfig, getWhatsAppUrl } from "@/config/site";
-import { MessageCircle, Mail, Instagram, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, MessageCircle } from "lucide-react";
+import { getWhatsAppUrl, siteConfig } from "@/config/site";
+import { landingPageData } from "@/data/landing-page-data";
 
+/**
+ * Footer. Only verified identity is shown: BMB logo/entity, programme dates, anchors, WhatsApp.
+ * The Instagram handle and email that previously appeared here are NOT in the client brief
+ * (which lists them as placeholders), so they have been removed until supplied.
+ */
 export function Footer() {
-  const whatsappUrl = getWhatsAppUrl("footerLink");
-
+  const { footer } = landingPageData;
   return (
-    <footer className="bg-navy text-white border-t-2 border-gold/25 relative overflow-hidden transition-colors">
-      {/* Subtle Ambient Glow */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-gold/5 blur-[140px] rounded-full pointer-events-none" />
-      <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 pb-12 border-b border-navy-700/60">
-          {/* Brand & Mission Column */}
-          <div className="md:col-span-5 space-y-5">
-            <div className="flex items-center gap-3.5">
-              <div className="relative h-14 w-14 rounded-xl overflow-hidden border border-gold/30 shadow-md flex-shrink-0 bg-white">
-                <Image
-                  src={siteConfig.brand.logoBadge}
-                  alt="BMB Strategy & Advisory"
-                  fill
-                  className="object-cover"
-                />
+    <footer className="relative overflow-hidden bg-navy text-white">
+      <div className="mx-auto max-w-container px-4 sm:px-6 lg:px-8 pt-16 lg:pt-24 pb-10">
+        <div className="grid gap-14 md:grid-cols-12 border-b border-white/10 pb-14">
+          <div className="md:col-span-6 space-y-6">
+            <div className="flex items-center gap-4">
+              <div className="relative h-14 w-14 overflow-hidden rounded-lg border border-gold/30">
+                <Image src={siteConfig.brand.logoBadge} alt="BMB Strategy & Advisory" fill sizes="56px" className="object-cover" />
               </div>
               <div>
-                <h3 className="font-heading font-bold text-lg text-white tracking-tight">
-                  Goal Grid
-                </h3>
-                <p className="text-xs text-gold font-medium tracking-wider uppercase">
-                  BMB Strategy & Advisory Ltd.
-                </p>
+                <p className="font-heading text-lg font-semibold">{footer.programmeName}</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-gold">{footer.advisoryEntity}</p>
               </div>
             </div>
-
-            <p className="text-sm text-white/70 leading-relaxed max-w-sm">
-              A practical 3-month goal execution programme for business owners.
-              Transforming strategic ambition into structured daily execution from
-              January to March 2027.
+            <p className="max-w-md text-sm leading-relaxed text-white/65">
+              A practical 3-month goal execution programme for business owners, running {footer.duration}.
             </p>
-
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-700/60 border border-gold/20 text-xs text-gold">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold animate-pulse" />
-              <span>Next Cohort: January–March 2027</span>
-            </div>
           </div>
 
-          {/* Quick Anchor Links */}
-          <div className="md:col-span-4 space-y-4">
-            <h4 className="font-heading font-semibold text-xs tracking-wider uppercase text-gold">
-              Programme Navigation
-            </h4>
-            <ul className="space-y-2.5">
-              {siteConfig.navItems.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-white/75 hover:text-white transition-colors inline-flex items-center gap-1 group"
-                  >
-                    <span>{item.label}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 transition-all text-gold" />
+          <nav className="md:col-span-3" aria-label="Footer">
+            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.22em] text-gold">Navigate</p>
+            <ul className="space-y-3">
+              {footer.links.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="group inline-flex items-center gap-1 text-sm text-white/75 transition-colors hover:text-white">
+                    {l.label}
+                    <ArrowUpRight className="h-3.5 w-3.5 text-gold opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true" />
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Contact & Touchpoints */}
-          <div className="md:col-span-3 space-y-4">
-            <h4 className="font-heading font-semibold text-xs tracking-wider uppercase text-gold">
-              Direct Contact
-            </h4>
-            <p className="text-xs text-white/60 leading-relaxed">
-              Have questions regarding programme structure or enrolment? Connect
-              directly with the advisory team.
+          <div className="md:col-span-3">
+            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.22em] text-gold">Contact</p>
+            <p className="mb-4 text-sm leading-relaxed text-white/65">
+              Questions about the programme or enrolment? Message the advisory team directly.
             </p>
-
-            <div className="space-y-2.5 pt-1">
-              <Link
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-sm text-white/80 hover:text-white transition-colors group"
-              >
-                <div className="w-8 h-8 rounded-full bg-navy-700 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-navy transition-colors">
-                  <MessageCircle className="w-4 h-4" />
-                </div>
-                <span>WhatsApp Click-to-Chat</span>
-              </Link>
-
-              <div className="flex items-center gap-2.5 text-sm text-white/60">
-                <div className="w-8 h-8 rounded-full bg-navy-700/50 flex items-center justify-center text-white/40">
-                  <Instagram className="w-4 h-4" />
-                </div>
-                <span className="text-xs">@bmbstrategy (Official)</span>
-              </div>
-
-              <div className="flex items-center gap-2.5 text-sm text-white/60">
-                <div className="w-8 h-8 rounded-full bg-navy-700/50 flex items-center justify-center text-white/40">
-                  <Mail className="w-4 h-4" />
-                </div>
-                <span className="text-xs">info@bmbstrategy.com</span>
-              </div>
-            </div>
+            <Link
+              href={getWhatsAppUrl("footerLink")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-2.5 text-sm font-medium transition-colors hover:border-gold hover:text-gold"
+            >
+              <MessageCircle className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+              Chat on WhatsApp
+            </Link>
           </div>
         </div>
 
-        {/* Bottom Legal Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
-          <p>© 2026 BMB Strategy & Advisory Ltd. All rights reserved.</p>
-          <p className="text-white/40">
-            Goal Grid™ is an executive advisory programme.
-          </p>
-        </div>
+        <p className="pt-8 text-xs text-white/45">{footer.copyright}</p>
       </div>
     </footer>
   );

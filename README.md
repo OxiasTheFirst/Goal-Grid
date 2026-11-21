@@ -34,7 +34,9 @@ Goal Grid/
 │   ├── components/
 │   │   ├── layout/          # Header, navigation, footer, announcement bar
 │   │   ├── sections/        # Modular page sections (Hero, Problem, GRID, etc.)
-│   │   └── ui/              # Buttons, cards, accordion, WhatsApp floating action
+│   │   ├── motion/          # MaskedTextReveal, Reveal, ParallaxImage
+│   │   └── ui/              # WhatsAppButton, SectionLabel, FloatingWhatsApp
+│   ├── lib/motion.ts        # Easing + duration tokens shared by all animation
 │   ├── config/
 │   │   └── site.ts          # Site metadata, WhatsApp links, navigation constants
 │   ├── data/                # Structured programme copy, FAQs, GRID stage definitions
@@ -90,6 +92,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 npm run build
 npm run start
 ```
+> `next/font/google` downloads Sora and Manrope at build time. On a machine without access to `fonts.googleapis.com` the build fails with "Failed to fetch font". Build on a connected machine (Vercel is fine), or provide a local stub via `NEXT_FONT_GOOGLE_MOCKED_RESPONSES` for offline verification only.
 
 ---
 

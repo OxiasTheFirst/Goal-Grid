@@ -274,18 +274,12 @@ export const landingPageData = {
   host: {
     badge: "MEET THE HOST",
     headline: "Programme Leadership & Host Advisory",
-    name: "@Bolaji Babalola",
-    role: "Programme Host",
-    organization: "BMB Strategy and Advisory Limited",
-    biography:
-      "Goal Grid is hosted and led under BMB Strategy and Advisory Limited, designed as an intensive, practical 12-week programme bridging the gap between setting goals and daily execution.",
     duties: [
       "Leads Friday Night Business Class, the weekly live teaching on Google Meet",
       "Guides the cohort curriculum, group structure, and weekly priorities",
       "Conducts your private 1-on-1 diagnostic session focused on your specific business goal",
     ],
-    // NOTE: the approved host biography and credentials have NOT been supplied. Nothing is invented and no
-    // placeholder is shown publicly; the outstanding item is tracked in docs/HANDOVER.md.
+    // Name, title, tagline and biography live in src/data/host-profile.ts (verbatim, host-supplied).
   },
 
   // Accountability Architecture (Credibility / Integrity Focus)

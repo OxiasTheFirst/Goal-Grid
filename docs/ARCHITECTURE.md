@@ -1,5 +1,7 @@
 # Goal Grid — Application Architecture
 
+> **Phase 2 note:** `AnnouncementBar` and `WhatsAppButton` no longer exist. All actions use `components/ui/CtaButton.tsx` with `resolveCta()` from `src/config/site.ts`. See `docs/HANDOVER.md` §0.
+
 ## 1. Architectural Philosophy
 
 The Goal Grid website architecture is designed around four foundational principles:

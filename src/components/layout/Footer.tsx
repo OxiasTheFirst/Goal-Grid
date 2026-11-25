@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, MessageCircle } from "lucide-react";
-import { getWhatsAppUrl, siteConfig } from "@/config/site";
+import { ArrowUpRight } from "lucide-react";
+import { siteConfig } from "@/config/site";
+import { CtaButton } from "@/components/ui/CtaButton";
 import { landingPageData } from "@/data/landing-page-data";
 
 /**
- * Footer. Only verified identity is shown: BMB logo/entity, programme dates, anchors, WhatsApp.
+ * Footer. Only verified identity is shown: BMB logo/entity, programme duration, anchors and the contact actions.
  * The Instagram handle and email that previously appeared here are NOT in the client brief
  * (which lists them as placeholders), so they have been removed until supplied.
  */
@@ -18,7 +19,7 @@ export function Footer() {
           <div className="md:col-span-6 space-y-6">
             <div className="flex items-center gap-4">
               <div className="relative h-14 w-14 overflow-hidden rounded-lg border border-gold/30">
-                <Image src={siteConfig.brand.logoBadge} alt="BMB Strategy & Advisory" fill sizes="56px" className="object-cover" />
+                <Image src={siteConfig.brand.logoBadge} alt="BMB Strategy and Advisory Limited" fill sizes="56px" className="object-cover" />
               </div>
               <div>
                 <p className="font-heading text-lg font-semibold">{footer.programmeName}</p>
@@ -26,7 +27,7 @@ export function Footer() {
               </div>
             </div>
             <p className="max-w-md text-sm leading-relaxed text-white/65">
-              A practical 3-month goal execution programme for business owners, running {footer.duration}.
+              A practical 12-week goal execution programme for business owners and career professionals.
             </p>
           </div>
 
@@ -47,17 +48,12 @@ export function Footer() {
           <div className="md:col-span-3">
             <p className="mb-5 font-body font-medium text-[11px] uppercase tracking-[0.18em] text-gold">Contact</p>
             <p className="mb-4 text-sm leading-relaxed text-white/65">
-              Questions about the programme or enrolment? Message the advisory team directly.
+              Ready to join, or just have a question? Choose the route that fits.
             </p>
-            <Link
-              href={getWhatsAppUrl("footerLink")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-2.5 text-sm font-medium transition-colors hover:border-gold hover:text-gold"
-            >
-              <MessageCircle className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
-              Chat on WhatsApp
-            </Link>
+            <div className="flex flex-col items-start gap-3">
+              <CtaButton kind="signUp" tone="dark" />
+              <CtaButton kind="chat" tone="dark" />
+            </div>
           </div>
         </div>
 

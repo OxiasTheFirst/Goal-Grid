@@ -1,6 +1,6 @@
 # Goal Grid — Programme Website
 
-Goal Grid is a practical three-month goal-execution programme for business owners, scheduled for January–March 2027. It is organized and delivered under **BMB Strategy & Advisory Ltd.**
+Goal Grid is a practical 12-week goal-execution programme for business owners and career professionals. Registration is scheduled to open on 1 December 2026. It is organized and delivered under **BMB Strategy and Advisory Limited**.
 
 This repository hosts the official frontend website for Goal Grid: a high-performance, single-page presentation and WhatsApp conversion experience.
 
@@ -32,10 +32,10 @@ Goal Grid/
 │   │   ├── layout.tsx       # Root layout, Google Fonts, OpenGraph metadata
 │   │   └── page.tsx         # Goal Grid single-page landing experience
 │   ├── components/
-│   │   ├── layout/          # Header, navigation, footer, announcement bar
+│   │   ├── layout/          # Header, navigation, footer
 │   │   ├── sections/        # Modular page sections (Hero, Problem, GRID, etc.)
 │   │   ├── motion/          # MaskedTextReveal, Reveal, ParallaxImage
-│   │   └── ui/              # WhatsAppButton, SectionLabel, FloatingWhatsApp
+│   │   └── ui/              # CtaButton, Rich, SectionLabel, FloatingWhatsApp
 │   ├── lib/motion.ts        # Easing + duration tokens shared by all animation
 │   ├── config/
 │   │   └── site.ts          # Site metadata, WhatsApp links, navigation constants
@@ -74,11 +74,13 @@ Copy the example environment file:
 ```bash
 cp .env.example .env.local
 ```
-Set the client's confirmed WhatsApp contact number:
+The WhatsApp number (+234 805 211 0631) is fixed in `src/config/site.ts`. Two destinations are **still pending from the client** and are set by environment variable (or by pasting the URL into the named constant in `src/config/site.ts`):
 ```env
-NEXT_PUBLIC_WHATSAPP_PHONE=234XXXXXXXXXX
+NEXT_PUBLIC_SELLAR_SIGN_UP_URL=          # Sign Up → Sellar registration/store page (PENDING)
+NEXT_PUBLIC_GOOGLE_FORM_START_HERE_URL=  # Start Here → Google Form (PENDING)
 NEXT_PUBLIC_SITE_URL=https://goalgridproject.com
 ```
+Until they are set, Sign Up / Start Here point at the in-page "How to join" section and render disabled inside it. See `docs/HANDOVER.md` §0.
 
 ### Development Server
 Run the local Next.js development server:

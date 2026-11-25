@@ -3,12 +3,12 @@ import { landingPageData } from "@/data/landing-page-data";
 import { MaskedTextReveal } from "@/components/motion/MaskedTextReveal";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { CtaButton } from "@/components/ui/CtaButton";
 
 /**
  * Investment. The fee is the typographic hero of the section.
- * Instalments are stated exactly as confirmed ("available"); no schedule is invented and
- * there is no urgency or scarcity messaging.
+ * Two payment options are shown as stated by the client (₦50,000 standard, ₦60,000 instalment option).
+ * No instalment schedule or extra conditions are invented, and there is no urgency or scarcity messaging.
  */
 export function PricingSection() {
   const { pricing } = landingPageData;
@@ -26,22 +26,26 @@ export function PricingSection() {
             <MaskedTextReveal
               as="h2"
               label={pricing.headline}
-              className="font-heading font-medium tracking-[-0.03em] text-white"
+              className="font-heading font-semibold tracking-[-0.03em] text-white"
               lines={[
                 { text: pricing.fee, className: "text-[clamp(3.5rem,16vw,5.5rem)] leading-[0.95] font-semibold text-gold sm:text-[clamp(5rem,14vw,8rem)] lg:text-[clamp(5rem,8.6vw,8.5rem)]" },
-                { text: "for 3 months of structure,", className: "mt-3 text-2xl leading-tight tracking-[-0.02em] sm:text-4xl" },
+                { text: "for 12 weeks of structure,", className: "mt-3 text-2xl leading-tight tracking-[-0.02em] sm:text-4xl" },
                 { text: "support and accountability", className: "text-2xl leading-tight tracking-[-0.02em] sm:text-4xl" },
               ]}
             />
-            <Reveal delay={0.1} className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-              <span className="font-body font-medium uppercase tracking-[0.16em] text-white/60">{pricing.feePeriod}</span>
-              <span className="h-px w-8 bg-gold" aria-hidden="true" />
-              <span className="font-semibold text-gold">{pricing.instalmentNote}</span>
-            </Reveal>
-            <Reveal delay={0.15}>
-              <p className="max-w-xl text-sm leading-relaxed text-white/60">
-                Instalment dates and amounts are being finalised. Ask the team on WhatsApp for the current options.
+            <Reveal delay={0.1}>
+              <p className="mb-3 font-body text-xs font-medium uppercase tracking-[0.16em] text-white/60">
+                Payment options · {pricing.feePeriod}
               </p>
+              <dl className="grid max-w-xl grid-cols-1 border-y border-white/20 sm:grid-cols-2 sm:divide-x sm:divide-white/20">
+                {pricing.options.map((o, i) => (
+                  <div key={o.label} className={`py-5 sm:py-6 ${i === 1 ? "border-t border-white/20 sm:border-t-0 sm:pl-8" : "sm:pr-8"}`}>
+                    <dt className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-gold">{o.label}</dt>
+                    <dd className="mt-2 font-heading text-4xl font-semibold tabular-nums tracking-tight text-white sm:text-[2.6rem]">{o.amount}</dd>
+                    <dd className="mt-2 text-sm leading-snug text-white/65">{o.note}</dd>
+                  </div>
+                ))}
+              </dl>
             </Reveal>
           </div>
 
@@ -58,10 +62,9 @@ export function PricingSection() {
                 <li className="border-t border-white/15" aria-hidden="true" />
               </ul>
             </Reveal>
-            <Reveal delay={0.1} className="mt-8">
-              <WhatsAppButton messageKey="pricingCta" variant="gold">
-                {pricing.ctaText}
-              </WhatsAppButton>
+            <Reveal delay={0.1} className="mt-8 flex flex-wrap items-center gap-3">
+              <CtaButton kind="signUp" tone="dark" size="lg" />
+              <CtaButton kind="enquiry" tone="dark" size="lg" />
             </Reveal>
           </div>
         </div>

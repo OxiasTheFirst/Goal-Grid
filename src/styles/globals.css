@@ -72,3 +72,21 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ── Cinematic crossfade frame (CrossfadeFrame) ─────────────────────────────
+   Slow push-out drift on the visible slide, plus a progress fill for its indicator.
+   Only transform/opacity are animated, so it stays on the compositor. */
+@keyframes gg-drift {
+  from { transform: scale(1.08) translate3d(var(--gg-x, 1.4%), var(--gg-y, 0.6%), 0); }
+  to   { transform: scale(1) translate3d(0, 0, 0); }
+}
+@keyframes gg-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Heavier outline for the GRID letters: reads as solid lettering even before the gold fill arrives */
+.text-outline-strong {
+  color: transparent;
+  -webkit-text-stroke: 1.75px rgba(201, 164, 92, 0.75);
+}

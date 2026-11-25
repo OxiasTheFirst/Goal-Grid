@@ -23,22 +23,23 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Goal Grid — 3-Month Goal Execution Programme for Business Owners",
+  title: "Goal Grid — 12-Week Goal Execution Programme for Business Owners and Career Professionals",
   description:
-    "Don't Just Set the Goal. Build the Path to Achieve It. Goal Grid is a practical 3-month programme from BMB Strategy & Advisory designed to help business owners execute with structure, discipline, and momentum.",
+    "Don't Just Set the Goal. Build the Path to Achieve It. Goal Grid is a practical 12-week programme from BMB Strategy and Advisory Limited designed to help business owners and career professionals execute with structure, discipline, and momentum.",
   keywords: [
     "Goal Grid",
-    "BMB Strategy & Advisory",
+    "BMB Strategy and Advisory Limited",
     "business goals",
+    "career professionals",
     "goal execution programme",
     "business strategy",
     "accountability",
   ],
-  authors: [{ name: "BMB Strategy & Advisory Ltd." }],
+  authors: [{ name: "BMB Strategy and Advisory Limited" }],
   openGraph: {
-    title: "Goal Grid — 3-Month Goal Execution Programme for Business Owners",
+    title: "Goal Grid — 12-Week Goal Execution Programme for Business Owners and Career Professionals",
     description:
-      "Don't Just Set the Goal. Build the Path to Achieve It. January to March 2027.",
+      "Don't Just Set the Goal. Build the Path to Achieve It. A 12-week programme. Registration opens 1 December 2026.",
     url: siteConfig.url,
     siteName: "Goal Grid",
     locale: "en_GB",

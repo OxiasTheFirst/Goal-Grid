@@ -13,7 +13,9 @@ import {
 import { landingPageData } from "@/data/landing-page-data";
 import { MaskedTextReveal } from "@/components/motion/MaskedTextReveal";
 import { Reveal } from "@/components/motion/Reveal";
+import { GridPathIllustration } from "@/components/motion/GridPathIllustration";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { Rich } from "@/components/ui/Rich";
 
 /**
  * GRID framework.
@@ -26,7 +28,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
  */
 
 const GOLD = "rgba(201,164,92,1)";
-const GOLD_0 = "rgba(201,164,92,0)";
+const GOLD_0 = "rgba(201,164,92,0.1)"; // letters keep a faint body before they are reached
 
 function Stage({
   step,
@@ -70,7 +72,7 @@ function Stage({
       <div style={{ perspective: 900 }}>
         <motion.p
           aria-hidden="true"
-          className="origin-bottom select-none font-heading font-semibold leading-[0.9] tracking-[-0.02em] text-outline text-[6.5rem] sm:text-[8rem] lg:text-[clamp(6.5rem,12vw,11.5rem)]"
+          className="origin-bottom select-none font-heading font-bold leading-[0.9] tracking-[-0.02em] text-outline-strong text-[7.5rem] sm:text-[9rem] lg:text-[clamp(7rem,13vw,12.5rem)]"
           style={{ color: letterFill, rotateX: letterTilt }}
         >
           {step.letter}
@@ -78,12 +80,12 @@ function Stage({
       </div>
 
       <motion.div style={{ opacity: copyOpacity }} className="mt-3 lg:mt-6 pr-4">
-        <h3 className="font-heading text-2xl font-medium tracking-tight text-white sm:text-3xl">
+        <h3 className="font-heading text-2xl font-semibold tracking-tight text-white sm:text-[2rem]">
           <span className="sr-only">{step.letter} — </span>
           {step.name}
         </h3>
-        <p className="mt-3 text-sm font-semibold leading-snug text-gold sm:text-base">{step.question}</p>
-        <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/65 sm:text-base">{step.description}</p>
+        <p className="mt-3 text-base font-semibold leading-snug text-gold sm:text-lg">{step.question}</p>
+        <p className="mt-3 max-w-xs text-base leading-relaxed text-white/75">{step.description}</p>
       </motion.div>
     </li>
   );
@@ -115,17 +117,24 @@ export function GridMethodSection() {
       />
 
       <div className="relative mx-auto max-w-container px-4 sm:px-6 lg:px-8 py-24 lg:py-40">
-        <div className="max-w-3xl space-y-8">
+        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+         <div className="space-y-8 lg:col-span-7">
           <SectionLabel tone="dark">{gridMethod.badge}</SectionLabel>
           <MaskedTextReveal
             as="h2"
             label={gridMethod.headline}
-            className="font-heading text-[2.6rem] font-medium leading-[1.04] tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl"
+            className="font-heading text-[2.6rem] font-bold leading-[1.02] tracking-[-0.03em] text-white sm:text-6xl lg:text-[4.25rem] xl:text-7xl"
             lines={[{ text: "Four Steps" }, { text: "From “I Want”", className: "text-gold" }, { text: "to “I Did”", className: "text-gold" }]}
           />
           <Reveal delay={0.15}>
-            <p className="max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg">{gridMethod.subtitle}</p>
+            <p className="max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg lg:text-xl lg:leading-relaxed">
+              <Rich text={gridMethod.subtitle} strongClassName="font-semibold text-white" />
+            </p>
           </Reveal>
+         </div>
+         <Reveal delay={0.2} className="lg:col-span-5">
+           <GridPathIllustration className="mx-auto w-full max-w-[34rem] lg:max-w-none" />
+         </Reveal>
         </div>
 
         {/* Progression */}
@@ -147,7 +156,7 @@ export function GridMethodSection() {
         </div>
 
         <Reveal className="mt-24 lg:mt-32 max-w-3xl border-l-2 border-gold pl-6">
-          <p className="font-heading text-2xl font-medium leading-snug tracking-tight text-white sm:text-3xl">
+          <p className="font-heading text-2xl font-semibold leading-snug tracking-tight text-white sm:text-3xl">
             {gridMethod.closingStatement}
           </p>
         </Reveal>

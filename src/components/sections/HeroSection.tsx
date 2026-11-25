@@ -6,7 +6,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { CalendarDays, CheckSquare, UserCheck, Video } from "lucide-react";
 import { landingPageData } from "@/data/landing-page-data";
 import { MaskedTextReveal } from "@/components/motion/MaskedTextReveal";
-import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { CtaButton } from "@/components/ui/CtaButton";
 import { DUR, EASE_INOUT, EASE_SOFT } from "@/lib/motion";
 
 /**
@@ -147,12 +147,13 @@ export function HeroSection() {
           </motion.p>
 
           <motion.div {...fade(2.2)} className="mt-8 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
-            <WhatsAppButton messageKey="heroCta" variant="gold">
-              {hero.ctaText}
-            </WhatsAppButton>
+            <div className="flex flex-wrap items-center gap-3">
+              <CtaButton kind="signUp" tone="dark" size="lg" />
+              <CtaButton kind="startHere" tone="dark" size="lg" />
+            </div>
             <div className="text-sm">
               <p className="font-semibold tracking-wide text-gold">{hero.pricingNote}</p>
-              <p className="text-xs text-white/55">Enquire directly on WhatsApp</p>
+              <p className="text-xs text-white/60">{hero.registrationNote}</p>
             </div>
           </motion.div>
         </div>

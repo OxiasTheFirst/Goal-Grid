@@ -30,10 +30,10 @@ export function FloatingWhatsApp() {
           transition={{ type: "spring", stiffness: 260, damping: 24 }}
         >
           <Link
-            href={getWhatsAppUrl("floatingBubble")}
+            href={getWhatsAppUrl("chat")}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Chat with the Goal Grid team on WhatsApp"
+            aria-label="Chat with us on WhatsApp"
             className="flex items-center gap-2.5 rounded-full border border-gold/50 bg-navy/95 p-3.5 sm:px-5 sm:py-3 text-white shadow-[0_12px_40px_-8px_rgba(20,38,66,0.7)] backdrop-blur transition-colors hover:border-gold hover:bg-navy"
           >
             <MessageCircle className="h-5 w-5 text-gold" strokeWidth={1.75} aria-hidden="true" />

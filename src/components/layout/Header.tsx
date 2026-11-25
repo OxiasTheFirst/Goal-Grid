@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Menu, MessageCircle, X } from "lucide-react";
-import { getWhatsAppUrl, siteConfig } from "@/config/site";
-import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
+import { Menu, X } from "lucide-react";
+import { siteConfig } from "@/config/site";
+import { CtaButton } from "@/components/ui/CtaButton";
 import { EASE_INOUT, EASE_REVEAL } from "@/lib/motion";
 
 /**
  * Fixed header that floats over the hero.
- * - Transparent at the top, deep-navy glass once scrolled; the announcement strip collapses away.
+ * - Transparent at the top, deep-navy glass once scrolled. (The old announcement strip was removed in Phase 2.)
  * - Scroll-spy underlines the section currently in view.
  * - Mobile menu is a full-screen navy sheet with staggered masked links.
  */
@@ -58,14 +58,6 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div
-        className={`overflow-hidden transition-[max-height,opacity] duration-500 ease-out ${
-          scrolled ? "max-h-0 opacity-0" : "max-h-9 opacity-100"
-        }`}
-      >
-        <AnnouncementBar />
-      </div>
-
-      <div
         className={`transition-[background-color,box-shadow,backdrop-filter] duration-500 ${
           scrolled || open
             ? "bg-navy/90 backdrop-blur-xl shadow-[0_1px_0_rgba(201,164,92,0.18)]"
@@ -73,10 +65,10 @@ export function Header() {
         }`}
       >
         <div className="mx-auto flex h-[4.25rem] max-w-container items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link href="#top" className="flex items-center gap-4" aria-label="Goal Grid — BMB Strategy & Advisory, back to top">
+          <Link href="#top" className="flex items-center gap-4" aria-label="Goal Grid — BMB Strategy and Advisory Limited, back to top">
             <Image
               src={siteConfig.brand.logoNavy}
-              alt="BMB Strategy & Advisory"
+              alt="BMB Strategy and Advisory Limited"
               width={112}
               height={40}
               priority
@@ -85,7 +77,7 @@ export function Header() {
             <span className="hidden h-6 w-px bg-white/25 sm:block" aria-hidden="true" />
             <span className="hidden sm:flex flex-col leading-tight">
               <span className="font-heading text-base font-semibold tracking-tight text-white">Goal Grid</span>
-              <span className="text-[10px] font-medium uppercase tracking-[0.16em] text-white/55">Q1 2027 Cohort</span>
+              <span className="text-[10px] font-medium uppercase tracking-[0.16em] text-white/55">12-Week Programme</span>
             </span>
           </Link>
 
@@ -113,15 +105,7 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <Link
-              href={getWhatsAppUrl("navCta")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-navy transition-colors hover:bg-gold-300"
-            >
-              <MessageCircle className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
-              Join the Waitlist
-            </Link>
+            <CtaButton kind="signUp" tone="dark" className="hidden sm:inline-flex whitespace-nowrap !px-5 !py-2.5" />
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
@@ -167,16 +151,10 @@ export function Header() {
                 </span>
               ))}
             </nav>
-            <Link
-              href={getWhatsAppUrl("navCta")}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
-              className="mt-auto flex items-center justify-center gap-2 rounded-full bg-gold py-4 text-base font-semibold text-navy"
-            >
-              <MessageCircle className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
-              Join the Waitlist on WhatsApp
-            </Link>
+            <div className="mt-auto flex flex-col gap-3" onClick={() => setOpen(false)}>
+              <CtaButton kind="signUp" tone="dark" size="lg" className="w-full" />
+              <CtaButton kind="startHere" tone="dark" size="lg" className="w-full" />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

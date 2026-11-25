@@ -3,7 +3,7 @@ import { landingPageData } from "@/data/landing-page-data";
 import { MaskedTextReveal } from "@/components/motion/MaskedTextReveal";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { CtaButton } from "@/components/ui/CtaButton";
 
 /** Qualification as two typographic lists, not two cards. */
 export function AudienceQualifierSection() {
@@ -18,11 +18,13 @@ export function AudienceQualifierSection() {
             <MaskedTextReveal
               as="h2"
               label={qualifier.headline}
-              className="font-heading text-[2.4rem] font-medium leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3.25rem]"
+              className="font-heading text-[2.4rem] font-semibold leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3.25rem]"
               lines={[
                 { text: "Built for" },
                 { text: "Business Owners" },
-                { text: "Ready to Act,", },
+                { text: "& Career" },
+                { text: "Professionals" },
+                { text: "Ready to Act,", className: "text-gold-600" },
                 { text: "Not Just Plan", className: "text-gold-600" },
               ]}
             />
@@ -75,9 +77,7 @@ export function AudienceQualifierSection() {
             </div>
 
             <Reveal>
-              <WhatsAppButton messageKey="qualifierCta" variant="navy">
-                {qualifier.ctaText}
-              </WhatsAppButton>
+              <CtaButton kind="startHere" tone="light" />
             </Reveal>
           </div>
         </div>

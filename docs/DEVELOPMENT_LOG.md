@@ -383,3 +383,23 @@ The following points from the client foundation brief remain intentionally open 
 - Local rendering used static Space Grotesk/DM Sans files installed on the build machine, not Google's CDN files. The system DM Sans is the 9pt optical-size cut; Google's file defaults to its standard optical size, so tiny differences are possible. Confirm on the deployed site.
 - `latin-ext` is not preloaded, so on a first visit the ₦ may swap in a moment after first paint.
 - Real-device and non-Chrome browsers were not tested.
+
+---
+
+## Entry 013 — Phase 2: client-meeting corrections (2026-11-25)
+**Brief:** meeting of 24 Nov 2026 + `Goal_Grid_Website_Correction_Brief.docx`, plus a follow-up request for a cinematic three-image transition.
+
+**Decisions**
+- Announcement strip deleted outright (component, wrapper, collapse logic); header remains fixed and transparent over the hero. Nav primary action is **Sign Up**.
+- Company name: client confirmed **BMB**; legal form written as "BMB Strategy and Advisory Limited". Logo assets untouched.
+- CTA system: one `CtaButton` (`signUp`/`startHere`/`chat`/`enquiry`), one resolver (`resolveCta`). Sellar and Google Form URLs are named constants fed by env vars and are **pending**. While pending, buttons link to `#how-to-join` (never WhatsApp, never each other) and render disabled inside that section. `NEXT_PUBLIC_WHATSAPP_PHONE` was removed so a stale host variable cannot override the supplied number.
+- How to join was restructured from "four WhatsApp steps" to three independent routes (Sign Up / Start Here / Talk to us), because the old copy described a WhatsApp-only registration flow that no longer exists.
+- "Mondays": the original "what to do on Monday" became "what to do on Mondays" (plural, as the brief asks). Worth a client glance.
+- ₦60,000 is labelled "Instalment option", not "total", until the client confirms the meaning. No schedule invented.
+- Host biography absent: the old public "to be confirmed by the client" note was removed from the page (brief §8); the gap is tracked in HANDOVER.
+- Visuals are built in code (no image generation available): isometric GRID path (SVG, scroll-linked, reuses the stage-tile language), Outcomes "12-week record" (CSS grid clipped by scroll progress, captioned as illustration, not results), host crossfade.
+- Crossfade: incoming image fades over an opaque outgoing one (no dip), drift via CSS transform, pure opacity/transform; images pre-cropped to a common eye line and head scale; order chosen from the photos (welcome → teaching → composed).
+
+**Verification (run):** `tsc`, `next lint`, `next build` clean; 1440/390 renders; overflow sweep 360–1920; crossfade frame sequence; CTA/WhatsApp/rel audit; rendered-text search; reduced-motion check; configured-URL check with dummy URLs (dev only, not committed).
+**Not done / open:** see HANDOVER §0 (real Sellar/Form URLs untested; no real-device or non-Chrome testing; pre-existing reduced-motion hydration warning).
+

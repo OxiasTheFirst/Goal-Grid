@@ -5,8 +5,10 @@ import { motion, useInView, useReducedMotion } from "motion/react";
 import { landingPageData } from "@/data/landing-page-data";
 import { MaskedTextReveal } from "@/components/motion/MaskedTextReveal";
 import { Reveal } from "@/components/motion/Reveal";
+import { OutcomesRecord } from "@/components/motion/OutcomesRecord";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { CtaButton } from "@/components/ui/CtaButton";
+import { Rich } from "@/components/ui/Rich";
 import { EASE_SOFT } from "@/lib/motion";
 
 /** Each outcome comes to full contrast as it crosses the middle band of the viewport. */
@@ -19,15 +21,15 @@ function OutcomeRow({ item }: { item: (typeof landingPageData.outcomes.items)[nu
   return (
     <motion.li
       ref={ref}
-      animate={{ opacity: lit ? 1 : 0.5 }}
+      animate={{ opacity: lit ? 1 : 0.55 }}
       transition={{ duration: 0.6, ease: EASE_SOFT }}
       className="grid gap-x-8 gap-y-4 border-t border-white/15 py-9 lg:grid-cols-[7rem_1fr_24rem] lg:items-baseline lg:py-12"
     >
       <span className="font-heading font-medium tabular-nums text-sm text-gold">{item.number}</span>
-      <h3 className="font-heading text-[1.75rem] font-medium leading-[1.12] tracking-[-0.02em] text-white sm:text-4xl lg:text-[2.6rem]">
+      <h3 className="font-heading text-[1.75rem] font-semibold leading-[1.12] tracking-[-0.02em] text-white sm:text-4xl lg:text-[2.75rem]">
         {item.title}
       </h3>
-      <p className="max-w-md text-base leading-relaxed text-white/65 lg:text-base">{item.description}</p>
+      <p className="max-w-md text-base leading-relaxed text-white/75 lg:text-lg"><Rich text={item.description} strongClassName="font-semibold text-white" /></p>
     </motion.li>
   );
 }
@@ -47,18 +49,22 @@ export function OutcomesSection() {
           <MaskedTextReveal
             as="h2"
             label={outcomes.headline}
-            className="font-heading text-[1.85rem] font-medium leading-[1.08] tracking-[-0.03em] text-white min-[400px]:text-[2.1rem] sm:text-5xl lg:text-7xl"
+            className="font-heading text-[1.85rem] font-bold leading-[1.06] tracking-[-0.03em] text-white min-[400px]:text-[2.1rem] sm:text-5xl lg:text-7xl"
             lines={[
-              { text: "By March, Your Goal" },
+              { text: "By Week 12, Your Goal" },
               { text: "Stops Being a Wish" },
               { text: "and Becomes a Record", className: "text-gold" },
               { text: "of Work Done" },
             ]}
           />
           <Reveal delay={0.1}>
-            <p className="max-w-xl text-base text-white/65 sm:text-lg">{outcomes.subtitle}</p>
+            <p className="max-w-xl text-base text-white/75 sm:text-lg lg:text-xl">{outcomes.subtitle}</p>
           </Reveal>
         </div>
+
+        <Reveal className="mb-16 lg:mb-24">
+          <OutcomesRecord />
+        </Reveal>
 
         <ol>
           {outcomes.items.map((item) => (
@@ -72,9 +78,7 @@ export function OutcomesSection() {
             These are the programme’s intended outcomes. They describe the structure and habits Goal Grid is built to
             develop, not guaranteed business results.
           </p>
-          <WhatsAppButton messageKey="outcomesCta" variant="gold">
-            {outcomes.ctaText}
-          </WhatsAppButton>
+          <CtaButton kind="signUp" tone="dark" size="lg" />
         </div>
       </div>
     </section>

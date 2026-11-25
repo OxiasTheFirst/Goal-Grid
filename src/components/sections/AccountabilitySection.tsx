@@ -17,7 +17,7 @@ export function AccountabilitySection() {
           <MaskedTextReveal
             as="h2"
             label={accountability.headline}
-            className="font-heading text-[2.4rem] font-medium leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[3.4rem]"
+            className="font-heading text-[2.4rem] font-semibold leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[3.4rem]"
             lines={[{ text: "The Programme Structure" }, { text: <>That Drives <span className="whitespace-nowrap">Follow-Through</span></>, className: "text-gold-600" }]}
           />
           <Reveal delay={0.1}>

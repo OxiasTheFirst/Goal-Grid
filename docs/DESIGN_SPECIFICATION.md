@@ -1,5 +1,7 @@
 # Goal Grid — Design Specification (Final Approved)
 
+> **Phase 2 update (2026-11-25).** This specification is historical where it conflicts with the following. Header: no announcement strip. Programme: 12 weeks for business owners and career professionals; registration opens 1 December 2026; no waitlist. Teaching: Friday Night Business Class (weekly, Google Meet). Pricing: ₦50,000 standard, ₦60,000 instalment option. Entity: BMB Strategy and Advisory Limited. CTAs: **Sign Up** (Sellar, pending), **Start Here** (Google Form, pending), **Chat with Us** and **Make an Enquiry** (WhatsApp +234 805 211 0631). How to join: three routes, not four WhatsApp steps. Host: three-image crossfade portrait. GRID: isometric path illustration, bolder letters. Outcomes: 12-week record visual. Problem: tags removed, key phrases emphasised. Type: Space Grotesk 600–700 for major headings. Full detail and status in `docs/HANDOVER.md` §0.
+
 ## 1. Executive Summary & Design Vision
 
 **Goal Grid** is an executive-level goal execution programme for business owners, delivered under **BMB Strategy & Advisory Ltd.** scheduled for **January–March 2027**.

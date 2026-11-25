@@ -4,7 +4,7 @@ import { landingPageData } from "@/data/landing-page-data";
 import { MaskedTextReveal } from "@/components/motion/MaskedTextReveal";
 import { ParallaxImage } from "@/components/motion/ParallaxImage";
 import { Reveal } from "@/components/motion/Reveal";
-import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { CtaButton } from "@/components/ui/CtaButton";
 
 /** Closing scene: the skyline from the hero photograph (a different crop), BMB identity, one clear action. */
 export function FinalCtaSection() {
@@ -20,7 +20,7 @@ export function FinalCtaSection() {
         <Reveal className="mb-10 flex flex-col items-center gap-4">
           <Image
             src={siteConfig.brand.logoNavy}
-            alt="BMB Strategy & Advisory"
+            alt="BMB Strategy and Advisory Limited"
             width={140}
             height={50}
             className="h-11 w-auto brightness-0 invert"
@@ -31,12 +31,12 @@ export function FinalCtaSection() {
         <MaskedTextReveal
           as="h2"
           label={finalCta.headline}
-          className="mx-auto max-w-4xl font-heading text-[2.2rem] font-medium leading-[1.06] tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl"
+          className="mx-auto max-w-4xl font-heading text-[2.2rem] font-semibold leading-[1.06] tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl"
           lines={[
             { text: "Another Year" },
             { text: "With the Same" },
             { text: "Unfinished Goal," },
-            { text: "or Three Months", className: "text-gold" },
+            { text: "or 12 Weeks", className: "text-gold" },
             { text: "That Change It?", className: "text-gold" },
           ]}
         />
@@ -45,11 +45,13 @@ export function FinalCtaSection() {
           <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">{finalCta.subheadline}</p>
         </Reveal>
         <Reveal delay={0.2} className="mt-10 flex flex-col items-center gap-4">
-          <WhatsAppButton messageKey="finalCta" variant="gold" className="px-9 py-4 text-base">
-            {finalCta.ctaText}
-          </WhatsAppButton>
-          <p className="text-sm font-semibold text-gold">{finalCta.pricingNote}</p>
-          <p className="text-sm text-white/55">{finalCta.closingNote}</p>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <CtaButton kind="signUp" tone="dark" size="lg" />
+            <CtaButton kind="startHere" tone="dark" size="lg" />
+          </div>
+          <p className="mt-2 text-sm font-semibold text-gold">{finalCta.pricingNote}</p>
+          <p className="max-w-md text-sm text-white/60">{finalCta.closingNote}</p>
+          <CtaButton kind="chat" tone="dark" className="mt-2" />
         </Reveal>
       </div>
     </section>

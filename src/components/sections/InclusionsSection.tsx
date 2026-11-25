@@ -11,7 +11,7 @@ import { landingPageData } from "@/data/landing-page-data";
 import { MaskedTextReveal } from "@/components/motion/MaskedTextReveal";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { CtaButton } from "@/components/ui/CtaButton";
 
 const icons: Record<string, LucideIcon> = {
   CalendarCheck,
@@ -39,21 +39,19 @@ export function InclusionsSection() {
             <MaskedTextReveal
               as="h2"
               label={inclusions.headline}
-              className="font-heading text-[2.4rem] font-medium leading-[1.06] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3.25rem]"
+              className="font-heading text-[2.4rem] font-semibold leading-[1.06] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3.25rem]"
               lines={[
                 { text: "Everything" },
                 { text: "Built to Keep" },
                 { text: "You Moving" },
-                { text: "for 3 Months", className: "text-gold-600" },
+                { text: "for 12 Weeks", className: "text-gold-600" },
               ]}
             />
             <Reveal delay={0.15}>
               <p className="max-w-md text-base leading-relaxed text-charcoal-light sm:text-lg">{inclusions.subtitle}</p>
             </Reveal>
             <Reveal delay={0.25}>
-              <WhatsAppButton messageKey="inclusionsCta" variant="navy">
-                {inclusions.ctaText}
-              </WhatsAppButton>
+              <CtaButton kind="signUp" tone="light" />
             </Reveal>
           </div>
 

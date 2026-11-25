@@ -1,6 +1,62 @@
 # Goal Grid — Project Handover & Deployment Guide
 
-> **Current state (2026-11-20, cinematic pass 2).** Sections 1–2 below describe the earlier (pass 1) build and are kept for history. **Section 7 is authoritative** for what exists now, what was verified, and what is still open.
+> **Phase 2 (2026-11-24/25) supersedes everything below where they conflict. Read §0 first.** Earlier text that mentions waitlist, 3 months, January–March, `WhatsAppButton`, `AnnouncementBar` or a placeholder phone number is historical.
+
+> **Earlier state (2026-11-20, cinematic pass 2).** Sections 1–2 below describe the earlier (pass 1) build and are kept for history. **Section 7 is authoritative** for what exists now, what was verified, and what is still open.
+
+## 0. Phase 2 handover (authoritative, 2026-11-25)
+
+Source: client meeting of 24 Nov 2026 + `Goal_Grid_Website_Correction_Brief.docx`.
+
+### What changed and why
+| Area | Change | Reason (brief §) |
+|---|---|---|
+| Header | Announcement strip and its component deleted; nav CTA is now **Sign Up** | §2 |
+| Copy | 12 weeks everywhere; January–March removed; business owners **and career professionals**; waitlist language replaced by direct registration; "registration opens 1 December 2026"; "Mondays" wording corrected | §3 |
+| Company name | **BMB Strategy and Advisory Limited** (client confirmed BMB, not BMBB). Logo files untouched | §3 |
+| Teaching | **Friday Night Business Class**: weekly live teaching on Google Meet (no fixed-schedule promise); 1-on-1 diagnostic retained | §4 |
+| Pricing | ₦50,000 standard; ₦60,000 instalment option; internal instalment-date note removed; no schedule invented | §4 |
+| Typography | GRID, Problem, Outcomes and section H2s heavier (600–700), larger supporting copy, deliberate bold phrases via `<Rich>` (`**phrase**` in the content file) | §5 |
+| Imagery | GRID isometric path illustration; Outcomes "12-week record" visual; host photographs; Problem tags removed | §6 |
+| CTAs | One `CtaButton`; four distinct actions (below) | §7 |
+| Extra | Three-image cinematic crossfade in the host portrait frame | follow-up request |
+
+### CTA architecture
+| Label | Purpose | Destination | Status |
+|---|---|---|---|
+| Sign Up | Registration + payment | `SELLAR_SIGN_UP_URL` | **PENDING** |
+| Start Here | Share name, email, WhatsApp number, business goals | `GOOGLE_FORM_START_HERE_URL` | **PENDING** |
+| Chat with Us | Talk to the host | `https://wa.me/2348052110631?text=` + chat message | live |
+| Make an Enquiry | Programme / pricing / participation questions | same number, enquiry message | live |
+| Floating button | Chat with us | chat message | live |
+
+Both pending constants live at the top of `src/config/site.ts` and read `NEXT_PUBLIC_SELLAR_SIGN_UP_URL` / `NEXT_PUBLIC_GOOGLE_FORM_START_HERE_URL`. While empty (or not `https://`), `resolveCta()` reports `pending: true`: buttons elsewhere link to `#how-to-join`; inside that section they render **disabled** with a plain-language note. Nothing falls back to WhatsApp. Every CTA carries `data-cta="signUp|startHere|chat|enquiry"` (and `data-pending="true"` while pending), which is handy for tests. Verified with test URLs that both buttons switch to `target="_blank" rel="noopener noreferrer"` when set.
+
+### Files
+Added: `src/components/ui/CtaButton.tsx`, `ui/Rich.tsx`, `motion/CrossfadeFrame.tsx`, `motion/GridPathIllustration.tsx`, `motion/OutcomesRecord.tsx`, `public/images/host/goal-grid-host-0{1,2,3}-*.jpg`.
+Removed: `layout/AnnouncementBar.tsx`, `ui/WhatsAppButton.tsx`.
+Rewritten/modified: `config/site.ts`, `data/landing-page-data.ts`, `app/layout.tsx` (metadata), `styles/globals.css`, Header, Footer, FloatingWhatsApp, and every section (Hero, Problem, GRID, Inclusions, Outcomes, Audience, Host, Accountability, Pricing, HowToJoin, FAQ, FinalCta).
+
+### Host photographs
+Three client photographs, cropped from 4000×6000 originals to 1200×1500 with the same eye line and head scale so the face holds position while images cross-fade (order: welcome → teaching → composed). Originals are not in the repo. `CrossfadeFrame` is reusable (`slides`, `interval`, `fade`). It pauses on hover/focus, off-screen, in a hidden tab, and via a pause button; with reduced motion it shows the first image and the indicators switch images instantly.
+
+### Verified (actually run)
+`tsc --noEmit`, `next lint`, `next build` clean. Dev-server renders at 1440 and 390 px (hero, GRID, Outcomes, Host, Investment, How to join, Final CTA, mobile menu). Overflow sweep at 360/390/430/768/820/1024/1280/1440/1920: none. Crossfade captured over time (1→2→3→1, stable face position). Rendered-page search: 0 occurrences of waitlist / get started / 3 month / January / March / BMBB / "Strategy & Advisory" / Ltd. 7 WhatsApp links checked: number and decoded messages correct. All external links have `rel="noopener noreferrer"`. Reduced-motion: no pause control, first image only. 
+
+### Not verified / known
+- **No real Sellar or Google Form URL has been tested** (none supplied).
+- Not tested on real devices or outside Chrome; live deployment not checked.
+- Local font files stand in for Google's (see Entry 012).
+- Pre-existing (Phase 1): with reduced motion enabled, `HeroSection` and the new `CrossfadeFrame` log a React hydration warning (server cannot know the preference). Page recovers; fix needs a different reduced-motion strategy.
+- The GRID and Outcomes visuals are SVG/CSS illustrations (no stock or generated imagery was available). Replace with commissioned art if the client prefers photography.
+
+### Outstanding client inputs
+1. Sellar registration URL. 2. Google Form URL (fields: full name, email, WhatsApp number, business goals). 3. Host biography/credentials (nothing invented; nothing placeholder is shown publicly). 4. Confirm ₦60,000 is the **total** instalment price (copy says "Instalment option ₦60,000", not "total") and whether any instalment terms should be published. 5. Host name is still `@Bolaji Babalola` from the Phase 1 content (leading "@"): confirm the display name. 6. Programme start date (only the registration-opening date is known). 7. After 1 December 2026, update "Registration is scheduled to open…" wording (`howToJoin.registrationOpens`, `finalCta.badge`, FAQ, hero).
+
+### Next steps once inputs arrive
+Set the two env vars on the host (or paste into `src/config/site.ts`), rebuild, click both buttons on desktop and mobile; update copy per items 4–7; add the host bio to `landingPageData.host.biography`.
+
+---
 
 ## 1. Project Overview & Deliverable Summary
 

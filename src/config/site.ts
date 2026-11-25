@@ -1,58 +1,61 @@
 /**
  * Site configuration and programme constants for Goal Grid
- * Under BMB Strategy & Advisory Ltd.
+ * Under BMB Strategy and Advisory Limited.
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * CTA DESTINATIONS (Phase 2)
+ *
+ *   Sign Up       → Sellar registration/store page      → SELLAR_SIGN_UP_URL        (PENDING)
+ *   Start Here    → Google Form (name, email, WhatsApp,
+ *                   business goals)                     → GOOGLE_FORM_START_HERE_URL (PENDING)
+ *   Chat with Us  → WhatsApp, general conversation      → getWhatsAppUrl("chat")
+ *   Make an Enquiry → WhatsApp, enquiry-specific text   → getWhatsAppUrl("enquiry")
+ *
+ * The two PENDING URLs have NOT been supplied by the client. They are read from
+ * environment variables so they can be set on the host without a code change:
+ *
+ *   NEXT_PUBLIC_SELLAR_SIGN_UP_URL
+ *   NEXT_PUBLIC_GOOGLE_FORM_START_HERE_URL
+ *
+ * Until a valid https:// URL is set, `resolveCta()` reports the destination as pending and the
+ * UI degrades honestly (see CtaButton). No URL is ever invented.
+ * ─────────────────────────────────────────────────────────────────────────────
  */
+
+/** PENDING: Sellar registration/store URL. Set NEXT_PUBLIC_SELLAR_SIGN_UP_URL (or paste the URL here). */
+export const SELLAR_SIGN_UP_URL: string = process.env.NEXT_PUBLIC_SELLAR_SIGN_UP_URL?.trim() ?? "";
+
+/** PENDING: Google Form URL for "Start Here". Set NEXT_PUBLIC_GOOGLE_FORM_START_HERE_URL (or paste it here). */
+export const GOOGLE_FORM_START_HERE_URL: string =
+  process.env.NEXT_PUBLIC_GOOGLE_FORM_START_HERE_URL?.trim() ?? "";
+
+/** Official WhatsApp number, international digits only (+234 805 211 0631). */
+export const WHATSAPP_NUMBER = "2348052110631";
 
 export const siteConfig = {
   name: "Goal Grid",
-  legalEntity: "BMB Strategy & Advisory Ltd.",
+  legalEntity: "BMB Strategy and Advisory Limited",
   description:
-    "A practical 3-month goal execution programme for business owners, scheduled for January–March 2027.",
+    "A practical 12-week goal execution programme for business owners and career professionals.",
   url: "https://goalgridproject.com",
-  dates: {
-    programmeDuration: "January–March 2027",
-    waitlistOpens: "December 2026",
-    waitlistOpensNote: "Waitlist opens December 2026",
+  programme: {
+    duration: "12 weeks",
+    registrationOpens: "1 December 2026",
   },
   investment: {
-    fee: "₦50,000",
-    feeNumerical: 50000,
+    standardFee: "₦50,000",
+    standardFeeNumerical: 50000,
+    instalmentFee: "₦60,000",
+    instalmentFeeNumerical: 60000,
     currency: "NGN",
-    instalmentsAvailable: true,
-    instalmentNote: "Instalments available",
   },
   contact: {
-    // Official WhatsApp phone number placeholder until client supplies final number
-    whatsappPhone: process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "234XXXXXXXXXX",
-    defaultMessage:
-      "Hello, I'm interested in the Goal Grid programme. Please send me the waitlist and registration details.",
+    whatsappPhone: WHATSAPP_NUMBER,
+    /** Prefilled WhatsApp messages. Each action has its own wording; encoded by getWhatsAppUrl. */
     messages: {
-      announcement:
-        "Hello, I would like to get updates on the Goal Grid waitlist opening.",
-      navCta:
-        "Hello, I'm interested in the Goal Grid programme. Please send me the waitlist and registration details.",
-      heroCta:
-        "Hello, I want to join the Goal Grid waitlist for January 2027.",
-      problemCta:
-        "Hello, I'm ready to build a clear plan for my business with Goal Grid.",
-      inclusionsCta:
-        "Hello, I'm interested in the Goal Grid programme structure and inclusions.",
-      outcomesCta:
-        "Hello, I want to achieve my business goals with Goal Grid in 2027.",
-      qualifierCta:
-        "Hello, I reviewed the Goal Grid requirements and I'm ready to commit to the programme.",
-      pricingCta:
-        "Hello, I would like to join the waitlist and learn about the ₦50,000 fee and instalment options.",
-      howToJoinCta:
-        "Hello, I would like to enquire about registering for the Goal Grid programme.",
-      faqCta:
-        "Hello, I have a question about the Goal Grid programme.",
-      finalCta:
-        "Hello, I'm ready to join the Goal Grid 2027 cohort. Please send me details.",
-      floatingBubble:
-        "Hello, I'm looking at Goal Grid and have a quick question.",
-      footerLink:
-        "Hello, I'm interested in Goal Grid and would like to speak with the advisory team.",
+      chat: "Hello, I'd like to chat with the Goal Grid host about the programme.",
+      enquiry:
+        "Hello, I have a question about the Goal Grid 12-week programme (pricing, participation or other details). Could you help me?",
     },
   },
   brand: {
@@ -76,25 +79,49 @@ export const siteConfig = {
   ],
 };
 
+export type WhatsAppMessageKey = keyof typeof siteConfig.contact.messages;
+
 /**
- * Centralized WhatsApp Click-to-Chat URL Generator
- * Guarantees every CTA on the site uses the exact same routing logic,
- * configuration, and phone number.
+ * Single WhatsApp click-to-chat generator. Pass "chat" | "enquiry", or a custom message string.
+ * The text is always URL-encoded.
  */
-export function getWhatsAppUrl(
-  messageKey?: keyof typeof siteConfig.contact.messages | string
-): string {
-  const phone = siteConfig.contact.whatsappPhone;
-  let text = siteConfig.contact.defaultMessage;
+export function getWhatsAppUrl(messageKeyOrText: WhatsAppMessageKey | (string & {}) = "chat"): string {
+  const { whatsappPhone, messages } = siteConfig.contact;
+  const text =
+    messageKeyOrText in messages ? messages[messageKeyOrText as WhatsAppMessageKey] : messageKeyOrText;
+  return `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(text)}`;
+}
 
-  if (messageKey && messageKey in siteConfig.contact.messages) {
-    text =
-      siteConfig.contact.messages[
-        messageKey as keyof typeof siteConfig.contact.messages
-      ];
-  } else if (messageKey && typeof messageKey === "string") {
-    text = messageKey;
+export type CtaKind = "signUp" | "startHere" | "chat" | "enquiry";
+
+export interface ResolvedCta {
+  href: string;
+  /** Opens in a new tab with rel="noopener noreferrer". */
+  external: boolean;
+  /** True when the real destination has not been supplied yet (Sellar / Google Form). */
+  pending: boolean;
+}
+
+const isHttps = (u: string) => /^https:\/\/\S+$/i.test(u);
+
+/**
+ * Resolves a CTA to its destination. Sign Up and Start Here never fall back to WhatsApp or to each other:
+ * while their URL is pending they point at the in-page "How to join" section, which states
+ * the facts (registration opens 1 December 2026) rather than pretending a link exists.
+ */
+export function resolveCta(kind: CtaKind): ResolvedCta {
+  switch (kind) {
+    case "signUp":
+      return isHttps(SELLAR_SIGN_UP_URL)
+        ? { href: SELLAR_SIGN_UP_URL, external: true, pending: false }
+        : { href: "#how-to-join", external: false, pending: true };
+    case "startHere":
+      return isHttps(GOOGLE_FORM_START_HERE_URL)
+        ? { href: GOOGLE_FORM_START_HERE_URL, external: true, pending: false }
+        : { href: "#how-to-join", external: false, pending: true };
+    case "chat":
+      return { href: getWhatsAppUrl("chat"), external: true, pending: false };
+    case "enquiry":
+      return { href: getWhatsAppUrl("enquiry"), external: true, pending: false };
   }
-
-  return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
 }

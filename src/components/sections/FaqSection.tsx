@@ -9,7 +9,7 @@ import { landingPageData } from "@/data/landing-page-data";
 import { MaskedTextReveal } from "@/components/motion/MaskedTextReveal";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { CtaButton } from "@/components/ui/CtaButton";
 import { EASE_INOUT } from "@/lib/motion";
 
 /**
@@ -31,14 +31,12 @@ export function FaqSection() {
             <MaskedTextReveal
               as="h2"
               label={faq.headline}
-              className="font-heading text-[2.4rem] font-medium leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3rem]"
+              className="font-heading text-[2.4rem] font-semibold leading-[1.05] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[2.6rem] xl:text-[3rem]"
               lines={[{ text: "Frequently" }, { text: "Asked", className: "text-gold-600" }, { text: "Questions", className: "text-gold-600" }]}
             />
             <Reveal delay={0.1} className="space-y-4">
               <p className="text-base text-charcoal-light">{faq.helpPrompt}</p>
-              <WhatsAppButton messageKey="faqCta" variant="navy">
-                {faq.ctaText}
-              </WhatsAppButton>
+              <CtaButton kind="enquiry" tone="light" />
             </Reveal>
           </div>
 
@@ -98,7 +96,7 @@ export function FaqSection() {
                                 className="inline-flex items-center gap-2 text-sm font-semibold text-navy underline decoration-gold decoration-2 underline-offset-4 transition-colors hover:text-gold-700"
                               >
                                 <MessageCircle className="h-4 w-4 text-gold-600" strokeWidth={1.75} aria-hidden="true" />
-                                Ask the team on WhatsApp
+                                Make an enquiry on WhatsApp
                               </Link>
                             )}
                           </div>

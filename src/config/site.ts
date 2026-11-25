@@ -40,7 +40,17 @@ export const siteConfig = {
   legalEntity: "BMB Strategy and Advisory Limited",
   description:
     "A practical 12-week goal execution programme for business owners and career professionals.",
-  url: "https://goalgridproject.com",
+  /** Canonical production origin (www is the preferred host). Override only via NEXT_PUBLIC_SITE_URL for non-production builds. */
+  url: (process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://www.goalgridproject.com").replace(/\/+$/, ""),
+  seo: {
+    title: "Goal Grid: 12-Week Goal Execution & Accountability Programme",
+    description:
+      "A 12-week goal execution programme for business owners and career professionals: turn goals into daily action with the GRID method and group accountability.",
+    ogDescription:
+      "Don't just set the goal. Build the path to achieve it. A 12-week programme for business owners and career professionals. Registration opens 1 December 2026.",
+    ogImage: "/og/goal-grid-og.jpg",
+    ogImageAlt: "Goal Grid, a 12-week programme from BMB Strategy and Advisory Limited",
+  },
   programme: {
     duration: "12 weeks",
     registrationOpens: "1 December 2026",

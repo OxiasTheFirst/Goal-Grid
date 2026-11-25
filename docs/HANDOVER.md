@@ -4,6 +4,26 @@
 
 > **Earlier state (2026-11-20, cinematic pass 2).** Sections 1–2 below describe the earlier (pass 1) build and are kept for history. **Section 7 is authoritative** for what exists now, what was verified, and what is still open.
 
+## 0b. SEO handover (2026-11-25)
+
+**Final metadata.** Title: "Goal Grid: 12-Week Goal Execution & Accountability Programme". Description: "A 12-week goal execution programme for business owners and career professionals: turn goals into daily action with the GRID method and group accountability." All SEO strings live in `siteConfig.seo` (`src/config/site.ts`); canonical `https://www.goalgridproject.com/` via `metadataBase` + `alternates.canonical`. Single-page site, so one route, one sitemap URL.
+
+**Keyword map (qualitative; no volume/difficulty data was available or invented).**
+| Primary / variations | Intent | Section | Placement |
+|---|---|---|---|
+| goal execution programme; 12-week goal programme | Commercial/info | Hero | title, description, H1 area |
+| accountability programme for business owners | Commercial | Accountability | H2/body, FAQ |
+| goal setting for business owners / career professionals | Info/commercial | Audience, Problem | body copy |
+| turn goals into action; consistency and discipline | Info | Problem, GRID method | H2/H3 and body |
+| Goal Grid; BMB Strategy and Advisory Limited | Navigational/brand | Footer, JSON-LD | title, schema |
+Avoid "12 Week Year" (third-party brand). Competing Nigerian offers are mostly Selar pages; treat that as qualitative only.
+
+**Verified locally:** tags, canonical, OG/Twitter, robots.txt, sitemap.xml, icons, valid JSON-LD, no noindex (see Entry 016). **Not verified:** live apex vs www redirect (configure apex → www 301 at the host/DNS), live robots/sitemap, indexing, rankings, Core Web Vitals.
+
+**Search Console checklist (manual).** 1) Add a Domain property for goalgridproject.com (DNS TXT verification). 2) Submit `https://www.goalgridproject.com/sitemap.xml`. 3) URL Inspection on the homepage, confirm "Google-selected canonical" is the www URL. 4) Request indexing. 5) Test the share preview (WhatsApp/LinkedIn/X debugger); re-scrape after changes. 6) Monitor Pages and Performance after a few weeks.
+
+**Open notes.** The brief says "Sellar"; the Nigerian platform is "Selar" (selar.com). Confirm the spelling and URL with the client. When the Selar URL arrives, set `NEXT_PUBLIC_SELLAR_SIGN_UP_URL`. If host biography/credentials are supplied later, a Person schema can be added from verified text only.
+
 ## 0a. Final corrections pass (2026-11-25), supersedes §0 where different
 - **Start Here is now LIVE** → `https://forms.gle/2dVD5c3uECsYw8r88` (default in `src/config/site.ts`; env var can still override). **Sign Up / Sellar is still PENDING** and unchanged (not faked, not redirected).
 - **Chat with Us** (and the floating button) prefill: "Hello, i am interested in being a part of the Goal Grid Project. I would like to know more." Enquiry message unchanged.

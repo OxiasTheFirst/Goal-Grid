@@ -31,31 +31,67 @@ const dmSans = DM_Sans({
   weight: ["400", "500", "600", "700"],
 });
 
-export const metadata: Metadata = {
-  title: "Goal Grid — 12-Week Goal Execution Programme for Business Owners and Career Professionals",
-  description:
-    "Don't Just Set the Goal. Build the Path to Achieve It. Goal Grid is a practical 12-week programme from BMB Strategy and Advisory Limited designed to help business owners and career professionals execute with structure, discipline, and momentum.",
-  keywords: [
-    "Goal Grid",
-    "BMB Strategy and Advisory Limited",
-    "business goals",
-    "career professionals",
-    "goal execution programme",
-    "business strategy",
-    "accountability",
+const orgId = `${siteConfig.url}/#organization`;
+const siteId = `${siteConfig.url}/#website`;
+
+// Verified facts only: names, URL, logo, programme description. No address, socials, ratings, reviews or events.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": orgId,
+      name: siteConfig.legalEntity,
+      url: siteConfig.url,
+      logo: `${siteConfig.url}${siteConfig.brand.logoBadge}`,
+    },
+    {
+      "@type": "WebSite",
+      "@id": siteId,
+      url: `${siteConfig.url}/`,
+      name: siteConfig.name,
+      description: siteConfig.description,
+      inLanguage: "en-GB",
+      publisher: { "@id": orgId },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${siteConfig.url}/#webpage`,
+      url: `${siteConfig.url}/`,
+      name: siteConfig.seo.title,
+      description: siteConfig.seo.description,
+      inLanguage: "en-GB",
+      isPartOf: { "@id": siteId },
+      about: { "@id": orgId },
+      primaryImageOfPage: { "@type": "ImageObject", url: `${siteConfig.url}${siteConfig.seo.ogImage}`, width: 1200, height: 630 },
+    },
   ],
-  authors: [{ name: "BMB Strategy and Advisory Limited" }],
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  title: siteConfig.seo.title,
+  description: siteConfig.seo.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.legalEntity }],
+  creator: siteConfig.legalEntity,
+  publisher: siteConfig.legalEntity,
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
   openGraph: {
-    title: "Goal Grid — 12-Week Goal Execution Programme for Business Owners and Career Professionals",
-    description:
-      "Don't Just Set the Goal. Build the Path to Achieve It. A 12-week programme. Registration opens 1 December 2026.",
-    url: siteConfig.url,
-    siteName: "Goal Grid",
+    title: siteConfig.seo.title,
+    description: siteConfig.seo.ogDescription,
+    url: "/",
+    siteName: siteConfig.name,
     locale: "en_GB",
     type: "website",
+    images: [{ url: siteConfig.seo.ogImage, width: 1200, height: 630, alt: siteConfig.seo.ogImageAlt }],
   },
-  icons: {
-    icon: "/brand/bmb-logo-navy.png",
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.seo.title,
+    description: siteConfig.seo.ogDescription,
+    images: [siteConfig.seo.ogImage],
   },
 };
 
@@ -71,6 +107,11 @@ export default function RootLayout({
         <noscript>
           <style>{`[style*="opacity: 0"],[style*="opacity:0"]{opacity:1!important;transform:none!important}h1 > span > span,h2 > span > span,p > span > span{transform:none!important}`}</style>
         </noscript>
+        <script
+          type="application/ld+json"
+          // Static, first-party JSON only; "<" escaped so the payload can never close the script tag.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+        />
         {children}
       </body>
     </html>

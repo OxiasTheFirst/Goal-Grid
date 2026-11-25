@@ -418,3 +418,12 @@ The following points from the client foundation brief remain intentionally open 
 ## Entry 015 — Section label size and weight (2026-11-25)
 The bold-only change in Entry 014 left labels too small. Shared `SectionLabel` is now 17px (mobile) / 20px (sm) / 24px (lg), weight 700 (DM Sans 700 added to `layout.tsx` so it is a real weight, not synthesized), tracking 0.12–0.14em, gold rule thickened to 2px and lengthened (32/48/64px) to stay balanced. Italic variant for "What you stand to gain" kept. The same component also renders "Meet the host", so that label scales too. Titles, copy, layouts, colours and the GRID animation are unchanged.
 Verified: tsc, lint and build clean; at 360/390/768/1024/1440 px every label stays on one line with no page overflow (measured); desktop and mobile screenshots reviewed. Local preview used the system DM Sans for weight 700.
+
+---
+
+## Entry 016 — SEO, metadata and search visibility (2026-11-25)
+**Implemented:** title/description rewritten (keyword-led, no result guarantees); `metadataBase` + canonical `/` on the www host; `siteConfig.url` changed from the apex to `https://www.goalgridproject.com` (override: `NEXT_PUBLIC_SITE_URL`, for previews only); explicit `robots: index, follow`; Open Graph with absolute 1200×630 image (`public/og/goal-grid-og.jpg`, 48 KB, rendered from the BMB badge, brand palette and the site's own tagline); Twitter `summary_large_image`; real favicons (`app/icon.png`, `apple-icon.png`, `favicon.ico`) cut from the BMB badge (the old icon was the wide navy wordmark, unreadable at 16 px); `app/robots.ts`, `app/sitemap.ts` (homepage only); JSON-LD `@graph` (Organization, WebSite, WebPage) in `layout.tsx` using verified facts only.
+**Deliberately not added:** FAQPage/Review/Event/Offer markup, address, `sameAs`, ratings (no verified data); a code redirect apex→www (loop risk; configure at host/DNS).
+**Audits:** one `<h1>`, no skipped heading levels (1→2→3), alt text reviewed (decorative hero/parallax images `alt=""`, logos and host images described). No design, copy, CTA or animation changes.
+**Verification (run):** `tsc`, `next lint`, `next build` clean; production server rendered tags, robots.txt, sitemap.xml, favicon/OG asset responses (200), JSON-LD parsed as valid JSON, no `noindex`. Core Web Vitals were NOT measured; no performance claims made.
+**Not verifiable from here:** live apex/www redirect, live robots/sitemap, indexing, rankings.

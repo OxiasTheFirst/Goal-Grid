@@ -56,7 +56,6 @@ export const landingPageData = {
     headline: "Don't Just Set the Goal. Build the Path to Achieve It.",
     subheadline:
       "The Goal Grid Project is a 12-week programme that takes the goal you have carried from one year to the next and turns it into a clear, step-by-step plan, then stays with you while you carry it out.",
-    pricingNote: "₦50,000 standard · ₦60,000 instalment option",
     registrationNote: "Registration opens 1 December 2026",
     keyFacts: [
       {
@@ -69,7 +68,7 @@ export const landingPageData = {
       },
       {
         title: "Friday Night Business Class",
-        detail: "Weekly live teaching on Google Meet",
+        detail: "Weekly Live Call",
       },
       {
         title: "1-on-1 Session",
@@ -312,8 +311,6 @@ export const landingPageData = {
           "An assigned group and group leader for peer support, progress reports to see momentum, and a private 1-on-1 session with the host.",
       },
     ],
-    disclaimer:
-      "These structures provide consistent guidance and accountability. Individual results depend on active participant participation, consistency, and daily execution.",
   },
 
   // Pricing & Investment Section Data (Scarcity Claims Removed)

@@ -72,7 +72,7 @@ function Stage({
       <div style={{ perspective: 900 }}>
         <motion.p
           aria-hidden="true"
-          className="origin-bottom select-none font-heading font-bold leading-[0.9] tracking-[-0.02em] text-outline-strong text-[7.5rem] sm:text-[9rem] lg:text-[clamp(7rem,13vw,12.5rem)]"
+          className="origin-bottom select-none font-display font-extrabold leading-[0.9] tracking-[-0.01em] text-outline-strong text-[7.5rem] sm:text-[9rem] lg:text-[clamp(7rem,13vw,12.5rem)]"
           style={{ color: letterFill, rotateX: letterTilt }}
         >
           {step.letter}

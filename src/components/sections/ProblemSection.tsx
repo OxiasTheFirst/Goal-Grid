@@ -34,7 +34,7 @@ export function ProblemSection() {
 
           <div className="lg:col-span-7">
             <Reveal>
-              <p className="mb-2 font-body font-semibold text-xs uppercase tracking-[0.16em] text-charcoal-light">
+              <p className="mb-2 font-body font-bold text-xs uppercase tracking-[0.16em] text-navy sm:text-[13px]">
                 {problem.subtitle}
               </p>
             </Reveal>
@@ -56,9 +56,6 @@ export function ProblemSection() {
               ))}
               <li className="border-t border-navy/15" aria-hidden="true" />
             </ul>
-            <p className="mt-4 text-xs text-charcoal-muted">
-              Illustrative of experiences business owners commonly describe. These are not customer testimonials.
-            </p>
           </div>
         </div>
       </div>

@@ -18,13 +18,16 @@ export function FinalCtaSection() {
 
       <div className="relative mx-auto w-full max-w-container px-4 sm:px-6 lg:px-8 py-24 text-center">
         <Reveal className="mb-10 flex flex-col items-center gap-4">
-          <Image
-            src={siteConfig.brand.logoNavy}
-            alt="BMB Strategy and Advisory Limited"
-            width={140}
-            height={50}
-            className="h-11 w-auto brightness-0 invert"
-          />
+          <div className="flex flex-col items-center gap-2">
+            <Image
+              src={siteConfig.brand.logoNavy}
+              alt="BMB"
+              width={140}
+              height={50}
+              className="h-11 w-auto brightness-0 invert"
+            />
+            <p className="text-[10px] uppercase leading-none tracking-[0.16em] text-gold sm:text-xs">Strategy and Advisory Limited</p>
+          </div>
           <p className="font-body font-medium text-[11px] uppercase tracking-[0.18em] text-gold">{finalCta.badge}</p>
         </Reveal>
 

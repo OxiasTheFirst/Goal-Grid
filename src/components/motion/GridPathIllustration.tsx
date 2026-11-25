@@ -61,8 +61,8 @@ function Block({ i, progress }: { i: number; progress: MotionValue<number> }) {
         textAnchor="middle"
         dominantBaseline="central"
         fontSize="1.05"
-        fontWeight="700"
-        style={{ fill: letterFill, fontFamily: "var(--font-space-grotesk), system-ui, sans-serif" }}
+        fontWeight="800"
+        style={{ fill: letterFill, fontFamily: "var(--font-playfair-display), Georgia, serif" }}
       >
         {LETTERS[i]}
       </motion.text>

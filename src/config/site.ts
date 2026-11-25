@@ -7,11 +7,11 @@
  *
  *   Sign Up       → Sellar registration/store page      → SELLAR_SIGN_UP_URL        (PENDING)
  *   Start Here    → Google Form (name, email, WhatsApp,
- *                   business goals)                     → GOOGLE_FORM_START_HERE_URL (PENDING)
+ *                   business goals)                     → GOOGLE_FORM_START_HERE_URL (CONFIRMED)
  *   Chat with Us  → WhatsApp, general conversation      → getWhatsAppUrl("chat")
  *   Make an Enquiry → WhatsApp, enquiry-specific text   → getWhatsAppUrl("enquiry")
  *
- * The two PENDING URLs have NOT been supplied by the client. They are read from
+ * Start Here is CONFIRMED (forms.gle link below). Sign Up (Sellar) is still PENDING: no URL has been supplied. Both are read from
  * environment variables so they can be set on the host without a code change:
  *
  *   NEXT_PUBLIC_SELLAR_SIGN_UP_URL
@@ -25,9 +25,12 @@
 /** PENDING: Sellar registration/store URL. Set NEXT_PUBLIC_SELLAR_SIGN_UP_URL (or paste the URL here). */
 export const SELLAR_SIGN_UP_URL: string = process.env.NEXT_PUBLIC_SELLAR_SIGN_UP_URL?.trim() ?? "";
 
-/** PENDING: Google Form URL for "Start Here". Set NEXT_PUBLIC_GOOGLE_FORM_START_HERE_URL (or paste it here). */
+/** CONFIRMED by the client (25 Nov 2026): the Start Here Google Form. */
+const CONFIRMED_GOOGLE_FORM_URL = "https://forms.gle/2dVD5c3uECsYw8r88";
+
+/** Start Here → Google Form. Defaults to the confirmed form; NEXT_PUBLIC_GOOGLE_FORM_START_HERE_URL can override. */
 export const GOOGLE_FORM_START_HERE_URL: string =
-  process.env.NEXT_PUBLIC_GOOGLE_FORM_START_HERE_URL?.trim() ?? "";
+  process.env.NEXT_PUBLIC_GOOGLE_FORM_START_HERE_URL?.trim() || CONFIRMED_GOOGLE_FORM_URL;
 
 /** Official WhatsApp number, international digits only (+234 805 211 0631). */
 export const WHATSAPP_NUMBER = "2348052110631";
@@ -53,7 +56,7 @@ export const siteConfig = {
     whatsappPhone: WHATSAPP_NUMBER,
     /** Prefilled WhatsApp messages. Each action has its own wording; encoded by getWhatsAppUrl. */
     messages: {
-      chat: "Hello, I'd like to chat with the Goal Grid host about the programme.",
+      chat: "Hello, i am interested in being a part of the Goal Grid Project. I would like to know more.",
       enquiry:
         "Hello, I have a question about the Goal Grid 12-week programme (pricing, participation or other details). Could you help me?",
     },

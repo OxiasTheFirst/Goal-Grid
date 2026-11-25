@@ -4,6 +4,16 @@
 
 > **Earlier state (2026-11-20, cinematic pass 2).** Sections 1–2 below describe the earlier (pass 1) build and are kept for history. **Section 7 is authoritative** for what exists now, what was verified, and what is still open.
 
+## 0a. Final corrections pass (2026-11-25), supersedes §0 where different
+- **Start Here is now LIVE** → `https://forms.gle/2dVD5c3uECsYw8r88` (default in `src/config/site.ts`; env var can still override). **Sign Up / Sellar is still PENDING** and unchanged (not faked, not redirected).
+- **Chat with Us** (and the floating button) prefill: "Hello, i am interested in being a part of the Goal Grid Project. I would like to know more." Enquiry message unchanged.
+- Hero pricing line removed (only "Registration opens 1 December 2026" remains). Final CTA and Investment pricing untouched.
+- Four disclaimers removed (Sound Familiar, Outcomes, Execution Governance; hero pricing line). `accountability.disclaimer` deleted from the data file.
+- Company name "STRATEGY AND ADVISORY LIMITED" now sits under the BMB logo in the header (two lines, logo-width) and in the Final CTA (above the registration line).
+- GRID letters use **Playfair Display 800** (`font-display`, loaded in `layout.tsx`, used only for the GRID letters and the matching letters in the GRID illustration). This is a deliberate third font at the client's request. Animation code untouched.
+- `SectionLabel` (shared) is bold; `emphasis` prop = bold italic (used for WHAT YOU STAND TO GAIN). Hero eyebrow also bold (same line+label pattern).
+- Outstanding: Sellar URL; items 3–7 in §0.
+
 ## 0. Phase 2 handover (authoritative, 2026-11-25)
 
 Source: client meeting of 24 Nov 2026 + `Goal_Grid_Website_Correction_Brief.docx`.

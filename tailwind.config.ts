@@ -48,6 +48,7 @@ const config: Config = {
       },
       fontFamily: {
         heading: ["var(--font-space-grotesk)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--font-playfair-display)", "Georgia", "Times New Roman", "serif"],
         body: ["var(--font-dm-sans)", "var(--font-space-grotesk)", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       maxWidth: {

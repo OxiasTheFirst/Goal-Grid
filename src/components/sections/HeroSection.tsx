@@ -118,7 +118,7 @@ export function HeroSection() {
         <div className="max-w-[46rem]">
           <motion.p
             {...fade(0.7, 10)}
-            className="mb-6 flex items-center gap-3 font-body font-medium text-[10px] sm:text-xs uppercase tracking-[0.16em] text-gold"
+            className="mb-6 flex items-center gap-3 font-body font-bold text-[10px] sm:text-xs uppercase tracking-[0.16em] text-gold"
           >
             <span className="h-px w-8 flex-shrink-0 bg-gold" aria-hidden="true" />
             <span>{hero.badge}</span>
@@ -152,7 +152,6 @@ export function HeroSection() {
               <CtaButton kind="startHere" tone="dark" size="lg" />
             </div>
             <div className="text-sm">
-              <p className="font-semibold tracking-wide text-gold">{hero.pricingNote}</p>
               <p className="text-xs text-white/60">{hero.registrationNote}</p>
             </div>
           </motion.div>

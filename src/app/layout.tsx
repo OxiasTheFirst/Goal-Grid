@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, DM_Sans } from "next/font/google";
+import { Space_Grotesk, DM_Sans, Playfair_Display } from "next/font/google";
 import "@/styles/globals.css";
 import { siteConfig } from "@/config/site";
 
@@ -15,6 +15,15 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 // DM Sans has no ₦ glyph; Space Grotesk is its glyph-level fallback (see tailwind.config.ts).
+// Display serif used ONLY for the large G·R·I·D letters (client request, final pass): a high-contrast,
+// authoritative serif that reads as premium corporate advisory. Not used anywhere else.
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair-display",
+  display: "swap",
+  weight: ["800"],
+});
+
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
@@ -56,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} ${playfairDisplay.variable}`}>
       <body className="min-h-screen bg-white text-charcoal font-body antialiased">
         {/* Without JS the entrance animations can never run: show all content in its final state. */}
         <noscript>

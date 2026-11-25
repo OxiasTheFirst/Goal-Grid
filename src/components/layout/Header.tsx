@@ -66,14 +66,20 @@ export function Header() {
       >
         <div className="mx-auto flex h-[4.25rem] max-w-container items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="#top" className="flex items-center gap-4" aria-label="Goal Grid — BMB Strategy and Advisory Limited, back to top">
-            <Image
-              src={siteConfig.brand.logoNavy}
-              alt="BMB Strategy and Advisory Limited"
-              width={112}
-              height={40}
-              priority
-              className="h-9 w-auto object-contain brightness-0 invert"
-            />
+            <span className="flex flex-col items-start gap-1">
+              <Image
+                src={siteConfig.brand.logoNavy}
+                alt="BMB"
+                width={112}
+                height={40}
+                priority
+                className="h-9 w-auto object-contain brightness-0 invert"
+              />
+              <span className="flex flex-col gap-[3px] text-[8px] font-medium uppercase leading-none tracking-[0.14em] text-gold">
+                <span>Strategy and</span>
+                <span>Advisory Limited</span>
+              </span>
+            </span>
             <span className="hidden h-6 w-px bg-white/25 sm:block" aria-hidden="true" />
             <span className="hidden sm:flex flex-col leading-tight">
               <span className="font-heading text-base font-semibold tracking-tight text-white">Goal Grid</span>

@@ -403,3 +403,12 @@ The following points from the client foundation brief remain intentionally open 
 **Verification (run):** `tsc`, `next lint`, `next build` clean; 1440/390 renders; overflow sweep 360–1920; crossfade frame sequence; CTA/WhatsApp/rel audit; rendered-text search; reduced-motion check; configured-URL check with dummy URLs (dev only, not committed).
 **Not done / open:** see HANDOVER §0 (real Sellar/Form URLs untested; no real-device or non-Chrome testing; pre-existing reduced-motion hydration warning).
 
+
+---
+
+## Entry 014 — Final targeted corrections (2026-11-25)
+**Implemented:** shared `SectionLabel` made bold (italic variant for "What you stand to gain"), hero eyebrow bold, "Common business experiences…" subheading bold; removed hero pricing line and the Sound Familiar, Outcomes and Execution Governance disclaimers (plus their spacing and the unused data field); "STRATEGY AND ADVISORY LIMITED" added under the BMB logo in the header and Final CTA (above the registration line); feature-grid descriptor for Friday Night Business Class changed to "Weekly Live Call" (title unchanged; the code previously read "Weekly live teaching on Google Meet"); Start Here wired to the confirmed Google Form; Chat prefill set to the client's exact text.
+**GRID font:** Playfair Display 800 for the large letters (and the matching letters in the GRID path illustration) via `font-display`. Only `font-family/weight/tracking` changed; the tilt, fill and scroll logic are untouched. Verified by screenshots that letters still tilt out of perspective and fill gold in sequence.
+**Files:** `ui/SectionLabel.tsx`, `layout/Header.tsx`, `sections/{Hero,Problem,GridMethod,Outcomes,Accountability,FinalCta}Section.tsx`, `motion/GridPathIllustration.tsx`, `config/site.ts`, `data/landing-page-data.ts`, `app/layout.tsx`, `tailwind.config.ts`, `.env.example`, docs.
+**Verification (run):** `tsc`, `next lint`, `next build` clean. Rendered HTML: removed texts = 0 matches; "Weekly Live Call" present, "Weekly Google Meet" absent; Start Here → forms.gle link in all 5 places; Chat → exact message, correctly encoded; Enquiry unchanged; Sign Up still `#how-to-join` / disabled (Sellar pending). Desktop and mobile screenshots of header, hero, Problem, Method, final CTA. Local preview used a local Playfair file, not Google's CDN.
+**Open:** Sellar URL. Not tested on real devices or non-Chrome browsers; live deployment not checked.

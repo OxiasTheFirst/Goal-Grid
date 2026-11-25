@@ -44,10 +44,6 @@ export function AccountabilitySection() {
             </Reveal>
           ))}
         </div>
-
-        <Reveal className="mt-16">
-          <p className="max-w-2xl text-xs leading-relaxed text-charcoal-muted">{accountability.disclaimer}</p>
-        </Reveal>
       </div>
     </section>
   );

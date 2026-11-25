@@ -45,7 +45,7 @@ export function OutcomesSection() {
       />
       <div className="relative mx-auto max-w-container px-4 sm:px-6 lg:px-8 py-24 lg:py-40">
         <div className="mb-16 max-w-5xl space-y-8 lg:mb-24">
-          <SectionLabel tone="dark">{outcomes.badge}</SectionLabel>
+          <SectionLabel tone="dark" emphasis>{outcomes.badge}</SectionLabel>
           <MaskedTextReveal
             as="h2"
             label={outcomes.headline}
@@ -73,11 +73,7 @@ export function OutcomesSection() {
           <li className="border-t border-white/15" aria-hidden="true" />
         </ol>
 
-        <div className="mt-12 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-md text-xs leading-relaxed text-white/50">
-            These are the programme’s intended outcomes. They describe the structure and habits Goal Grid is built to
-            develop, not guaranteed business results.
-          </p>
+        <div className="mt-12">
           <CtaButton kind="signUp" tone="dark" size="lg" />
         </div>
       </div>

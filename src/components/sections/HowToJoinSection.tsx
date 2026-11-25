@@ -70,10 +70,7 @@ export function HowToJoinSection() {
                           {r.kind === "signUp" && <CtaButton kind="signUp" tone="light" size="lg" disableWhenPending />}
                           {r.kind === "startHere" && <CtaButton kind="startHere" tone="light" size="lg" disableWhenPending />}
                           {r.kind === "contact" && (
-                            <>
-                              <CtaButton kind="chat" tone="light" />
-                              <CtaButton kind="enquiry" tone="light" />
-                            </>
+                            <CtaButton kind="chat" tone="light" />
                           )}
                         </div>
                         {pending && r.pendingNote && (

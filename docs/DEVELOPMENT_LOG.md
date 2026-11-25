@@ -437,3 +437,11 @@ Verified: tsc, lint and build clean; at 360/390/768/1024/1440 px every label sta
 **Portrait:** the three host photographs already supplied (`public/images/host/goal-grid-host-0{1,2,3}-*.jpg`); alt text now names Bolaji Babalola. No new portrait file arrived with this brief, so none was added.
 **Files:** `components/sections/HostSection.tsx` (now a client component), `data/host-profile.ts` (new), `data/landing-page-data.ts`, this log.
 **Verification (run):** `tsc`, `next lint`, `next build` clean; script check that every biography line appears in the rendered DOM text (0 missing) and all 6 headings present; collapsed state hidden, Enter key expands (`aria-expanded` true), Collapse returns focus to toggle; no horizontal overflow at 1440 and 390; desktop and mobile screenshots reviewed. Not tested: real devices, screen readers, non-Chrome browsers.
+
+---
+
+## Entry 018 — Enquiry button and mobile nav numbering (2026-11-26)
+**Enquiry:** the redundant "Make an Enquiry" button beside "Chat with Us" in How to Join (Talk to us route) was removed; Chat with Us unchanged. The retained "Make an Enquiry" buttons (FAQ help prompt, Pricing) now send the client-approved message "Hello, i am interested in being a part of the Goal Grid Project. I would like to know more." (`siteConfig.contact.messages.enquiry`, URL-encoded by `getWhatsAppUrl`). The per-question inline "Make an enquiry on WhatsApp" text links inside FAQ answers still send their own question-specific message (not buttons; flagged to the client).
+**Mobile menu:** the "01–06" numbers were removed from the hamburger menu links (`layout/Header.tsx`); links, order, styling and animation unchanged.
+**Files:** `config/site.ts`, `sections/HowToJoinSection.tsx`, `layout/Header.tsx`.
+**Verified:** tsc, lint, build clean; rendered page: every WhatsApp button link equals the exact encoded message; How to Join shows Chat with Us only; 2 Make an Enquiry buttons remain; mobile menu screenshot shows no numbers, 6 links in order, and a link click navigates (#faqs) and closes the menu. Real WhatsApp app rendering not tested here.

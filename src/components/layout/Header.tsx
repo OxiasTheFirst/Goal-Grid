@@ -150,7 +150,6 @@ export function Header() {
                       onClick={() => setOpen(false)}
                       className="flex items-baseline gap-4 py-4 font-heading text-2xl font-medium text-white"
                     >
-                      <span className="font-heading font-medium tabular-nums text-xs text-gold">0{i + 1}</span>
                       {item.label}
                     </Link>
                   </motion.span>

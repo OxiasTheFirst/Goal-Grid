@@ -67,8 +67,8 @@ export const siteConfig = {
     /** Prefilled WhatsApp messages. Each action has its own wording; encoded by getWhatsAppUrl. */
     messages: {
       chat: "Hello, i am interested in being a part of the Goal Grid Project. I would like to know more.",
-      enquiry:
-        "Hello, I have a question about the Goal Grid 12-week programme (pricing, participation or other details). Could you help me?",
+      // Client-approved (26 Nov 2026): the enquiry button uses the same exact message as chat.
+      enquiry: "Hello, i am interested in being a part of the Goal Grid Project. I would like to know more.",
     },
   },
   brand: {

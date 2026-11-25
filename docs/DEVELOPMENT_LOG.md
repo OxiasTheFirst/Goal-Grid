@@ -412,3 +412,9 @@ The following points from the client foundation brief remain intentionally open 
 **Files:** `ui/SectionLabel.tsx`, `layout/Header.tsx`, `sections/{Hero,Problem,GridMethod,Outcomes,Accountability,FinalCta}Section.tsx`, `motion/GridPathIllustration.tsx`, `config/site.ts`, `data/landing-page-data.ts`, `app/layout.tsx`, `tailwind.config.ts`, `.env.example`, docs.
 **Verification (run):** `tsc`, `next lint`, `next build` clean. Rendered HTML: removed texts = 0 matches; "Weekly Live Call" present, "Weekly Google Meet" absent; Start Here → forms.gle link in all 5 places; Chat → exact message, correctly encoded; Enquiry unchanged; Sign Up still `#how-to-join` / disabled (Sellar pending). Desktop and mobile screenshots of header, hero, Problem, Method, final CTA. Local preview used a local Playfair file, not Google's CDN.
 **Open:** Sellar URL. Not tested on real devices or non-Chrome browsers; live deployment not checked.
+
+---
+
+## Entry 015 — Section label size and weight (2026-11-25)
+The bold-only change in Entry 014 left labels too small. Shared `SectionLabel` is now 17px (mobile) / 20px (sm) / 24px (lg), weight 700 (DM Sans 700 added to `layout.tsx` so it is a real weight, not synthesized), tracking 0.12–0.14em, gold rule thickened to 2px and lengthened (32/48/64px) to stay balanced. Italic variant for "What you stand to gain" kept. The same component also renders "Meet the host", so that label scales too. Titles, copy, layouts, colours and the GRID animation are unchanged.
+Verified: tsc, lint and build clean; at 360/390/768/1024/1440 px every label stays on one line with no page overflow (measured); desktop and mobile screenshots reviewed. Local preview used the system DM Sans for weight 700.

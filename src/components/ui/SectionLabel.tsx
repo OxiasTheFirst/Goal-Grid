@@ -1,5 +1,6 @@
 /**
- * Shared eyebrow: small uppercase label with a gold rule. Bold and emphatic by design (final pass).
+ * Shared eyebrow: uppercase editorial section label with a gold rule.
+ * Final pass: ~2× larger and bold (17px mobile → 20px sm → 24px lg), rule lengthened to stay balanced.
  * `emphasis` adds italic for the one label the client asked to be bold + italic.
  */
 export function SectionLabel({
@@ -13,12 +14,12 @@ export function SectionLabel({
 }) {
   return (
     <p
-      className={`flex items-center gap-3 font-body font-bold text-xs sm:text-[13px] uppercase tracking-[0.18em] ${
+      className={`flex items-center gap-3 sm:gap-4 font-body font-bold text-[17px] leading-tight sm:text-xl lg:text-2xl uppercase tracking-[0.12em] sm:tracking-[0.14em] ${
         emphasis ? "italic" : ""
       } ${tone === "dark" ? "text-gold" : "text-gold-700"}`}
     >
-      <span className="h-px w-8 bg-gold" aria-hidden="true" />
-      {children}
+      <span className="h-[2px] w-8 flex-shrink-0 bg-gold sm:w-12 lg:w-16" aria-hidden="true" />
+      <span className="min-w-0">{children}</span>
     </p>
   );
 }

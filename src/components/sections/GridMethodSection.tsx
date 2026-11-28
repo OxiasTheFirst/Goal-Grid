@@ -10,6 +10,7 @@ import {
   useTransform,
   type MotionValue,
 } from "motion/react";
+import Image from "next/image";
 import { landingPageData } from "@/data/landing-page-data";
 import { MaskedTextReveal } from "@/components/motion/MaskedTextReveal";
 import { Reveal } from "@/components/motion/Reveal";
@@ -117,7 +118,18 @@ export function GridMethodSection() {
       />
 
       <div className="relative mx-auto max-w-container px-4 sm:px-6 lg:px-8 py-24 lg:py-40">
-        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+        {/* Subtle right-side depth (lg+): isometric floor plane and soft light behind the GRID illustration, which stays the primary visual. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-[4%] top-4 hidden w-[54%] max-w-[760px] opacity-90 lg:block"
+          style={{
+            WebkitMaskImage: "radial-gradient(closest-side, #000 45%, transparent 100%)",
+            maskImage: "radial-gradient(closest-side, #000 45%, transparent 100%)",
+          }}
+        >
+          <Image src="/images/method-grid-depth-plane.webp" alt="" width={1000} height={1000} sizes="(min-width:1024px) 720px, 0px" className="h-auto w-full" />
+        </div>
+        <div className="relative z-10 grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
          <div className="space-y-8 lg:col-span-7">
           <SectionLabel tone="dark">{gridMethod.badge}</SectionLabel>
           <MaskedTextReveal

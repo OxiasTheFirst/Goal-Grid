@@ -445,3 +445,11 @@ Verified: tsc, lint and build clean; at 360/390/768/1024/1440 px every label sta
 **Mobile menu:** the "01–06" numbers were removed from the hamburger menu links (`layout/Header.tsx`); links, order, styling and animation unchanged.
 **Files:** `config/site.ts`, `sections/HowToJoinSection.tsx`, `layout/Header.tsx`.
 **Verified:** tsc, lint, build clean; rendered page: every WhatsApp button link equals the exact encoded message; How to Join shows Chat with Us only; 2 Make an Enquiry buttons remain; mobile menu screenshot shows no numbers, 6 links in order, and a link click navigates (#faqs) and closes the menu. Real WhatsApp app rendering not tested here.
+
+---
+
+## Entry 019 — Right-side visuals for Outcomes and Method sections (2026-11-28)
+**Added:** `outcomes-work-plan-stack.webp` (Outcomes; lg+ behind headline, mobile/tablet strip under the paragraph) and `method-grid-depth-plane.webp` (Method; lg+ depth plane behind the GRID illustration). Both original artwork rendered from HTML/SVG with Playwright; no stock or AI imagery (stock hosts were blocked from the sandbox, no image generator available). A first Method concept (ascending blocks) was rejected because it duplicated and competed with the GRID illustration.
+**Files:** `sections/OutcomesSection.tsx`, `sections/GridMethodSection.tsx` (visual wrapper + `relative z-10` on the existing content), two new images, README (new "Section visuals" subsection).
+**Unchanged:** all copy, headings, GRID illustration, record grid, other sections.
+**Verified:** tsc, lint, build clean; images load with no failed requests at 1440, 820 and 390 px; no horizontal overflow; screenshots show text readable and illustration intact. Not checked: the live site, real devices, Lighthouse. The two screenshots referenced in the brief did not arrive (only the earlier host photos), so sections were located from the code.

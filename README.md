@@ -98,6 +98,17 @@ npm run start
 
 ---
 
+### Section visuals (design assets)
+
+Two sections carry a right-side visual. Both are **original artwork made for this project** (drawn in HTML/CSS/SVG and rendered to WebP with the brand palette: navy `#142642`, gold `#C9A45C`). They contain no text, logos, people or third-party imagery, so there is no stock licence to track; the project owns them. Stock sites (Unsplash/Pexels) were not reachable from the build environment, so no stock photo was used.
+
+| Section | File | Purpose | Placement and blending |
+|---|---|---|---|
+| What You Stand to Gain (`OutcomesSection`) | `public/images/outcomes-work-plan-stack.webp` | Three stacked work-plan sheets with ticked tasks: planning, consistent execution, work completed. | `lg+`: absolutely positioned top-right (46% width, max 620px) *behind* the headline, faded in from the left and bottom with a CSS mask. Below `lg`: a short faded strip under the paragraph, never over the text. Decorative (`alt=""`, `aria-hidden`). |
+| The Method (`GridMethodSection`) | `public/images/method-grid-depth-plane.webp` | Isometric floor plane and soft gold light that give the existing GRID illustration depth. | `lg+` only: behind the illustration column, radial mask, ~90% opacity. The `GridPathIllustration` itself is unchanged and remains the primary visual. Hidden on smaller screens, where the illustration already sits alone. |
+
+Neither visual is animated, so no reduced-motion handling is needed. Next.js serves them resized as AVIF/WebP.
+
 ## 4. Key Architectural Decisions
 
 1. **Frontend-Only Architecture:** Goal Grid has no database, authentication, backend API, or custom form submission endpoints. All conversion actions direct visitors to WhatsApp with prefilled enquiry messages.
